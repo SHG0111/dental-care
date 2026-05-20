@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Cera Pro Round';
+  src: url('/fonts/FONTSPRINGDEMO-CeraRoundProThinRegular.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cera Pro Round';
+  src: url('/fonts/FONTSPRINGDEMO-CeraRoundProLightRegular.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cera Pro Round';
+  src: url('/fonts/FONTSPRINGDEMO-CeraRoundProRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cera Pro Round';
+  src: url('/fonts/FONTSPRINGDEMO-CeraRoundProMediumRegular.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cera Pro Round';
+  src: url('/fonts/FONTSPRINGDEMO-CeraRoundProBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cera Pro Round';
+  src: url('/fonts/FONTSPRINGDEMO-CeraRoundProBlackRegular.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Primary — warm dark text */
+  --color-primary: #241712;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #fef3ee;
+  --color-on-primary-container: #6d220d;
+  --color-primary-fixed: #fdd8c9;
+  --color-primary-fixed-dim: #fbb5a0;
+  --color-on-primary-fixed: #4a1507;
+  --color-on-primary-fixed-variant: #8f3013;
+  --color-inverse-primary: #fbb5a0;
+
+  /* Secondary — brand accent #ee5c31 */
+  --color-secondary: #ee5c31;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fdd8c9;
+  --color-on-secondary-container: #b33d1a;
+  --color-secondary-fixed: #fef3ee;
+  --color-secondary-fixed-dim: #fbb5a0;
+  --color-on-secondary-fixed: #4a1507;
+  --color-on-secondary-fixed-variant: #8f3013;
+
+  /* Tertiary — teal complement */
+  --color-tertiary: #1aabb8;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #b3e8ef;
+  --color-on-tertiary-container: #0f7a84;
+  --color-tertiary-fixed: #e0f5f8;
+  --color-tertiary-fixed-dim: #b3e8ef;
+  --color-on-tertiary-fixed: #064d54;
+  --color-on-tertiary-fixed-variant: #0f7a84;
+
+  /* Surface / Background — warm off-white */
+  --color-surface: #fffaf8;
+  --color-surface-dim: #f5e8e2;
+  --color-surface-bright: #fffaf8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fdf3ee;
+  --color-surface-container: #f5e8e2;
+  --color-surface-container-high: #efddd5;
+  --color-surface-container-highest: #e5ccc2;
+  --color-on-surface: #241712;
+  --color-on-surface-variant: #52443e;
+  --color-inverse-surface: #362923;
+  --color-inverse-on-surface: #f5e8e2;
+  --color-background: #fffaf8;
+  --color-on-background: #241712;
+
+  /* Outline */
+  --color-outline: #85746d;
+  --color-outline-variant: #d7c5bd;
+  --color-surface-variant: #f5e8e2;
+
+  /* Error */
+  --color-error: #c62828;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+
+  /* Misc */
+  --color-surface-tint: #ee5c31;
+  --color-shadow-tint: #241712;
+  --color-surface-muted: #fdf3ee;
+  --color-canvas: #ffffff;
+
+  --spacing-margin-desktop: 80px;
+  --spacing-section-gap: 160px;
+  --spacing-margin-mobile: 20px;
+  --spacing-gutter: 24px;
+  --spacing-unit: 8px;
+  --spacing-margin-tablet: 40px;
+  --spacing-max-width: 1280px;
+  --spacing-stack-md: 16px;
+  --spacing-stack-sm: 8px;
+  --spacing-stack-lg: 32px;
+
+  --font-headline-md: 'Cera Pro Round', system-ui, sans-serif;
+  --font-display-lg: 'Cera Pro Round', system-ui, sans-serif;
+  --font-body-md: 'Cera Pro Round', system-ui, sans-serif;
+  --font-body-lg: 'Cera Pro Round', system-ui, sans-serif;
+  --font-headline-lg: 'Cera Pro Round', system-ui, sans-serif;
+  --font-label-caps: 'Cera Pro Round', system-ui, sans-serif;
+  --font-headline: 'Cera Pro Round', system-ui, sans-serif;
+  --font-body: 'Cera Pro Round', system-ui, sans-serif;
+  --font-label: 'Cera Pro Round', system-ui, sans-serif;
+  --font-display: 'Cera Pro Round', system-ui, sans-serif;
+
+  --font-size-headline-md: 32px;
+  --font-size-display-lg: 84px;
+  --font-size-body-md: 16px;
+  --font-size-body-lg: 18px;
+  --font-size-headline-lg: 48px;
+  --font-size-headline-lg-mobile: 32px;
+  --font-size-label-caps: 12px;
+  --font-size-display: 72px;
+
+  --leading-headline-md: 40px;
+  --leading-display-lg: 92px;
+  --leading-body-md: 24px;
+  --leading-body-lg: 28px;
+  --leading-headline-lg: 56px;
+  --leading-headline-lg-mobile: 40px;
+  --leading-label-caps: 16px;
+  --leading-display: 80px;
+
+  --tracking-display-lg: -0.02em;
+  --tracking-headline-lg: -0.01em;
+  --tracking-label-caps: 0.1em;
+  --tracking-display: -0.02em;
+
+  --font-weight-display-lg: 400;
+  --font-weight-headline-lg: 400;
+  --font-weight-display: 700;
+  --font-weight-label-caps: 600;
+
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    font-family: 'Cera Pro Round', system-ui, sans-serif;
+  }
+  html, body, #app, a, button, input, textarea, select, [role="button"], [tabindex] {
+    cursor: none;
+  }
+
+  ::selection {
+    background-color: var(--color-secondary-fixed);
+    color: var(--color-on-secondary-fixed);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 16px 64px -16px rgba(36, 23, 18, 0.10), 0 4px 16px -4px rgba(36, 23, 18, 0.06);
+  }
+
+  .ambient-glow {
+    background: radial-gradient(circle at center, rgba(238, 92, 49, 0.08) 0%, transparent 70%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .highlight-box {
+    background: linear-gradient(to right, color-mix(in oklab, var(--color-secondary) 10%, var(--color-secondary-container)), transparent);
+  }
+
+  .icon-glass {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .icon-glass.active {
+    background: color-mix(in oklab, var(--color-secondary) 10%, var(--color-secondary-container));
+    border-color: transparent;
+    box-shadow: 0 4px 16px -4px color-mix(in oklab, var(--color-secondary) 20%, transparent);
+  }
+}
+
+@utility animate-reveal {
+  animation: reveal 1s forwards;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@utility animate-float {
+  animation: float 6s ease-in-out infinite;
+}

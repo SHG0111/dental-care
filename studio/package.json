@@ -1,0 +1,23 @@
+{
+  "name": "studio-iridescence",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hugeicons/core-free-icons": "^4.1.4",
+    "@hugeicons/vue": "^1.0.5",
+    "@tailwindcss/vite": "^4.3.0",
+    "motion-v": "^2.2.1",
+    "tailwindcss": "^4.3.0",
+    "vue": "^3.5.34"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.6",
+    "vite": "^8.0.12"
+  }
+}
