@@ -1,7 +1,7 @@
 <template>
   <section
     id="dialogue"
-    class="mt-section-gap px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto"
+    class="mt-section-gap mb-5 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto"
   >
     <div class="flex flex-col md:flex-row justify-between items-baseline mb-16 md:mb-24 gap-8">
       <h2 class="font-headline-lg text-3xl md:text-headline-lg max-w-xl">
