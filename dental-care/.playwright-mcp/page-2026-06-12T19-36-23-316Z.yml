@@ -1,0 +1,440 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "بلازا للرعاية السنية Plaza Dental Care" [ref=e6] [cursor=pointer]:
+          - /url: "#home"
+          - img [ref=e8]
+          - generic [ref=e10]:
+            - generic [ref=e11]: بلازا للرعاية السنية
+            - generic [ref=e12]: Plaza Dental Care
+        - generic [ref=e13]:
+          - link "الرئيسية" [ref=e14] [cursor=pointer]:
+            - /url: "#home"
+          - link "من نحن" [ref=e15] [cursor=pointer]:
+            - /url: "#about"
+          - link "خدماتنا" [ref=e16] [cursor=pointer]:
+            - /url: "#services"
+          - link "فريقنا" [ref=e17] [cursor=pointer]:
+            - /url: "#team"
+          - link "آراء المرضى" [ref=e18] [cursor=pointer]:
+            - /url: "#testimonials"
+          - link "تواصل معنا" [ref=e19] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e20]:
+          - button "EN" [ref=e21] [cursor=pointer]
+          - link "WhatsApp" [ref=e22] [cursor=pointer]:
+            - /url: https://wa.me/201200077665
+            - img [ref=e23]
+          - link "احجز موعد" [ref=e25] [cursor=pointer]:
+            - /url: "#contact"
+            - img [ref=e26]
+            - generic [ref=e28]: احجز موعد
+    - main [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - generic [ref=e35]: متخصصون في ابتسامتك
+            - heading "ابتسامتك صحتنا رعاية متكاملة لأسنان مشرقة وصحية" [level=1] [ref=e36]:
+              - generic [ref=e37]: ابتسامتك صحتنا
+              - generic [ref=e38]: رعاية متكاملة لأسنان
+              - generic [ref=e39]: مشرقة وصحية
+            - paragraph [ref=e40]: بلازا للرعاية السنية — عيادة متخصصة تجمع بين أحدث تقنيات طب الأسنان وبيئة مريحة. فريقنا من أكفأ الأطباء المتخصصين في خدمتكم.
+            - generic [ref=e41]:
+              - button "احجز موعدك الآن" [ref=e42] [cursor=pointer]:
+                - text: احجز موعدك الآن
+                - img [ref=e43]
+              - button "اكتشف خدماتنا" [ref=e45] [cursor=pointer]
+            - generic [ref=e46]:
+              - generic [ref=e47]:
+                - generic [ref=e48]: "+5000"
+                - generic [ref=e49]: مريض راضٍ
+              - generic [ref=e50]:
+                - generic [ref=e51]: "+15"
+                - generic [ref=e52]: سنة خبرة
+              - generic [ref=e53]:
+                - generic [ref=e54]: "+20"
+                - generic [ref=e55]: طبيب متخصص
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - img [ref=e60]
+              - heading "عيادة بلازا السنية" [level=3] [ref=e64]
+              - paragraph [ref=e65]: رعاية متميزة بتقنيات حديثة
+              - generic [ref=e66]:
+                - generic [ref=e67]:
+                  - img [ref=e68]
+                  - img [ref=e70]
+                  - img [ref=e72]
+                  - img [ref=e74]
+                  - img [ref=e76]
+                - generic [ref=e78]: "4.9"
+                - generic [ref=e79]: (+500 تقييم)
+              - generic [ref=e80]:
+                - generic [ref=e81]:
+                  - generic [ref=e82]: "+15"
+                  - generic [ref=e83]: سنة خبرة
+                - generic [ref=e84]:
+                  - generic [ref=e85]: 98%
+                  - generic [ref=e86]: رضا
+            - generic [ref=e87]:
+              - img [ref=e89]
+              - generic [ref=e92]:
+                - generic [ref=e93]: أحدث التقنيات
+                - generic [ref=e94]: ليزر متطور
+            - generic [ref=e95]:
+              - img [ref=e97]
+              - generic [ref=e100]:
+                - generic [ref=e101]: تجربة مريحة
+                - generic [ref=e102]: بدون ألم
+        - generic [ref=e104]: اسحب للأسفل
+      - generic [ref=e108]:
+        - generic [ref=e109]:
+          - generic [ref=e112]: من نحن
+          - heading "معايير رعاية استثنائية" [level=2] [ref=e113]
+          - paragraph [ref=e114]: نوفر بيئة علاجية مريحة وآمنة تجمع بين الخبرة الطبية والتكنولوجيا الحديثة
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - img [ref=e118]
+            - heading "تقنية متقدمة" [level=3] [ref=e122]
+            - paragraph [ref=e123]: أجهزة تشخيص حديثة وتقنية ليزر متطورة لأدق النتائج وأسرع التعافي
+          - generic [ref=e124]:
+            - img [ref=e126]
+            - heading "فريق متخصص" [level=3] [ref=e131]
+            - paragraph [ref=e132]: نخبة من أطباء الأسنان حاملو الدرجات العلمية والشهادات الدولية المعتمدة
+          - generic [ref=e133]:
+            - img [ref=e135]
+            - heading "جودة بلا تنازل" [level=3] [ref=e138]
+            - paragraph [ref=e139]: خامات طبية عالمية المستوى وبروتوكولات تعقيم صارمة لسلامتك التامة
+          - generic [ref=e140]:
+            - img [ref=e142]
+            - heading "رعاية شاملة" [level=3] [ref=e144]
+            - paragraph [ref=e145]: خطة علاج مخصصة لكل مريض مع متابعة مستمرة قبل وأثناء وبعد العلاج
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - generic [ref=e148]: "+5000"
+            - generic [ref=e149]: مريض راضٍ
+          - generic [ref=e150]:
+            - generic [ref=e151]: "+15"
+            - generic [ref=e152]: سنة خبرة
+          - generic [ref=e153]:
+            - generic [ref=e154]: "+20"
+            - generic [ref=e155]: طبيب متخصص
+          - generic [ref=e156]:
+            - generic [ref=e157]: 98%
+            - generic [ref=e158]: رضا المرضى
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - generic [ref=e164]: خدماتنا
+          - heading "خدمات طب الأسنان الشاملة" [level=2] [ref=e165]
+          - paragraph [ref=e166]: نقدم طيفاً واسعاً من خدمات طب الأسنان التجميلي والعلاجي بأعلى معايير الجودة
+        - generic [ref=e167]:
+          - generic [ref=e168] [cursor=pointer]:
+            - generic [ref=e169]: "01"
+            - generic [ref=e170]: ✨
+            - heading "ابتسامة هوليود" [level=3] [ref=e171]
+            - paragraph [ref=e172]: تحول كامل لابتسامتك للحصول على أسنان ناصعة البياض ومتناسقة تعكس شخصيتك وجمالك الطبيعي
+            - img [ref=e174]
+          - generic [ref=e176] [cursor=pointer]:
+            - generic [ref=e177]: "02"
+            - generic [ref=e178]: 🦷
+            - heading "زراعة الأسنان" [level=3] [ref=e179]
+            - paragraph [ref=e180]: الحل الأمثل لتعويض الأسنان المفقودة بزرعات ثابتة طبيعية المظهر تدوم مدى الحياة
+            - img [ref=e182]
+          - generic [ref=e184] [cursor=pointer]:
+            - generic [ref=e185]: "03"
+            - generic [ref=e186]: 😁
+            - heading "تقويم الأسنان" [level=3] [ref=e187]
+            - paragraph [ref=e188]: أسنان متناسقة وابتسامة مثالية بأحدث تقنيات التقويم الشفاف والمعدني بأعلى راحة
+            - img [ref=e190]
+          - generic [ref=e192] [cursor=pointer]:
+            - generic [ref=e193]: "04"
+            - generic [ref=e194]: 💉
+            - heading "علاج جذور الأسنان" [level=3] [ref=e195]
+            - paragraph [ref=e196]: تخلص من الألم واحتفظ بأسنانك الطبيعية باستخدام أجهزة دقيقة وتقنيات حديثة بلا ألم
+            - img [ref=e198]
+          - generic [ref=e200] [cursor=pointer]:
+            - generic [ref=e201]: "05"
+            - generic [ref=e202]: 👶
+            - heading "أسنان الأطفال" [level=3] [ref=e203]
+            - paragraph [ref=e204]: رعاية متكاملة بأسلوب لطيف لحماية أسنان طفلك وضمان نمو سليم وصحي منذ الصغر
+            - img [ref=e206]
+          - generic [ref=e208] [cursor=pointer]:
+            - generic [ref=e209]: "06"
+            - generic [ref=e210]: 🌿
+            - heading "علاج اللثة" [level=3] [ref=e211]
+            - paragraph [ref=e212]: الحفاظ على صحة الفم بإزالة الالتهابات وتحسين مظهر اللثة لابتسامة صحية دائمة
+            - img [ref=e214]
+          - generic [ref=e216] [cursor=pointer]:
+            - generic [ref=e217]: "07"
+            - generic [ref=e218]: 👑
+            - heading "التيجان والجسور" [level=3] [ref=e219]
+            - paragraph [ref=e220]: مظهر جمالي ووظيفة قوية باستخدام خامات عالمية لتغطية الأسنان التالفة باحترافية
+            - img [ref=e222]
+          - generic [ref=e224] [cursor=pointer]:
+            - generic [ref=e225]: "08"
+            - generic [ref=e226]: ⚡
+            - heading "تبييض الأسنان" [level=3] [ref=e227]
+            - paragraph [ref=e228]: ابتسامة ناصعة في جلسة واحدة بتقنيات آمنة وسريعة لاستعادة البريق الطبيعي لأسنانك
+            - img [ref=e230]
+          - generic [ref=e232] [cursor=pointer]:
+            - generic [ref=e233]: "09"
+            - generic [ref=e234]: 🎨
+            - heading "الحشوات التجميلية" [level=3] [ref=e235]
+            - paragraph [ref=e236]: استعادة شكل السن الطبيعي بدقة عالية بمواد مطابقة للون أسنانك بدون أي ألم
+            - img [ref=e238]
+      - generic [ref=e241]:
+        - generic [ref=e242]:
+          - generic [ref=e245]: فريقنا الطبي
+          - heading "أطباء في خدمة ابتسامتك'" [level=2] [ref=e246]
+          - paragraph [ref=e247]: فريق من أكفأ أطباء الأسنان المتخصصين ذوي الخبرة والمؤهلات العالية
+        - generic [ref=e248]:
+          - generic [ref=e249]:
+            - generic [ref=e251]: MA
+            - heading "د. محمد أحمد" [level=3] [ref=e252]
+            - paragraph [ref=e253]: استشاري تجميل الأسنان
+            - generic [ref=e254]: خبرة 15 سنة
+          - generic [ref=e255]:
+            - generic [ref=e257]: SH
+            - heading "د. سارة حسن" [level=3] [ref=e258]
+            - paragraph [ref=e259]: أخصائي تقويم الأسنان
+            - generic [ref=e260]: زمالة دولية
+          - generic [ref=e261]:
+            - generic [ref=e263]: KM
+            - heading "د. خالد محمود" [level=3] [ref=e264]
+            - paragraph [ref=e265]: استشاري زراعة الأسنان
+            - generic [ref=e266]: بورد أوروبي
+          - generic [ref=e267]:
+            - generic [ref=e269]: NF
+            - heading "د. نور فاروق" [level=3] [ref=e270]
+            - paragraph [ref=e271]: أخصائي أسنان الأطفال
+            - generic [ref=e272]: دكتوراه
+          - generic [ref=e273]:
+            - generic [ref=e275]: AW
+            - heading "د. أحمد وليد" [level=3] [ref=e276]
+            - paragraph [ref=e277]: استشاري علاج الجذور
+            - generic [ref=e278]: ماجستير
+          - generic [ref=e279]:
+            - generic [ref=e281]: RI
+            - heading "د. رانيا إبراهيم" [level=3] [ref=e282]
+            - paragraph [ref=e283]: أخصائي علاج اللثة
+            - generic [ref=e284]: فيلوشيب
+      - generic [ref=e286]:
+        - generic [ref=e287]:
+          - generic [ref=e290]: آراء مرضانا
+          - heading "ماذا يقول مرضانا؟" [level=2] [ref=e291]
+          - paragraph [ref=e292]: ثقة مرضانا هي أكبر جائزة نحتفل بها كل يوم في عيادتنا
+        - generic [ref=e293]:
+          - generic [ref=e294]:
+            - generic: "\""
+            - generic [ref=e295]:
+              - img [ref=e296]
+              - img [ref=e298]
+              - img [ref=e300]
+              - img [ref=e302]
+              - img [ref=e304]
+            - paragraph [ref=e306]: "\"تجربة رائعة جداً! الدكاترة محترفين وطيبين، والعيادة نظيفة ومريحة. أجريت زراعة أسنان وكانت النتيجة مذهلة.\""
+            - generic [ref=e307]:
+              - generic [ref=e308]: أس
+              - generic [ref=e309]:
+                - generic [ref=e310]: أحمد سالم
+                - generic [ref=e311]: مريض — زراعة أسنان
+          - generic [ref=e312]:
+            - generic: "\""
+            - generic [ref=e313]:
+              - img [ref=e314]
+              - img [ref=e316]
+              - img [ref=e318]
+              - img [ref=e320]
+              - img [ref=e322]
+            - paragraph [ref=e324]: "\"بخاف جداً من طبيب الأسنان لكن مع فريق بلازا حسيت بالراحة من أول جلسة. الابتسامة الهوليودية غيرت حياتي!\""
+            - generic [ref=e325]:
+              - generic [ref=e326]: سح
+              - generic [ref=e327]:
+                - generic [ref=e328]: سمر حسين
+                - generic [ref=e329]: مريضة — ابتسامة هوليود
+          - generic [ref=e330]:
+            - generic: "\""
+            - generic [ref=e331]:
+              - img [ref=e332]
+              - img [ref=e334]
+              - img [ref=e336]
+              - img [ref=e338]
+              - img [ref=e340]
+            - paragraph [ref=e342]: "\"مستوى الخدمة والاحترافية عالي جداً. تقويم الأسنان جاب نتيجة أحسن من توقعاتي بكتير. أنصح بيها للكل.\""
+            - generic [ref=e343]:
+              - generic [ref=e344]: مع
+              - generic [ref=e345]:
+                - generic [ref=e346]: مصطفى علي
+                - generic [ref=e347]: مريض — تقويم الأسنان
+          - generic [ref=e348]:
+            - generic: "\""
+            - generic [ref=e349]:
+              - img [ref=e350]
+              - img [ref=e352]
+              - img [ref=e354]
+              - img [ref=e356]
+              - img [ref=e358]
+            - paragraph [ref=e360]: "\"تعاملت مع عدة عيادات لكن بلازا مختلفون. الاهتمام بالتفاصيل والمتابعة بعد العلاج شيء مميز جداً.\""
+            - generic [ref=e361]:
+              - generic [ref=e362]: هم
+              - generic [ref=e363]:
+                - generic [ref=e364]: هند محمود
+                - generic [ref=e365]: مريضة — تبييض الأسنان
+      - generic [ref=e367]:
+        - generic [ref=e368]:
+          - generic [ref=e371]: تابعنا على فيسبوك
+          - heading "آخر المنشورات والفيديوهات" [level=2] [ref=e372]
+          - paragraph [ref=e373]: شاهد أحدث أعمالنا ونصائحنا الطبية على صفحتنا على فيسبوك
+        - generic [ref=e379]:
+          - img [ref=e381]
+          - heading "تابع صفحتنا على فيسبوك" [level=3] [ref=e383]
+          - paragraph [ref=e384]: لمشاهدة المزيد من الأعمال والنصائح اليومية
+          - link "تابعنا على فيسبوك" [ref=e385] [cursor=pointer]:
+            - /url: https://www.facebook.com/Plazadentalcareclinic/
+            - text: تابعنا على فيسبوك
+            - img [ref=e386]
+          - generic [ref=e390]:
+            - generic [ref=e391] [cursor=pointer]:
+              - img [ref=e393]
+              - text: فيديو 1
+            - generic [ref=e395] [cursor=pointer]:
+              - img [ref=e397]
+              - text: فيديو 2
+            - generic [ref=e399] [cursor=pointer]:
+              - img [ref=e401]
+              - text: فيديو 3
+      - generic [ref=e404]:
+        - generic [ref=e405]:
+          - heading "ساعات العمل" [level=3] [ref=e406]
+          - paragraph [ref=e407]: يسعدنا استقبالكم طوال أيام الأسبوع
+        - generic [ref=e408]:
+          - generic [ref=e409]:
+            - generic [ref=e410]: الأحد – الخميس
+            - generic [ref=e411]: 10 ص – 8 م
+          - generic [ref=e412]:
+            - generic [ref=e413]: الجمعة
+            - generic [ref=e414]: 2 م – 8 م
+          - generic [ref=e415]:
+            - generic [ref=e416]: السبت
+            - generic [ref=e417]: 11 ص – 6 م
+        - button "احجز الآن" [ref=e418] [cursor=pointer]:
+          - img [ref=e419]
+          - generic [ref=e421]: احجز الآن
+      - generic [ref=e424]:
+        - generic [ref=e425]:
+          - generic [ref=e428]: تواصل معنا
+          - heading "نحن هنا لأجل ابتسامتك" [level=2] [ref=e429]
+          - paragraph [ref=e430]: يسعدنا الإجابة على جميع استفساراتكم وحجز مواعيدكم. فريقنا في خدمتكم على مدار الأسبوع
+          - generic [ref=e431]:
+            - link "الهاتف +20 120 007 7665" [ref=e432] [cursor=pointer]:
+              - /url: tel:+201200077665
+              - img [ref=e434]
+              - generic [ref=e436]:
+                - strong [ref=e437]: الهاتف
+                - text: +20 120 007 7665
+            - generic [ref=e438] [cursor=pointer]:
+              - img [ref=e440]
+              - generic [ref=e443]:
+                - strong [ref=e444]: العنوان
+                - text: الإسكندرية، مصر
+            - link "واتساب +20 120 007 7665" [ref=e445] [cursor=pointer]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e447]
+              - generic [ref=e449]:
+                - strong [ref=e450]: واتساب
+                - text: +20 120 007 7665
+            - link "البريد الإلكتروني info@plazadentalcare.com" [ref=e451] [cursor=pointer]:
+              - /url: mailto:info@plazadentalcare.com
+              - img [ref=e453]
+              - generic [ref=e456]:
+                - strong [ref=e457]: البريد الإلكتروني
+                - text: info@plazadentalcare.com
+          - generic [ref=e458]:
+            - link "Facebook" [ref=e459] [cursor=pointer]:
+              - /url: https://www.facebook.com/Plazadentalcareclinic/
+              - img [ref=e460]
+            - link "Instagram" [ref=e462] [cursor=pointer]:
+              - /url: https://www.instagram.com/
+              - img [ref=e463]
+            - link "WhatsApp" [ref=e466] [cursor=pointer]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e467]
+        - generic [ref=e471]:
+          - img [ref=e473]
+          - generic [ref=e475]:
+            - generic [ref=e476]:
+              - img [ref=e477]
+              - generic [ref=e480]: الإسكندرية، مصر
+            - heading "بلازا للرعاية السنية" [level=3] [ref=e481]
+            - generic [ref=e482]: ساعات العمل:10 ص – 8 م (الأحد-الخميس)
+            - link "راسلنا واتساب" [ref=e484] [cursor=pointer]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e485]
+              - text: راسلنا واتساب
+    - contentinfo [ref=e487]:
+      - generic [ref=e488]:
+        - generic [ref=e489]:
+          - generic [ref=e490]:
+            - link "بلازا للرعاية السنية" [ref=e491] [cursor=pointer]:
+              - /url: "#home"
+              - img [ref=e493]
+              - generic [ref=e495]: بلازا للرعاية السنية
+            - paragraph [ref=e496]: عيادة متخصصة في رعاية وتجميل الأسنان، نقدم أفضل الخدمات الطبية بأيدي فريق متخصص وأجهزة حديثة.
+            - generic [ref=e497]:
+              - link "Facebook" [ref=e498] [cursor=pointer]:
+                - /url: https://www.facebook.com/Plazadentalcareclinic/
+                - img [ref=e499]
+              - link "WhatsApp" [ref=e501] [cursor=pointer]:
+                - /url: https://wa.me/201200077665
+                - img [ref=e502]
+          - generic [ref=e504]:
+            - heading "الخدمات" [level=4] [ref=e505]
+            - list [ref=e506]:
+              - listitem [ref=e507]:
+                - link "ابتسامة هوليود" [ref=e508] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e509]:
+                - link "زراعة الأسنان" [ref=e510] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e511]:
+                - link "تقويم الأسنان" [ref=e512] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e513]:
+                - link "علاج الجذور" [ref=e514] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e515]:
+                - link "أسنان الأطفال" [ref=e516] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e517]:
+                - link "تبييض الأسنان" [ref=e518] [cursor=pointer]:
+                  - /url: "#services"
+          - generic [ref=e519]:
+            - heading "تواصل معنا" [level=4] [ref=e520]
+            - list [ref=e521]:
+              - listitem [ref=e522]:
+                - link "+20 120 007 7665" [ref=e523] [cursor=pointer]:
+                  - /url: tel:+201200077665
+                  - img [ref=e524]
+                  - generic [ref=e526]: +20 120 007 7665
+              - listitem [ref=e527]:
+                - generic [ref=e528]:
+                  - img [ref=e529]
+                  - generic [ref=e532]: الإسكندرية، مصر
+              - listitem [ref=e533]:
+                - link "+20 120 007 7665" [ref=e534] [cursor=pointer]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e535]
+                  - generic [ref=e537]: +20 120 007 7665
+        - generic [ref=e538]:
+          - generic [ref=e539]: © 2025 بلازا للرعاية السنية — جميع الحقوق محفوظة
+          - generic [ref=e540]: تصميم احترافي لتجربة طبية متميزة
+    - link "+201200077665 1" [ref=e541] [cursor=pointer]:
+      - /url: https://wa.me/201200077665
+      - img [ref=e543]
+      - generic: "+201200077665"
+      - generic: "1"
+  - generic [ref=e545]:
+    - generic "Toggle devtools panel" [ref=e546] [cursor=pointer]:
+      - img [ref=e547]
+    - generic "Toggle Component Inspector" [ref=e552] [cursor=pointer]:
+      - img [ref=e553]
