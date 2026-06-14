@@ -756,6 +756,10 @@ body.ltr .reveal-fade-right {
   opacity: 1;
   transform: translateY(0);
 }
+/* ----- custom Reel Carousel ----- */
+.sk-load-more-btn-container , .sk-branding-container{
+  display: none;
+}
 
 /* ----- Scrollbar ----- */
 ::-webkit-scrollbar {
