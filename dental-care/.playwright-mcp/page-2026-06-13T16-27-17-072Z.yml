@@ -1,0 +1,226 @@
+- generic [ref=e23]:
+  - generic [ref=e25]:
+    - navigation [ref=e26]:
+      - generic [ref=e27]:
+        - link "Plaza Dental Care Plaza Dental Cosmetic Center Premium Dental Clinic" [ref=e906] [cursor=pointer]:
+          - /url: "#home"
+          - img "Plaza Dental Care" [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]: Plaza Dental Cosmetic Center
+            - generic [ref=e33]: Premium Dental Clinic
+        - generic [ref=e34]:
+          - link "Home" [ref=e907] [cursor=pointer]:
+            - /url: "#home"
+          - link "About Us" [ref=e908] [cursor=pointer]:
+            - /url: "#about"
+          - link "Services" [ref=e909] [cursor=pointer]:
+            - /url: "#services"
+          - link "Before & After" [ref=e910] [cursor=pointer]:
+            - /url: "#before-after"
+          - link "Our Team" [ref=e911] [cursor=pointer]:
+            - /url: "#team"
+          - link "Testimonials" [ref=e912] [cursor=pointer]:
+            - /url: "#testimonials"
+          - link "Contact Us" [ref=e913] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e42]:
+          - button "العربية" [active] [ref=e914] [cursor=pointer]
+          - link "Book Appointment" [ref=e915] [cursor=pointer]:
+            - /url: https://wa.me/201200077665
+            - img [ref=e45]
+            - generic [ref=e47]: Book Appointment
+          - text: Menu
+    - main [ref=e48]:
+      - generic [ref=e729]:
+        - generic [ref=e731]:
+          - button "Back to Home" [ref=e916] [cursor=pointer]:
+            - img [ref=e917]
+            - generic [ref=e735]: Back to Home
+          - generic [ref=e736]:
+            - generic [ref=e738]: "01"
+            - generic [ref=e739]:
+              - generic [ref=e742]: Our Services
+              - heading "✨ Hollywood Smile" [level=1] [ref=e919]
+              - paragraph [ref=e744]: Hollywood Smile is our signature cosmetic treatment — a complete smile makeover using ultra-thin porcelain veneers custom-crafted to your facial structure. Each veneer is individually designed for perfect shape, shade, and symmetry, creating a naturally dazzling smile that frames your face beautifully.
+              - generic [ref=e745]:
+                - button "Book Appointment" [ref=e920] [cursor=pointer]:
+                  - img [ref=e747]
+                  - text: Book Appointment
+                - link "Contact via WhatsApp" [ref=e921] [cursor=pointer]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e750]
+                  - text: Contact via WhatsApp
+        - generic [ref=e754]:
+          - generic [ref=e755]:
+            - generic [ref=e759]: Overview
+            - heading "About This Service" [level=2] [ref=e922]
+            - paragraph [ref=e761]: Hollywood Smile is our signature cosmetic treatment — a complete smile makeover using ultra-thin porcelain veneers custom-crafted to your facial structure. Each veneer is individually designed for perfect shape, shade, and symmetry, creating a naturally dazzling smile that frames your face beautifully.
+            - paragraph [ref=e762]: The procedure is minimally invasive and typically completed in 2-3 visits. Using advanced digital smile design technology, you can preview your new smile before any work begins. Our master ceramists craft each veneer from the highest-grade materials for a translucent, lifelike appearance.
+          - generic [ref=e764]:
+            - generic [ref=e765]: ✨
+            - generic [ref=e766]: Hollywood Smile
+            - generic [ref=e768]:
+              - generic [ref=e769]: 98%
+              - generic [ref=e770]: Success Rate
+            - generic [ref=e771]:
+              - generic [ref=e772]: +15 Years
+              - generic [ref=e773]: Experience
+        - generic [ref=e775]:
+          - generic [ref=e776]:
+            - generic [ref=e780]: Benefits
+            - heading "Why Choose This Service?" [level=2] [ref=e923]
+            - paragraph [ref=e782]: We deliver the highest standards of quality and care in everything we provide
+          - generic [ref=e783]:
+            - generic [ref=e784]:
+              - img [ref=e786]
+              - generic [ref=e789]:
+                - heading "Instant Confidence" [level=3] [ref=e924]
+                - paragraph [ref=e791]: Walk out with a completely transformed smile that boosts your self-esteem instantly
+            - generic [ref=e792]:
+              - img [ref=e794]
+              - generic [ref=e797]:
+                - heading "Custom Design" [level=3] [ref=e925]
+                - paragraph [ref=e799]: Every veneer is individually sculpted to match your facial features and desired aesthetic
+            - generic [ref=e800]:
+              - img [ref=e802]
+              - generic [ref=e805]:
+                - heading "Stain Resistant" [level=3] [ref=e926]
+                - paragraph [ref=e807]: Porcelain veneers resist staining far better than natural enamel, keeping your smile bright
+            - generic [ref=e808]:
+              - img [ref=e810]
+              - generic [ref=e813]:
+                - heading "Minimally Invasive" [level=3] [ref=e927]
+                - paragraph [ref=e815]: Ultra-thin veneers require minimal tooth preparation for a conservative approach
+            - generic [ref=e816]:
+              - img [ref=e818]
+              - generic [ref=e821]:
+                - heading "Long-Lasting Results" [level=3] [ref=e928]
+                - paragraph [ref=e823]: With proper care, your Hollywood Smile can last 10-15 years or more
+        - generic [ref=e825]:
+          - generic [ref=e826]:
+            - generic [ref=e830]: Process
+            - heading "How It Works" [level=2] [ref=e929]
+            - paragraph [ref=e832]: Simple, comfortable steps to achieve the best results
+          - generic [ref=e833]:
+            - generic [ref=e834]:
+              - generic [ref=e836]: "1"
+              - generic [ref=e838]:
+                - heading "Consultation & Design" [level=3] [ref=e930]
+                - paragraph [ref=e840]: We analyze your facial features, discuss your goals, and create a digital preview of your new smile
+            - generic [ref=e841]:
+              - generic [ref=e843]: "2"
+              - generic [ref=e845]:
+                - heading "Preparation" [level=3] [ref=e931]
+                - paragraph [ref=e847]: A thin layer of enamel is gently removed, and impressions are taken for your custom veneers
+            - generic [ref=e848]:
+              - generic [ref=e850]: "3"
+              - generic [ref=e852]:
+                - heading "Crafting & Fitting" [level=3] [ref=e932]
+                - paragraph [ref=e854]: Our lab crafts your veneers with precision; you return for a painless bonding session
+            - generic [ref=e855]:
+              - generic [ref=e857]: "4"
+              - generic [ref=e858]:
+                - heading "Your New Smile" [level=3] [ref=e933]
+                - paragraph [ref=e860]: Your Hollywood Smile is revealed — perfectly aligned, brilliantly white, and uniquely yours
+        - generic [ref=e862]:
+          - generic [ref=e863]:
+            - generic [ref=e867]: FAQ
+            - heading "Frequently Asked Questions" [level=2] [ref=e934]
+            - paragraph [ref=e869]: Answers to the most common questions about this service
+          - generic [ref=e870]:
+            - generic [ref=e871]:
+              - button "Does getting veneers hurt?" [ref=e935] [cursor=pointer]:
+                - generic [ref=e873]: Does getting veneers hurt?
+                - img [ref=e902]
+              - paragraph [ref=e905]: The procedure is virtually painless. Local anesthesia is used during preparation, and most patients report only mild sensitivity afterward that subsides within days.
+            - generic [ref=e876]:
+              - button "How long do veneers last?" [ref=e936] [cursor=pointer]:
+                - generic [ref=e878]: How long do veneers last?
+                - img [ref=e879]
+              - generic:
+                - paragraph: With proper oral hygiene and regular dental visits, porcelain veneers typically last 10-15 years before needing replacement.
+            - generic [ref=e881]:
+              - button "Can I eat normally with veneers?" [ref=e937] [cursor=pointer]:
+                - generic [ref=e883]: Can I eat normally with veneers?
+                - img [ref=e884]
+              - generic:
+                - paragraph: Yes, once bonded, you can eat normally. We recommend avoiding extremely hard foods like ice or hard candy to prevent damage.
+        - generic [ref=e888]:
+          - img [ref=e890]
+          - heading "Ready for Your Perfect Smile?" [level=2] [ref=e938]
+          - paragraph [ref=e894]: Book your appointment now and get ready for an exceptional dental experience with the Plaza team
+          - generic [ref=e895]:
+            - button "Book Appointment" [ref=e939] [cursor=pointer]:
+              - img [ref=e897]
+              - text: Book Appointment
+            - link "WhatsApp" [ref=e940] [cursor=pointer]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e900]
+              - text: WhatsApp
+    - contentinfo [ref=e671]:
+      - generic [ref=e672]:
+        - generic [ref=e673]:
+          - generic [ref=e674]:
+            - link "Plaza Dental Care Plaza Dental Cosmetic Center" [ref=e941] [cursor=pointer]:
+              - /url: "#home"
+              - img "Plaza Dental Care" [ref=e677]
+              - generic [ref=e678]: Plaza Dental Cosmetic Center
+            - paragraph [ref=e679]: A specialized clinic in dental care and cosmetic dentistry, offering the best medical services with a dedicated team and modern equipment.
+            - generic [ref=e680]:
+              - link "Facebook" [ref=e681] [cursor=pointer]:
+                - /url: https://www.facebook.com/Plazadentalcareclinic/
+                - img [ref=e682]
+              - link "WhatsApp" [ref=e684] [cursor=pointer]:
+                - /url: https://wa.me/201200077665
+                - img [ref=e685]
+          - generic [ref=e687]:
+            - heading "Services" [level=4] [ref=e942]
+            - list [ref=e689]:
+              - listitem [ref=e690]:
+                - link "Hollywood Smile" [ref=e943] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e692]:
+                - link "Dental Implants" [ref=e944] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e694]:
+                - link "Orthodontics" [ref=e945] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e696]:
+                - link "Root Canal" [ref=e946] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e698]:
+                - link "Pediatric Dentistry" [ref=e947] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e700]:
+                - link "Teeth Whitening" [ref=e948] [cursor=pointer]:
+                  - /url: "#services"
+          - generic [ref=e702]:
+            - heading "Contact Us" [level=4] [ref=e949]
+            - list [ref=e704]:
+              - listitem [ref=e705]:
+                - link "+20 120 007 7665" [ref=e706] [cursor=pointer]:
+                  - /url: tel:+201200077665
+                  - img [ref=e707]
+                  - generic [ref=e709]: +20 120 007 7665
+              - listitem [ref=e710]:
+                - generic [ref=e711]:
+                  - img [ref=e712]
+                  - generic [ref=e715]: Alexandria, Egypt
+              - listitem [ref=e716]:
+                - link "+20 120 007 7665" [ref=e717] [cursor=pointer]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e718]
+                  - generic [ref=e720]: +20 120 007 7665
+        - generic [ref=e721]:
+          - generic [ref=e722]: © 2025 Plaza Dental Care — All Rights Reserved
+          - generic [ref=e723]: Professional design for an exceptional dental experience
+    - link "+201200077665 1" [ref=e724] [cursor=pointer]:
+      - /url: https://wa.me/201200077665
+      - img [ref=e726]
+      - generic: "+201200077665"
+      - generic [ref=e728]: "1"
+  - generic [ref=e11]:
+    - generic "Toggle devtools panel" [ref=e12] [cursor=pointer]:
+      - img [ref=e13]
+    - generic "Toggle Component Inspector" [ref=e18] [cursor=pointer]:
+      - img [ref=e19]

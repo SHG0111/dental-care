@@ -1,18 +1,27 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { useLanguageStore } from '@/stores/language'
 import { Phone, MapPin } from '@lucide/vue'
 import WhatsAppIcon from '@/components/WhatsAppIcon.vue'
 
 const store = useLanguageStore()
+const router = useRouter()
 
 const footerServices = [
-  { ar: 'ابتسامة هوليود', en: 'Hollywood Smile' },
-  { ar: 'زراعة الأسنان', en: 'Dental Implants' },
-  { ar: 'تقويم الأسنان', en: 'Orthodontics' },
-  { ar: 'علاج الجذور', en: 'Root Canal' },
-  { ar: 'أسنان الأطفال', en: 'Pediatric Dentistry' },
-  { ar: 'تبييض الأسنان', en: 'Teeth Whitening' },
+  { slug: 'hollywood-smile', ar: 'ابتسامة هوليود', en: 'Hollywood Smile' },
+  { slug: 'dental-implants', ar: 'زراعة الأسنان', en: 'Dental Implants' },
+  { slug: 'orthodontics', ar: 'تقويم الأسنان', en: 'Orthodontics' },
+  { slug: 'root-canal', ar: 'علاج الجذور', en: 'Root Canal' },
+  { slug: 'pediatric-dentistry', ar: 'أسنان الأطفال', en: 'Pediatric Dentistry' },
+  { slug: 'gum-treatment', ar: 'علاج اللثة', en: 'Gum Treatment' },
+  { slug: 'crowns-and-bridges', ar: 'التيجان والجسور', en: 'Crowns & Bridges' },
+  { slug: 'teeth-whitening', ar: 'تبييض الأسنان', en: 'Teeth Whitening' },
+  { slug: 'cosmetic-fillings', ar: 'حشوات تجميلية', en: 'Cosmetic Fillings' },
 ]
+
+function goToService(slug: string) {
+  router.push({ name: 'service-details', params: { slug } })
+}
 </script>
 
 <template>
@@ -46,7 +55,7 @@ const footerServices = [
           <h4>{{ store.t.footer.services }}</h4>
           <ul>
             <li v-for="s in footerServices" :key="s.en">
-              <a href="#services">{{ store.isRtl ? s.ar : s.en }}</a>
+              <a href="#" @click.prevent="goToService(s.slug)">{{ store.isRtl ? s.ar : s.en }}</a>
             </li>
           </ul>
         </div>
@@ -104,7 +113,8 @@ const footerServices = [
 }
 
 .footer-inner {
-  max-width: 1200px;
+  width: 100%;
+  padding: 0 5rem;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;

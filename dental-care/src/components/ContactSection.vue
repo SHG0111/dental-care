@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useLanguageStore } from '@/stores/language'
-import { useScrollReveal } from '@/composables/useScrollReveal'
+import { useGsapScrubReveal, useParallaxGroup } from '@/composables/useGsapReveal'
 import { Phone, MapPin, Mail, Send } from '@lucide/vue'
 import WhatsAppIcon from '@/components/WhatsAppIcon.vue'
 
 const store = useLanguageStore()
+const router = useRouter()
 
+const sectionRef = ref<HTMLElement | null>(null)
 const infoRef = ref<HTMLElement | null>(null)
-const { isVisible: infoVisible } = useScrollReveal(infoRef, { threshold: 0.1 })
+useGsapScrubReveal(infoRef, { animation: 'fadeUp' })
+useParallaxGroup(sectionRef, { selector: '.contact-blob', yRange: 30 })
 
 const items = [
   { icon: Phone, color: 'green', key: 'phone' as const },
@@ -16,10 +20,15 @@ const items = [
   { icon: WhatsAppIcon, color: 'green', key: 'whatsapp' as const },
   { icon: Mail, color: 'blue', key: 'email' as const },
 ]
+
+function goToMap(e: MouseEvent) {
+  e.preventDefault()
+  router.push({ hash: '#map' })
+}
 </script>
 
 <template>
-  <section id="contact" class="section">
+  <section id="contact" ref="sectionRef" class="section">
     <!-- Background blob -->
     <div class="contact-blob"></div>
 
@@ -27,28 +36,16 @@ const items = [
       <div class="contact-grid">
         <!-- Info Side -->
         <div ref="infoRef" class="contact-info">
-          <div
-            class="section-label"
-            style="transition: all 0.5s ease; opacity: 0; transform: translateY(20px);"
-            :style="infoVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <div class="section-label">
             <span class="section-label-dot"></span>
             <span>{{ store.t.contact.label }}</span>
           </div>
 
-          <h2
-            class="contact-title"
-            style="transition: all 0.6s ease 0.1s; opacity: 0; transform: translateY(20px);"
-            :style="infoVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <h2 class="contact-title">
             {{ store.t.contact.title }}
           </h2>
 
-          <p
-            class="contact-subtitle"
-            style="transition: all 0.6s ease 0.2s; opacity: 0; transform: translateY(20px);"
-            :style="infoVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <p class="contact-subtitle">
             {{ store.t.contact.subtitle }}
           </p>
 
@@ -63,14 +60,10 @@ const items = [
                   ? 'tel:+201200077665'
                   : item.key === 'email'
                     ? 'mailto:info@plazadentalcare.com'
-                    : undefined"
+                    : '#map'"
               :target="item.key === 'whatsapp' ? '_blank' : undefined"
-              class="contact-item"
-              :style="{
-                transition: `all 0.5s ease ${0.3 + i * 0.1}s`,
-                opacity: infoVisible ? 1 : 0,
-                transform: infoVisible ? 'translateX(0)' : 'translateX(-20px)',
-              }"
+              :class="['contact-item', { 'contact-item-address': item.key === 'address' }]"
+              @click="item.key === 'address' ? goToMap($event) : undefined"
             >
               <div :class="['contact-item-icon', `icon-${item.color}`]">
                 <component :is="item.icon" :size="20" />
@@ -91,14 +84,7 @@ const items = [
           </div>
 
           <!-- Social Links -->
-          <div
-            class="contact-socials"
-            :style="{
-              transition: 'all 0.5s ease 0.7s',
-              opacity: infoVisible ? 1 : 0,
-              transform: infoVisible ? 'translateY(0)' : 'translateY(20px)',
-            }"
-          >
+          <div class="contact-socials">
             <a
               href="https://www.facebook.com/Plazadentalcareclinic/"
               target="_blank"
@@ -132,14 +118,7 @@ const items = [
         </div>
 
         <!-- Map / Info Card -->
-        <div
-          class="contact-map-card"
-          :style="{
-            transition: 'all 0.7s ease 0.3s',
-            opacity: infoVisible ? 1 : 0,
-            transform: infoVisible ? 'translateY(0)' : 'translateY(30px)',
-          }"
-        >
+        <div class="contact-map-card">
           <div class="map-card-inner">
             <div class="map-placeholder">
               <!-- Decorative tooth illustration -->
@@ -277,6 +256,18 @@ const items = [
 .contact-item-text span {
   font-size: 0.83rem;
   color: var(--text-muted);
+}
+
+.contact-item-address .contact-item-text span {
+  color: var(--teal-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(37, 215, 184, 0.3);
+  transition: text-decoration-color var(--transition-fast);
+}
+
+.contact-item-address:hover .contact-item-text span {
+  text-decoration-color: var(--teal-600);
 }
 
 /* Social */

@@ -1,17 +1,28 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useLanguageStore } from '@/stores/language'
 import { ArrowDown, Star, CheckCircle, Phone } from '@lucide/vue'
-import { useScrollReveal } from '@/composables/useScrollReveal'
+import { useGsapScrubReveal, useGsapParallax, useParallaxGroup } from '@/composables/useGsapReveal'
+import { useLenis } from 'lenis/vue'
 
 const store = useLanguageStore()
+const lenis = useLenis()
 
 const heroRef = ref<HTMLElement | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
 const visualRef = ref<HTMLElement | null>(null)
+const bgRef = ref<HTMLElement | null>(null)
+const blobsRef = ref<HTMLElement | null>(null)
+const chipsRef = ref<HTMLElement | null>(null)
 
-const { isVisible: contentVisible } = useScrollReveal(contentRef, { threshold: 0.1 })
-const { isVisible: visualVisible } = useScrollReveal(visualRef, { threshold: 0.1 })
+// Scroll-linked reveals — animate in lock-step with scroll progress
+useGsapScrubReveal(contentRef, { animation: 'fadeUp' })
+useGsapScrubReveal(visualRef, { animation: 'fadeUp' })
+
+// Parallax background layers at different speeds
+useGsapParallax(bgRef, 0.15)
+useParallaxGroup(blobsRef, { yRange: 60, xRange: 20 })
+useParallaxGroup(chipsRef, { yRange: 30 })
 
 const stats = [
   { num: '+5000', key: 'stat1' },
@@ -20,25 +31,23 @@ const stats = [
 ]
 
 function scrollToServices() {
-  const el = document.querySelector('#services')
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  lenis.value?.scrollTo('#services')
 }
 
 function scrollToContact() {
-  const el = document.querySelector('#contact')
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  lenis.value?.scrollTo('#contact')
 }
 </script>
 
 <template>
   <section id="home" ref="heroRef" class="hero-section">
-    <!-- Background image -->
-    <div class="hero-bg-image"></div>
+    <!-- Background image (parallax) -->
+    <div ref="bgRef" class="hero-bg-image"></div>
 
-    <!-- Background blobs -->
-    <div class="hero-blobs">
-      <div class="blob blob-1 blob-1"></div>
-      <div class="blob blob-2 blob-2"></div>
+    <!-- Background blobs (parallax group) -->
+    <div ref="blobsRef" class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
       <div class="blob blob-3"></div>
     </div>
 
@@ -50,8 +59,6 @@ function scrollToContact() {
       <div ref="contentRef" class="hero-content">
         <div
           class="hero-badge"
-          :class="{ 'is-visible': contentVisible }"
-          style="transition-delay: 0.1s"
         >
           <span class="badge-dot"></span>
           <span>{{ store.t.hero.badge }}</span>
@@ -59,8 +66,6 @@ function scrollToContact() {
 
         <h1
           class="hero-title"
-          :class="{ 'is-visible': contentVisible }"
-          style="transition-delay: 0.2s"
         >
           <span class="hero-title-line">
             <span>{{ store.t.hero.title1 }}</span>
@@ -72,16 +77,12 @@ function scrollToContact() {
 
         <p
           class="hero-subtitle"
-          :class="{ 'is-visible': contentVisible }"
-          style="transition-delay: 0.35s"
         >
           {{ store.t.hero.subtitle }}
         </p>
 
         <div
           class="hero-ctas"
-          :class="{ 'is-visible': contentVisible }"
-          style="transition-delay: 0.5s"
         >
           <button class="btn btn-primary" @click="scrollToContact">
             {{ store.t.hero.cta1 }}
@@ -95,8 +96,6 @@ function scrollToContact() {
         <!-- Stats -->
         <div
           class="hero-stats"
-          :class="{ 'is-visible': contentVisible }"
-          style="transition-delay: 0.65s"
         >
           <div
             v-for="(stat, i) in stats"
@@ -113,7 +112,7 @@ function scrollToContact() {
       <!-- Right Visual -->
       <div ref="visualRef" class="hero-visual">
         <!-- Main Card -->
-        <div class="hero-card" :class="{ 'is-visible': visualVisible }">
+        <div class="hero-card">
           <div class="hero-card-glow"></div>
           <div class="hero-card-bg"></div>
 
@@ -159,7 +158,8 @@ function scrollToContact() {
           </div>
         </div>
 
-        <!-- Floating Chips -->
+        <!-- Floating Chips (parallax group) -->
+        <div ref="chipsRef" class="hero-chips">
         <div class="floating-chip chip-1 float-1">
           <div class="chip-icon chip-icon-green">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/><path d="M7 7v14"/></svg>
@@ -178,6 +178,7 @@ function scrollToContact() {
             <span class="chip-label">{{ store.t.hero.chip2a }}</span>
             <span class="chip-value">{{ store.t.hero.chip2b }}</span>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -270,9 +271,9 @@ function scrollToContact() {
 }
 
 .hero-inner {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 3rem 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
@@ -302,14 +303,6 @@ function scrollToContact() {
   color: var(--teal-600);
   margin-bottom: 1.5rem;
   backdrop-filter: blur(4px);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-badge.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .badge-dot {
@@ -326,14 +319,6 @@ function scrollToContact() {
   line-height: 1.15;
   color: var(--text-primary);
   margin-bottom: 0.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-title.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .hero-title-line {
@@ -351,28 +336,12 @@ function scrollToContact() {
   margin-bottom: 2rem;
   max-width: 520px;
   font-weight: 400;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-subtitle.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .hero-ctas {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-ctas.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* Stats */
@@ -383,14 +352,6 @@ function scrollToContact() {
   margin-top: 2.5rem;
   padding-top: 2.5rem;
   border-top: 1px solid rgba(37, 215, 184, 0.12);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-stats.is-visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .stat-item {
@@ -445,14 +406,6 @@ function scrollToContact() {
   box-shadow: 0 20px 60px rgba(37, 215, 184, 0.12), 0 0 80px rgba(37, 215, 184, 0.05);
   text-align: center;
   overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px) scale(0.95);
-  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-card.is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
 }
 
 .hero-card-glow {

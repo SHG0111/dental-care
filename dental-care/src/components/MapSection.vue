@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useLanguageStore } from '@/stores/language'
-import { useScrollReveal } from '@/composables/useScrollReveal'
+import { useGsapScrubReveal, useGsapParallax } from '@/composables/useGsapReveal'
 import { MapPin, Phone, Clock, Navigation, Maximize2 } from '@lucide/vue'
 
 const store = useLanguageStore()
@@ -9,7 +9,7 @@ const store = useLanguageStore()
 const sectionRef = ref<HTMLElement | null>(null)
 const cardRef = ref<HTMLElement | null>(null)
 
-const { isVisible: cardVisible } = useScrollReveal(cardRef, { threshold: 0.15 })
+useGsapScrubReveal(cardRef, { animation: 'fadeUp' })
 
 const mapLang = computed(() => store.isRtl ? 'ar' : 'en')
 
@@ -38,9 +38,6 @@ function openFullMap() {
         allowfullscreen
       ></iframe>
 
-      <!-- Very subtle bottom shadow only — doesn't block map interaction -->
-      <div class="map-edge-fade"></div>
-
       <!-- Floating badge — "click to interact" hint -->
       <div class="map-hint">
         <Maximize2 :size="14" />
@@ -48,17 +45,9 @@ function openFullMap() {
       </div>
     </div>
 
-    <!-- ==================== FLOATING INFO CARD ==================== -->
-    <div class="map-card-wrap">
-      <div
-        ref="cardRef"
-        class="map-card"
-        :style="{
-          transition: 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)',
-          opacity: cardVisible ? 1 : 0,
-          transform: cardVisible ? 'translateY(0)' : 'translateY(30px)',
-        }"
-      >
+    <!-- ==================== INFO CARD BELOW MAP ==================== -->
+    <div ref="cardRef" class="map-card-wrap">
+      <div class="map-card">
         <!-- Pin header -->
         <div class="map-card-pin">
           <div class="pin-icon">
@@ -91,7 +80,7 @@ function openFullMap() {
             <Navigation :size="16" />
             <span>{{ store.t.map.cta }}</span>
           </a>
-          <button class="btn btn-expand" @click="openFullMap" :data-tooltip="store.isRtl ? 'فتح الخريطة كاملة' : 'Open full map'">
+          <button class=" btn-expand" @click="openFullMap" :data-tooltip="store.isRtl ? 'فتح الخريطة كاملة' : 'Open full map'">
             <Maximize2 :size="16" />
           </button>
         </div>
@@ -109,18 +98,17 @@ function openFullMap() {
 
 <style scoped>
 /* ======================================================
-   MAP SECTION — Full interactive Google Maps embed
+   MAP SECTION — Full map + info card below
    ====================================================== */
 .map-section {
   position: relative;
-  height: 520px;
   overflow: hidden;
 }
 
-/* ----- Map Container (fills entire section) ----- */
+/* ----- Map Container (viewport height) ----- */
 .map-container {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  height: 100vh;
   z-index: 0;
 }
 
@@ -129,34 +117,23 @@ function openFullMap() {
   height: 100%;
   border: 0;
   display: block;
-  /* Slight warm saturation to match the brand */
   filter: saturate(1.05) hue-rotate(-2deg);
-}
-
-/* Very subtle vignette at bottom edge for card readability */
-.map-edge-fade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.08), transparent);
-  pointer-events: none;
 }
 
 /* Small "interactive" hint at top-right */
 .map-hint {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 0.4rem;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
-  padding: 0.4rem 0.85rem;
+  padding: 0.5rem 1rem;
   border-radius: var(--radius-full);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--text-muted);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
@@ -166,34 +143,28 @@ function openFullMap() {
 }
 
 /* ======================================================
-   FLOATING INFO CARD
+   INFO CARD — Below the map, in normal flow
    ====================================================== */
 .map-card-wrap {
-  position: relative;
-  z-index: 2;
-  height: 100%;
   display: flex;
-  align-items: flex-end;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  pointer-events: none;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background: var(--bg-secondary);
 }
 
 .map-card {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: var(--white);
   border-radius: var(--radius-xl);
-  padding: 1.75rem 2rem;
-  width: 380px;
+  padding: 2.5rem 3rem;
+  width: 100%;
+  max-width: 700px;
   box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.12),
-    0 0 0 1px rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+    0 8px 40px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(37, 215, 184, 0.06);
+  border: 1px solid rgba(37, 215, 184, 0.12);
   position: relative;
   overflow: hidden;
-  pointer-events: auto;
+  text-align: center;
 }
 
 /* Decorative watermark */
@@ -214,12 +185,12 @@ body.rtl .map-card-tooth {
 .map-card-pin {
   position: relative;
   display: inline-flex;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .pin-icon {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   background: var(--gradient-primary);
   border-radius: 50%;
   display: flex;
@@ -241,8 +212,8 @@ body.rtl .map-card-tooth {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: rgba(37, 215, 184, 0.2);
   animation: pin-pulse 2s ease-out infinite;
@@ -261,34 +232,34 @@ body.rtl .map-card-tooth {
 
 /* ----- Card Text ----- */
 .map-card-title {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
 }
 
 .map-card-address {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.6;
   color: var(--text-secondary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Details */
 .map-card-details {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 1.25rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid rgba(37, 215, 184, 0.08);
 }
 
 .map-detail-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.82rem;
+  gap: 0.5rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.4;
   text-decoration: none;
@@ -306,19 +277,17 @@ body.rtl .map-card-tooth {
 /* Actions */
 .map-card-actions {
   display: flex;
+  justify-content: center;
   gap: 0.6rem;
 }
 
 .map-card-actions .btn-primary {
-  flex: 1;
   justify-content: center;
-  font-size: 0.85rem;
-  padding: 0.7rem 1rem;
 }
 
 .btn-expand {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   border-radius: var(--radius-sm);
   background: var(--gray-50);
   color: var(--text-secondary);
@@ -342,38 +311,36 @@ body.rtl .map-card-tooth {
    RESPONSIVE
    ====================================================== */
 @media (max-width: 768px) {
-  .map-section {
-    height: 480px;
-  }
-
-  .map-card-wrap {
-    align-items: flex-end;
-    justify-content: center;
-    padding: 1rem;
-  }
-
-  .map-card {
-    width: 100%;
-    max-width: 400px;
-    padding: 1.5rem;
+  .map-container {
+    height: 60vh;
   }
 
   .map-hint {
     display: none;
   }
-}
 
-@media (max-width: 480px) {
-  .map-section {
-    height: 440px;
+  .map-card-wrap {
+    padding: 2rem 1.25rem;
   }
 
   .map-card {
-    padding: 1.25rem;
+    padding: 1.75rem 1.5rem;
   }
 
-  .map-card-actions .btn-primary span {
-    font-size: 0.8rem;
+  .map-card-details {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-container {
+    height: 50vh;
+  }
+
+  .map-card {
+    padding: 1.5rem 1.25rem;
   }
 }
 </style>

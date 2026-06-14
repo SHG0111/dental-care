@@ -1,14 +1,26 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import { useLanguageStore } from '@/stores/language'
-import { Menu, X, Phone } from '@lucide/vue'
+import { Menu, X, ChevronDown } from '@lucide/vue'
+import { useLenis } from 'lenis/vue'
+import type Lenis from 'lenis'
 import WhatsAppIcon from '@/components/WhatsAppIcon.vue'
 import gbFlag from 'flag-icons/flags/4x3/gb.svg'
 import saFlag from 'flag-icons/flags/4x3/sa.svg'
 
+const router = useRouter()
+const route = useRoute()
 const store = useLanguageStore()
+const lenis = useLenis()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
+const servicesDropdownOpen = ref(false)
+const mobileServicesOpen = ref(false)
+let dropdownTimeout: ReturnType<typeof setTimeout> | null = null
+let unsubLenisScroll: (() => void) | null = null
+
+const isHome = ref(true)
 
 const navItems = [
   { key: 'home', href: '#home' as const },
@@ -20,22 +32,70 @@ const navItems = [
   { key: 'contact', href: '#contact' as const },
 ]
 
-function onScroll() {
-  isScrolled.value = window.scrollY > 40
+function onLenisScroll(l: Lenis) {
+  isScrolled.value = l.scroll > 40
 }
 
 function scrollToSection(href: string) {
   isMobileMenuOpen.value = false
-  const el = document.querySelector(href)
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' })
+  if (!isHome.value) {
+    router.push({ name: 'home', hash: href })
+    return
+  }
+  lenis.value?.scrollTo(href)
+}
+
+function toggleDropdown() {
+  servicesDropdownOpen.value = !servicesDropdownOpen.value
+}
+
+function openDropdown() {
+  if (dropdownTimeout) clearTimeout(dropdownTimeout)
+  servicesDropdownOpen.value = true
+}
+
+function closeDropdown() {
+  dropdownTimeout = setTimeout(() => {
+    servicesDropdownOpen.value = false
+  }, 150)
+}
+
+function goToService(slug: string) {
+  servicesDropdownOpen.value = false
+  isMobileMenuOpen.value = false
+  mobileServicesOpen.value = false
+  router.push({ name: 'service-details', params: { slug } })
+}
+
+function toggleMobileServices() {
+  mobileServicesOpen.value = !mobileServicesOpen.value
+}
+
+function onDocumentClick(e: MouseEvent) {
+  const target = e.target as HTMLElement
+  if (!target.closest('.nav-dd-wrap')) {
+    servicesDropdownOpen.value = false
   }
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', onScroll)
+  document.addEventListener('click', onDocumentClick)
   store.initLang()
+  if (lenis.value) {
+    unsubLenisScroll = lenis.value.on('scroll', onLenisScroll)
+  }
 })
+
+onUnmounted(() => {
+  unsubLenisScroll?.()
+})
+
+// Track whether we are on the home page
+router.afterEach((to) => {
+  isHome.value = to.name === 'home'
+})
+// Also check immediately
+isHome.value = route.name === 'home'
 </script>
 
 <template>
@@ -61,15 +121,55 @@ onMounted(() => {
 
       <!-- Desktop Nav Links -->
       <div class="nav-links" :class="{ 'nav-open': isMobileMenuOpen }">
-        <a
-          v-for="item in navItems"
-          :key="item.key"
-          :href="item.href"
-          class="nav-link"
-          @click.prevent="scrollToSection(item.href)"
-        >
-          {{ store.t.nav[item.key as keyof typeof store.t.nav] }}
-        </a>
+        <template v-for="item in navItems" :key="item.key">
+          <!-- Services — mega dropdown -->
+          <div
+            v-if="item.key === 'services'"
+            class="nav-dd-wrap"
+            @mouseenter="openDropdown"
+            @mouseleave="closeDropdown"
+          >
+            <a
+              class="nav-link nav-link-dd"
+              @click.prevent="toggleDropdown"
+            >
+              {{ store.t.nav.services }}
+              <ChevronDown :size="14" class="dd-arrow" :class="{ 'dd-arrow-open': servicesDropdownOpen }" />
+            </a>
+            <Transition name="mega">
+              <div v-if="servicesDropdownOpen" class="mega-dropdown">
+                <div class="mega-header">
+                  <span class="mega-header-label">
+                    {{ store.isRtl ? 'جميع خدماتنا' : 'All Services' }}
+                  </span>
+
+                </div>
+                <div class="mega-grid">
+                  <div
+                    v-for="s in store.t.services.items"
+                    :key="s.slug"
+                    class="mega-card"
+                    @click="goToService(s.slug)"
+                  >
+                    <span class="mega-card-icon">{{ s.icon }}</span>
+                    <div class="mega-card-text">
+                      <span class="mega-card-title">{{ s.title }}</span>
+                      <span class="mega-card-desc">{{ s.desc }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Transition>
+          </div>
+          <a
+            v-else
+            :href="item.href"
+            class="nav-link"
+            @click.prevent="scrollToSection(item.href)"
+          >
+            {{ store.t.nav[item.key as keyof typeof store.t.nav] }}
+          </a>
+        </template>
       </div>
 
       <!-- Actions -->
@@ -77,14 +177,7 @@ onMounted(() => {
         <button class="lang-btn" @click="store.toggleLang" :data-tooltip="store.isRtl ? 'English' : 'العربية'">
           <img :src="store.isRtl ? gbFlag : saFlag" class="flag-icon" alt="" width="22" height="16" />
         </button>
-        <a
-          :href="`https://wa.me/201200077665`"
-          target="_blank"
-          class="btn-wa-small"
-          :data-tooltip="store.isRtl ? 'واتساب' : 'WhatsApp'"
-        >
-          <Phone :size="16" />
-        </a>
+
         <a
           href="https://wa.me/201200077665"
           target="_blank"
@@ -105,15 +198,39 @@ onMounted(() => {
     <Transition name="slide">
       <div v-if="isMobileMenuOpen" class="mobile-overlay" @click="isMobileMenuOpen = false">
         <div class="mobile-menu" @click.stop>
-          <a
-            v-for="item in navItems"
-            :key="item.key"
-            :href="item.href"
-            class="mobile-link"
-            @click.prevent="scrollToSection(item.href)"
-          >
-            {{ store.t.nav[item.key as keyof typeof store.t.nav] }}
-          </a>
+          <template v-for="item in navItems" :key="item.key">
+            <!-- Mobile services — expandable -->
+            <div v-if="item.key === 'services'">
+              <a
+                class="mobile-link mobile-link-dd"
+                @click.prevent="toggleMobileServices"
+              >
+                <span>{{ store.t.nav.services }}</span>
+                <ChevronDown :size="16" class="dd-arrow" :class="{ 'dd-arrow-open': mobileServicesOpen }" />
+              </a>
+              <Transition name="mega-sub">
+                <div v-if="mobileServicesOpen" class="mobile-services-sub">
+                  <a
+                    v-for="s in store.t.services.items"
+                    :key="s.slug"
+                    class="mobile-service-link"
+                    @click="goToService(s.slug)"
+                  >
+                    <span class="ms-icon">{{ s.icon }}</span>
+                    <span class="ms-title">{{ s.title }}</span>
+                  </a>
+                </div>
+              </Transition>
+            </div>
+            <a
+              v-else
+              :href="item.href"
+              class="mobile-link"
+              @click.prevent="scrollToSection(item.href)"
+            >
+              {{ store.t.nav[item.key as keyof typeof store.t.nav] }}
+            </a>
+          </template>
           <div class="mobile-divider"></div>
           <button class="mobile-lang-btn" @click="store.toggleLang">
             {{ store.isRtl ? '🇬🇧 English' : '🇸🇦 العربية' }}
@@ -131,15 +248,18 @@ onMounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: all var(--transition-base);
-  padding: 0 2rem;
+  transition: background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 0 5rem;
 }
 
 .navbar-transparent {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-bottom: 1px solid rgba(37, 215, 184, 0.06);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
 }
 
 .navbar-scrolled {
@@ -151,26 +271,27 @@ onMounted(() => {
 }
 
 .navbar-inner {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
-  height: 72px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 /* Logo */
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
   flex-shrink: 0;
 }
 
 .logo-icon {
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,23 +317,23 @@ onMounted(() => {
 
 .logo-ar {
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--text-primary);
 }
 
 .logo-en {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
 
 body.ltr .logo-ar {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 body.ltr .logo-en {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
 }
 
 /* Nav Links */
@@ -223,9 +344,9 @@ body.ltr .logo-en {
 }
 
 .nav-link {
-  padding: 0.45rem 0.85rem;
+  padding: 0.55rem 1rem;
   border-radius: var(--radius-xs);
-  font-size: 0.87rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-secondary);
   transition: all var(--transition-fast);
@@ -307,10 +428,10 @@ body.ltr .logo-en {
 .btn-book {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.5rem 1.25rem;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
   border-radius: var(--radius-xs);
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: white;
   background: var(--gradient-primary);
@@ -432,5 +553,222 @@ body.ltr .logo-en {
 .slide-enter-from .mobile-menu,
 .slide-leave-to .mobile-menu {
   transform: translateY(-10px);
+}
+
+/* ==========================================
+   MEGA DROPDOWN — Services
+   ========================================== */
+.nav-dd-wrap {
+  position: relative;
+}
+
+.nav-link-dd {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.dd-arrow {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  color: var(--text-tertiary);
+}
+
+.dd-arrow-open {
+  transform: rotate(180deg);
+  color: var(--teal-500);
+}
+
+/* ----- Dropdown Panel ----- */
+.mega-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 780px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(37, 215, 184, 0.08);
+  padding: 1.5rem 1.5rem 1.75rem;
+  z-index: 1001;
+  /* Decorative arrow */
+}
+
+.mega-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  border-left: 1px solid rgba(37, 215, 184, 0.08);
+  border-top: 1px solid rgba(37, 215, 184, 0.08);
+}
+
+.mega-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(37, 215, 184, 0.08);
+}
+
+.mega-header-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-600);
+}
+
+.mega-header-count {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+/* ----- Grid ----- */
+.mega-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+/* ----- Card ----- */
+.mega-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mega-card:hover {
+  background: var(--teal-50);
+  border-color: rgba(37, 215, 184, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(37, 215, 184, 0.08);
+}
+
+.mega-card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mega-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.mega-card-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.mega-card-desc {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ----- Animations ----- */
+.mega-enter-active {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mega-leave-active {
+  transition: all 0.15s ease-in;
+}
+
+.mega-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.mega-enter-from::before {
+  opacity: 0;
+}
+
+.mega-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(4px);
+}
+
+/* ==========================================
+   MOBILE SERVICES SUB-MENU
+   ========================================== */
+.mobile-link-dd {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-services-sub {
+  background: var(--gray-50);
+  padding: 0.25rem 0;
+  overflow: hidden;
+}
+
+.mobile-service-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 2rem 0.7rem 2.8rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.mobile-service-link:hover {
+  background: var(--teal-50);
+  color: var(--teal-600);
+}
+
+.ms-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ms-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Mobile sub animations */
+.mega-sub-enter-active {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mega-sub-leave-active {
+  transition: all 0.15s ease-in;
+}
+
+.mega-sub-enter-from,
+.mega-sub-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
 }
 </style>

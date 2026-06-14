@@ -7,7 +7,9 @@ export function setupSmartTooltips(): () => void {
   const GAP = 10
 
   function onEnter(e: MouseEvent): void {
-    const el = (e.target as HTMLElement).closest('[data-tooltip]') as HTMLElement | null
+    const target = e.target instanceof Element ? e.target : null
+    if (!target) return
+    const el = target.closest('[data-tooltip]') as HTMLElement | null
     if (!el) return
 
     const rect = el.getBoundingClientRect()
@@ -19,7 +21,9 @@ export function setupSmartTooltips(): () => void {
   }
 
   function onLeave(e: MouseEvent): void {
-    const el = (e.target as HTMLElement).closest('[data-tooltip]') as HTMLElement | null
+    const target = e.target instanceof Element ? e.target : null
+    if (!target) return
+    const el = target.closest('[data-tooltip]') as HTMLElement | null
     if (!el) return
     if (!el.getAttribute('data-tooltip-pos')) return
     el.removeAttribute('data-tooltip-pos')

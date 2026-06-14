@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
 import { Calendar, ArrowDown } from '@lucide/vue'
+import { useLenis } from 'lenis/vue'
 
 const store = useLanguageStore()
+const lenis = useLenis()
 
 function scrollToContact() {
-  const el = document.querySelector('#contact')
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
+  lenis.value?.scrollTo('#contact')
 }
 </script>
 

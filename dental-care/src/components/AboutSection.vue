@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useLanguageStore } from '@/stores/language'
-import { useScrollReveal } from '@/composables/useScrollReveal'
-import { Shield, Users, Gem, Heart, Stethoscope, Award, CheckCircle } from '@lucide/vue'
+import { useGsapScrubReveal, useGsapScrubStagger, useParallaxGroup } from '@/composables/useGsapReveal'
+import { Users, Award, CheckCircle } from '@lucide/vue'
 
 const store = useLanguageStore()
 
@@ -11,11 +11,10 @@ const textRef = ref<HTMLElement | null>(null)
 const visualRef = ref<HTMLElement | null>(null)
 const statsRef = ref<HTMLElement | null>(null)
 
-const { isVisible: textVisible } = useScrollReveal(textRef, { threshold: 0.15 })
-const { isVisible: visualVisible } = useScrollReveal(visualRef, { threshold: 0.15 })
-const { isVisible: statsVisible } = useScrollReveal(statsRef, { threshold: 0.1 })
-
-const iconMap = [Stethoscope, Users, Gem, Heart] as const
+useGsapScrubReveal(textRef, { animation: 'fadeUp' })
+useGsapScrubReveal(visualRef, { animation: 'fadeUp' })
+useGsapScrubStagger(statsRef, '> .about-stat-item', { stagger: 0.1 })
+useParallaxGroup(sectionRef, { selector: '.about-pattern', yRange: 30 })
 
 const highlights = [
   { ar: 'أحدث تقنيات الليزر', en: 'Latest Laser Tech' },
@@ -35,47 +34,26 @@ const highlights = [
       <div class="about-split">
         <!-- Text Side -->
         <div ref="textRef" class="about-text-side">
-          <div
-            class="section-label"
-            style="transition: all 0.5s ease; opacity: 0; transform: translateY(20px);"
-            :style="textVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <div class="section-label">
             <span class="section-label-dot"></span>
             <span>{{ store.t.about.label }}</span>
           </div>
 
-          <h2
-            class="about-title"
-            style="transition: all 0.6s ease 0.1s; opacity: 0; transform: translateY(20px);"
-            :style="textVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <h2 class="about-title">
             <span>{{ store.t.about.title.split(' ').slice(0, 1).join(' ') }}</span>
             <span class="text-gradient"> {{ store.t.about.title.split(' ').slice(1).join(' ') }}</span>
           </h2>
 
-          <p
-            class="about-intro"
-            style="transition: all 0.6s ease 0.2s; opacity: 0; transform: translateY(20px);"
-            :style="textVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <p class="about-intro">
             {{ store.t.about.subtitle }}
           </p>
 
           <!-- Highlights list -->
-          <div
-            class="about-highlights"
-            style="transition: all 0.6s ease 0.3s; opacity: 0; transform: translateY(20px);"
-            :style="textVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <div class="about-highlights">
             <div
               v-for="(h, i) in highlights"
               :key="i"
               class="about-highlight-item"
-              :style="{
-                transition: `all 0.5s ease ${0.35 + i * 0.08}s`,
-                opacity: textVisible ? 1 : 0,
-                transform: textVisible ? 'translateX(0)' : 'translateX(-15px)',
-              }"
             >
               <div class="highlight-icon">
                 <CheckCircle :size="18" />
@@ -85,10 +63,7 @@ const highlights = [
           </div>
 
           <!-- CTA -->
-          <div
-            style="transition: all 0.6s ease 0.5s; opacity: 0; transform: translateY(20px);"
-            :style="textVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-          >
+          <div>
             <a href="#contact" class="btn btn-primary" style="margin-top: 1.5rem;">
               {{ store.isRtl ? 'احجز موعدك الآن' : 'Book Your Appointment' }}
             </a>
@@ -97,14 +72,7 @@ const highlights = [
 
         <!-- Visual Side - Doctor/Clinic showcase card -->
         <div ref="visualRef" class="about-visual-side">
-          <div
-            class="about-showcase-card"
-            :style="{
-              transition: 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s',
-              opacity: visualVisible ? 1 : 0,
-              transform: visualVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
-            }"
-          >
+          <div class="about-showcase-card">
             <!-- Card decorative top -->
             <div class="showcase-top">
               <div class="showcase-tooth-icon">
@@ -167,11 +135,6 @@ const highlights = [
           v-for="(stat, i) in store.t.about.stats"
           :key="i"
           class="about-stat-item"
-          :style="{
-            transition: `all 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${i * 0.1}s`,
-            opacity: statsVisible ? 1 : 0,
-            transform: statsVisible ? 'translateY(0)' : 'translateY(20px)',
-          }"
         >
           <span class="stat-num">{{ stat.num }}</span>
           <span class="stat-label">{{ stat.label }}</span>

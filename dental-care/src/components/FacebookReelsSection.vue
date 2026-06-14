@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useLanguageStore } from '@/stores/language'
-import { useScrollReveal } from '@/composables/useScrollReveal'
+import { useGsapScrubReveal } from '@/composables/useGsapReveal'
 import { ExternalLink } from '@lucide/vue'
 
 const store = useLanguageStore()
@@ -10,8 +10,8 @@ const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
 const widgetRef = ref<HTMLElement | null>(null)
 
-const { isVisible: headerVisible } = useScrollReveal(headerRef, { threshold: 0.2 })
-const { isVisible: widgetVisible } = useScrollReveal(widgetRef, { threshold: 0.05 })
+useGsapScrubReveal(headerRef, { animation: 'fadeUp' })
+useGsapScrubReveal(widgetRef, { animation: 'fadeUp' })
 
 const facebookPageUrl = 'https://www.facebook.com/Plazadentalcareclinic/'
 
@@ -29,52 +29,25 @@ onMounted(() => {
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header centered">
-        <div
-          class="section-label"
-          style="transition: all 0.5s ease; opacity: 0; transform: translateY(20px);"
-          :style="headerVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-        >
+        <div class="section-label">
           <span class="section-label-dot"></span>
           <span>{{ store.t.facebookReels.label }}</span>
         </div>
-        <h2
-          class="section-title"
-          style="transition: all 0.6s ease 0.1s; opacity: 0; transform: translateY(20px);"
-          :style="headerVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-        >
+        <h2 class="section-title">
           {{ store.t.facebookReels.title }}
         </h2>
-        <p
-          class="section-subtitle"
-          style="transition: all 0.6s ease 0.2s; opacity: 0; transform: translateY(20px);"
-          :style="headerVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-        >
+        <p class="section-subtitle">
           {{ store.t.facebookReels.subtitle }}
         </p>
       </div>
 
       <!-- Widget -->
-      <div
-        ref="widgetRef"
-        class="reels-widget"
-        :style="{
-          transition: 'all 0.7s ease 0.1s',
-          opacity: widgetVisible ? 1 : 0,
-          transform: widgetVisible ? 'translateY(0)' : 'translateY(30px)',
-        }"
-      >
+      <div ref="widgetRef" class="reels-widget">
         <div class='sk-ww-facebook-reels' data-embed-id='25689075'></div>
       </div>
 
       <!-- Follow CTA -->
-      <div
-        class="reels-cta"
-        :style="{
-          transition: 'all 0.7s ease 0.3s',
-          opacity: widgetVisible ? 1 : 0,
-          transform: widgetVisible ? 'translateY(0)' : 'translateY(20px)',
-        }"
-      >
+      <div class="reels-cta">
         <a
           :href="facebookPageUrl"
           target="_blank"

@@ -1,0 +1,227 @@
+- generic [active] [ref=e23]:
+  - generic [ref=e25]:
+    - navigation [ref=e26]:
+      - generic [ref=e27]:
+        - link "Plaza Dental Care Plaza Dental Cosmetic Center Premium Dental Clinic" [ref=e906] [cursor=pointer]:
+          - /url: "#home"
+          - img "Plaza Dental Care" [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]: Plaza Dental Cosmetic Center
+            - generic [ref=e33]: Premium Dental Clinic
+        - generic [ref=e34]:
+          - link "Home" [ref=e907] [cursor=pointer]:
+            - /url: "#home"
+          - link "About Us" [ref=e908] [cursor=pointer]:
+            - /url: "#about"
+          - link "Services" [ref=e909] [cursor=pointer]:
+            - /url: "#services"
+          - link "Before & After" [ref=e910] [cursor=pointer]:
+            - /url: "#before-after"
+          - link "Our Team" [ref=e911] [cursor=pointer]:
+            - /url: "#team"
+          - link "Testimonials" [ref=e912] [cursor=pointer]:
+            - /url: "#testimonials"
+          - link "Contact Us" [ref=e913] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e42]:
+          - button "العربية" [ref=e914] [cursor=pointer]
+          - link "Book Appointment" [ref=e915] [cursor=pointer]:
+            - /url: https://wa.me/201200077665
+            - img [ref=e45]
+            - generic [ref=e47]: Book Appointment
+          - text: Menu
+    - main [ref=e48]:
+      - generic [ref=e1569]:
+        - generic [ref=e1571]:
+          - button "Back to Home" [ref=e1572] [cursor=pointer]:
+            - img [ref=e1573]
+            - generic [ref=e1575]: Back to Home
+          - generic [ref=e1576]:
+            - generic [ref=e1578]: "03"
+            - generic [ref=e1579]:
+              - generic [ref=e1582]: Our Services
+              - heading "😁 Orthodontics" [level=1] [ref=e1583]
+              - paragraph [ref=e1584]: Orthodontic treatment at Plaza Dental Care goes beyond straightening teeth — it creates facial harmony and a balanced bite. We offer both clear aligners and traditional braces, each tailored to your specific needs and lifestyle preferences.
+              - generic [ref=e1585]:
+                - button "Book Appointment" [ref=e1586] [cursor=pointer]:
+                  - img [ref=e1587]
+                  - text: Book Appointment
+                - link "Contact via WhatsApp" [ref=e1589] [cursor=pointer]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e1590]
+                  - text: Contact via WhatsApp
+        - generic [ref=e1594]:
+          - generic [ref=e1595]:
+            - generic [ref=e1599]: Overview
+            - heading "About This Service" [level=2] [ref=e1600]
+            - paragraph [ref=e1601]: Orthodontic treatment at Plaza Dental Care goes beyond straightening teeth — it creates facial harmony and a balanced bite. We offer both clear aligners and traditional braces, each tailored to your specific needs and lifestyle preferences.
+            - paragraph [ref=e1602]: Our orthodontic specialists use 3D digital scanning and AI-powered treatment planning to map every tooth movement with precision. Whether you choose nearly invisible clear aligners or efficient self-ligating braces, your treatment plan is fully customized for optimal results.
+          - generic [ref=e1604]:
+            - generic [ref=e1605]: 😁
+            - generic [ref=e1606]: Orthodontics
+            - generic [ref=e1608]:
+              - generic [ref=e1609]: 98%
+              - generic [ref=e1610]: Success Rate
+            - generic [ref=e1611]:
+              - generic [ref=e1612]: +15 Years
+              - generic [ref=e1613]: Experience
+        - generic [ref=e1615]:
+          - generic [ref=e1616]:
+            - generic [ref=e1620]: Benefits
+            - heading "Why Choose This Service?" [level=2] [ref=e1621]
+            - paragraph [ref=e1622]: We deliver the highest standards of quality and care in everything we provide
+          - generic [ref=e1623]:
+            - generic [ref=e1624]:
+              - img [ref=e1626]
+              - generic [ref=e1629]:
+                - heading "Improved Appearance" [level=3] [ref=e1630]
+                - paragraph [ref=e1631]: A straight, aligned smile dramatically enhances your facial aesthetics and confidence
+            - generic [ref=e1632]:
+              - img [ref=e1634]
+              - generic [ref=e1637]:
+                - heading "Better Oral Health" [level=3] [ref=e1638]
+                - paragraph [ref=e1639]: Straight teeth are easier to clean, reducing the risk of cavities and gum disease
+            - generic [ref=e1640]:
+              - img [ref=e1642]
+              - generic [ref=e1645]:
+                - heading "Corrected Bite" [level=3] [ref=e1646]
+                - paragraph [ref=e1647]: Proper alignment improves chewing function and prevents jaw pain and tooth wear
+            - generic [ref=e1648]:
+              - img [ref=e1650]
+              - generic [ref=e1653]:
+                - heading "Discreet Options" [level=3] [ref=e1654]
+                - paragraph [ref=e1655]: Clear aligners and tooth-colored braces offer esthetic treatment for image-conscious patients
+            - generic [ref=e1656]:
+              - img [ref=e1658]
+              - generic [ref=e1661]:
+                - heading "Faster Results" [level=3] [ref=e1662]
+                - paragraph [ref=e1663]: Modern techniques and materials have significantly reduced treatment times compared to traditional methods
+        - generic [ref=e1665]:
+          - generic [ref=e1666]:
+            - generic [ref=e1670]: Process
+            - heading "How It Works" [level=2] [ref=e1671]
+            - paragraph [ref=e1672]: Simple, comfortable steps to achieve the best results
+          - generic [ref=e1673]:
+            - generic [ref=e1674]:
+              - generic [ref=e1676]: "1"
+              - generic [ref=e1678]:
+                - heading "Digital Scan" [level=3] [ref=e1679]
+                - paragraph [ref=e1680]: We create a 3D digital model of your teeth using an intraoral scanner — no messy impressions
+            - generic [ref=e1681]:
+              - generic [ref=e1683]: "2"
+              - generic [ref=e1685]:
+                - heading "Treatment Plan" [level=3] [ref=e1686]
+                - paragraph [ref=e1687]: AI-powered software maps each tooth movement and shows your projected result before starting
+            - generic [ref=e1688]:
+              - generic [ref=e1690]: "3"
+              - generic [ref=e1692]:
+                - heading "Active Treatment" [level=3] [ref=e1693]
+                - paragraph [ref=e1694]: You wear your aligners or braces according to schedule with periodic adjustment visits
+            - generic [ref=e1695]:
+              - generic [ref=e1697]: "4"
+              - generic [ref=e1698]:
+                - heading "Retention" [level=3] [ref=e1699]
+                - paragraph [ref=e1700]: After active treatment, a custom retainer maintains your beautiful new smile permanently
+        - generic [ref=e1702]:
+          - generic [ref=e1703]:
+            - generic [ref=e1707]: FAQ
+            - heading "Frequently Asked Questions" [level=2] [ref=e1708]
+            - paragraph [ref=e1709]: Answers to the most common questions about this service
+          - generic [ref=e1710]:
+            - generic [ref=e1711]:
+              - button "How long does orthodontic treatment take?" [ref=e1712] [cursor=pointer]:
+                - generic [ref=e1713]: How long does orthodontic treatment take?
+                - img [ref=e1714]
+              - generic:
+                - paragraph: Treatment duration varies by case complexity but typically ranges from 8-24 months. We provide a personalized timeline during your consultation.
+            - generic [ref=e1716]:
+              - button "Are clear aligners as effective as braces?" [ref=e1717] [cursor=pointer]:
+                - generic [ref=e1718]: Are clear aligners as effective as braces?
+                - img [ref=e1719]
+              - generic:
+                - paragraph: For many cases, yes. Clear aligners are highly effective for mild to moderate misalignment. Complex cases may still benefit from traditional braces for optimal results.
+            - generic [ref=e1721]:
+              - button "Will braces or aligners affect my speech?" [ref=e1722] [cursor=pointer]:
+                - generic [ref=e1723]: Will braces or aligners affect my speech?
+                - img [ref=e1724]
+              - generic:
+                - paragraph: There may be a brief adjustment period of a few days, but most patients adapt quickly and speak normally within a short time.
+        - generic [ref=e1728]:
+          - img [ref=e1730]
+          - heading "Ready for Your Perfect Smile?" [level=2] [ref=e1733]
+          - paragraph [ref=e1734]: Book your appointment now and get ready for an exceptional dental experience with the Plaza team
+          - generic [ref=e1735]:
+            - button "Book Appointment" [ref=e1736] [cursor=pointer]:
+              - img [ref=e1737]
+              - text: Book Appointment
+            - link "WhatsApp" [ref=e1739] [cursor=pointer]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e1740]
+              - text: WhatsApp
+    - contentinfo [ref=e671]:
+      - generic [ref=e672]:
+        - generic [ref=e673]:
+          - generic [ref=e674]:
+            - link "Plaza Dental Care Plaza Dental Cosmetic Center" [ref=e941] [cursor=pointer]:
+              - /url: "#home"
+              - img "Plaza Dental Care" [ref=e677]
+              - generic [ref=e678]: Plaza Dental Cosmetic Center
+            - paragraph [ref=e679]: A specialized clinic in dental care and cosmetic dentistry, offering the best medical services with a dedicated team and modern equipment.
+            - generic [ref=e680]:
+              - link "Facebook" [ref=e681] [cursor=pointer]:
+                - /url: https://www.facebook.com/Plazadentalcareclinic/
+                - img [ref=e682]
+              - link "WhatsApp" [ref=e684] [cursor=pointer]:
+                - /url: https://wa.me/201200077665
+                - img [ref=e685]
+          - generic [ref=e687]:
+            - heading "Services" [level=4] [ref=e942]
+            - list [ref=e689]:
+              - listitem [ref=e690]:
+                - link "Hollywood Smile" [ref=e943] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e692]:
+                - link "Dental Implants" [ref=e944] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e694]:
+                - link "Orthodontics" [ref=e945] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e696]:
+                - link "Root Canal" [ref=e946] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e698]:
+                - link "Pediatric Dentistry" [ref=e947] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e700]:
+                - link "Teeth Whitening" [ref=e948] [cursor=pointer]:
+                  - /url: "#services"
+          - generic [ref=e702]:
+            - heading "Contact Us" [level=4] [ref=e949]
+            - list [ref=e704]:
+              - listitem [ref=e705]:
+                - link "+20 120 007 7665" [ref=e706] [cursor=pointer]:
+                  - /url: tel:+201200077665
+                  - img [ref=e707]
+                  - generic [ref=e709]: +20 120 007 7665
+              - listitem [ref=e710]:
+                - generic [ref=e711]:
+                  - img [ref=e712]
+                  - generic [ref=e715]: Alexandria, Egypt
+              - listitem [ref=e716]:
+                - link "+20 120 007 7665" [ref=e717] [cursor=pointer]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e718]
+                  - generic [ref=e720]: +20 120 007 7665
+        - generic [ref=e721]:
+          - generic [ref=e722]: © 2025 Plaza Dental Care — All Rights Reserved
+          - generic [ref=e723]: Professional design for an exceptional dental experience
+    - link "+201200077665 1" [ref=e724] [cursor=pointer]:
+      - /url: https://wa.me/201200077665
+      - img [ref=e726]
+      - generic: "+201200077665"
+      - generic [ref=e728]: "1"
+  - generic [ref=e11]:
+    - generic "Toggle devtools panel" [ref=e12] [cursor=pointer]:
+      - img [ref=e13]
+    - generic "Toggle Component Inspector" [ref=e18] [cursor=pointer]:
+      - img [ref=e19]

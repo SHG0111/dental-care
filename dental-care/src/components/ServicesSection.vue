@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useLanguageStore } from '@/stores/language'
-import { useScrollReveal } from '@/composables/useScrollReveal'
+import { useGsapScrubReveal, useGsapScrubStagger, useParallaxGroup } from '@/composables/useGsapReveal'
 import { ArrowLeft, ArrowRight } from '@lucide/vue'
 
+const router = useRouter()
 const store = useLanguageStore()
 
 const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
 const gridRef = ref<HTMLElement | null>(null)
 
-const { isVisible: headerVisible } = useScrollReveal(headerRef, { threshold: 0.2 })
-const { isVisible: gridVisible } = useScrollReveal(gridRef, { threshold: 0.05 })
+useGsapScrubReveal(headerRef, { animation: 'fadeUp' })
+useGsapScrubStagger(gridRef, '> .service-card', { stagger: 0.08 })
+useParallaxGroup(sectionRef, { selector: '.services-bg-shape, .services-bg-dots', yRange: 40 })
+
+function goToService(slug: string) {
+  router.push({ name: 'service-details', params: { slug } })
+}
 </script>
 
 <template>
@@ -23,27 +30,15 @@ const { isVisible: gridVisible } = useScrollReveal(gridRef, { threshold: 0.05 })
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header">
-        <div
-          class="section-label"
-          style="transition: all 0.5s ease; opacity: 0; transform: translateY(20px);"
-          :style="headerVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-        >
+        <div class="section-label">
           <span class="section-label-dot"></span>
           <span>{{ store.t.services.label }}</span>
         </div>
-        <h2
-          class="section-title"
-          style="transition: all 0.6s ease 0.1s; opacity: 0; transform: translateY(20px);"
-          :style="headerVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-        >
+        <h2 class="section-title">
           {{ store.t.services.title.split(' ').slice(0, 2).join(' ') }}
           <span class="accent"> {{ store.t.services.title.split(' ').slice(2).join(' ') }}</span>
         </h2>
-        <p
-          class="section-subtitle"
-          style="transition: all 0.6s ease 0.2s; opacity: 0; transform: translateY(20px);"
-          :style="headerVisible ? 'opacity: 1; transform: translateY(0);' : ''"
-        >
+        <p class="section-subtitle">
           {{ store.t.services.subtitle }}
         </p>
       </div>
@@ -54,11 +49,7 @@ const { isVisible: gridVisible } = useScrollReveal(gridRef, { threshold: 0.05 })
           v-for="(service, i) in store.t.services.items"
           :key="i"
           class="service-card"
-          :style="{
-            transition: `all 0.7s cubic-bezier(0.22, 1, 0.36, 1) ${i * 0.08}s`,
-            opacity: gridVisible ? 1 : 0,
-            transform: gridVisible ? 'translateY(0)' : 'translateY(50px)',
-          }"
+          @click="goToService(service.slug)"
         >
           <!-- Card number badge -->
           <div class="service-num-wrap">
@@ -113,8 +104,8 @@ const { isVisible: gridVisible } = useScrollReveal(gridRef, { threshold: 0.05 })
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.8rem;
   position: relative;
   z-index: 1;
 }
@@ -122,7 +113,7 @@ const { isVisible: gridVisible } = useScrollReveal(gridRef, { threshold: 0.05 })
 .service-card {
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 2rem 1.75rem 1.5rem;
+  padding: 2.5rem 2rem 1.8rem;
   border: 1px solid rgba(37, 215, 184, 0.08);
   cursor: pointer;
   position: relative;
@@ -168,7 +159,7 @@ body.ltr .service-num-wrap {
 }
 
 .service-num-bg {
-  font-size: 4.5rem;
+  font-size: 5rem;
   font-weight: 900;
   color: var(--teal-50);
   line-height: 1;
@@ -189,15 +180,15 @@ body.ltr .service-num-wrap {
 }
 
 .service-icon {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   background: var(--teal-50);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   transition: all var(--transition-base);
 }
 
@@ -207,14 +198,14 @@ body.ltr .service-num-wrap {
 }
 
 .service-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
   color: var(--text-primary);
 }
 
 .service-card p {
-  font-size: 0.87rem;
+  font-size: 0.95rem;
   line-height: 1.7;
   color: var(--text-secondary);
 }
@@ -232,7 +223,7 @@ body.ltr .service-num-wrap {
 }
 
 .service-read-more {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--teal-500);
   opacity: 0;

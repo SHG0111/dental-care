@@ -1,0 +1,226 @@
+- generic [ref=e23]:
+  - generic [ref=e25]:
+    - navigation [ref=e26]:
+      - generic [ref=e27]:
+        - link "Plaza Dental Care مركز بلازا لتجميل الاسنان Plaza Dental Cosmetic Center" [ref=e28] [cursor=pointer]:
+          - /url: "#home"
+          - img "Plaza Dental Care" [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]: مركز بلازا لتجميل الاسنان
+            - generic [ref=e33]: Plaza Dental Cosmetic Center
+        - generic [ref=e34]:
+          - link "الرئيسية" [ref=e35] [cursor=pointer]:
+            - /url: "#home"
+          - link "من نحن" [ref=e36] [cursor=pointer]:
+            - /url: "#about"
+          - link "خدماتنا" [ref=e37] [cursor=pointer]:
+            - /url: "#services"
+          - link "قبل وبعد" [ref=e38] [cursor=pointer]:
+            - /url: "#before-after"
+          - link "فريقنا" [ref=e39] [cursor=pointer]:
+            - /url: "#team"
+          - link "آراء المرضى" [ref=e40] [cursor=pointer]:
+            - /url: "#testimonials"
+          - link "تواصل معنا" [ref=e41] [cursor=pointer]:
+            - /url: "#contact"
+        - generic [ref=e42]:
+          - button "English" [ref=e43] [cursor=pointer]
+          - link "احجز موعد" [ref=e44] [cursor=pointer]:
+            - /url: https://wa.me/201200077665
+            - img [ref=e45]
+            - generic [ref=e47]: احجز موعد
+          - text: القائمة
+    - main [ref=e48]:
+      - generic [ref=e729]:
+        - generic [ref=e731]:
+          - button "العودة للرئيسية" [ref=e732] [cursor=pointer]:
+            - img [ref=e733]
+            - generic [ref=e735]: العودة للرئيسية
+          - generic [ref=e736]:
+            - generic [ref=e738]: "01"
+            - generic [ref=e739]:
+              - generic [ref=e742]: خدماتنا
+              - heading "✨ ابتسامة هوليود" [level=1] [ref=e743]
+              - paragraph [ref=e744]: ابتسامة هوليود هي علاجنا التجميلي الأبرز — تحول كامل لابتسامتك باستخدام قشور خزفية فائقة الرقة مصممة خصيصاً لتناسب هيكل وجهك. يتم تصميم كل قشرة بشكل فردي للحصول على الشكل واللون والتناسق المثالي، مما يمنحك ابتسامة طبيعية مبهرة.
+              - generic [ref=e745]:
+                - button "احجز موعدك الآن" [ref=e746] [cursor=pointer]:
+                  - img [ref=e747]
+                  - text: احجز موعدك الآن
+                - link "تواصل عبر واتساب" [ref=e749] [cursor=pointer]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e750]
+                  - text: تواصل عبر واتساب
+        - generic [ref=e754]:
+          - generic [ref=e755]:
+            - generic [ref=e759]: نظرة عامة
+            - heading "عن هذه الخدمة" [level=2] [ref=e760]
+            - paragraph [ref=e761]: ابتسامة هوليود هي علاجنا التجميلي الأبرز — تحول كامل لابتسامتك باستخدام قشور خزفية فائقة الرقة مصممة خصيصاً لتناسب هيكل وجهك. يتم تصميم كل قشرة بشكل فردي للحصول على الشكل واللون والتناسق المثالي، مما يمنحك ابتسامة طبيعية مبهرة.
+            - paragraph [ref=e762]: الإجراء بسيط ويتم عادة في 2-3 جلسات. باستخدام تقنية التصميم الرقمي للابتسامة، يمكنك معاينة ابتسامتك الجديدة قبل البدء في أي عمل. يصنع فنانو السيراميك الماهرون لدينا كل قشرة من أفضل المواد الخام للحصول على مظهر شفاف وطبيعي.
+          - generic [ref=e764]:
+            - generic [ref=e765]: ✨
+            - generic [ref=e766]: ابتسامة هوليود
+            - generic [ref=e768]:
+              - generic [ref=e769]: 98%
+              - generic [ref=e770]: نسبة نجاح
+            - generic [ref=e771]:
+              - generic [ref=e772]: +15 سنة
+              - generic [ref=e773]: خبرة
+        - generic [ref=e775]:
+          - generic [ref=e776]:
+            - generic [ref=e780]: المميزات
+            - heading "لماذا تختار هذه الخدمة؟" [level=2] [ref=e781]
+            - paragraph [ref=e782]: نقدم أعلى معايير الجودة والعناية في كل ما نقدمه
+          - generic [ref=e783]:
+            - generic [ref=e784]:
+              - img [ref=e786]
+              - generic [ref=e789]:
+                - heading "ثقة فورية" [level=3] [ref=e790]
+                - paragraph [ref=e791]: احصل على ابتسامة متحولة بالكامل تعزز ثقتك بنفسك فوراً
+            - generic [ref=e792]:
+              - img [ref=e794]
+              - generic [ref=e797]:
+                - heading "تصميم مخصص" [level=3] [ref=e798]
+                - paragraph [ref=e799]: كل قشرة تصمم بشكل فردي لتناسب ملامح وجهك والجمالية التي ترغب بها
+            - generic [ref=e800]:
+              - img [ref=e802]
+              - generic [ref=e805]:
+                - heading "مقاومة للتصبغ" [level=3] [ref=e806]
+                - paragraph [ref=e807]: القشور الخزفية تقاوم التصبغ بشكل أفضل من المينا الطبيعية وتحافظ على إشراقتك
+            - generic [ref=e808]:
+              - img [ref=e810]
+              - generic [ref=e813]:
+                - heading "أقل تدخل جراحي" [level=3] [ref=e814]
+                - paragraph [ref=e815]: قشور فائقة الرقة تتطلب تحضيراً بسيطاً للأسنان للحفاظ على بنية السن الطبيعية
+            - generic [ref=e816]:
+              - img [ref=e818]
+              - generic [ref=e821]:
+                - heading "نتائج طويلة الأمد" [level=3] [ref=e822]
+                - paragraph [ref=e823]: مع العناية المناسبة، تدوم ابتسامة هوليود من 10-15 سنة أو أكثر
+        - generic [ref=e825]:
+          - generic [ref=e826]:
+            - generic [ref=e830]: الخطوات
+            - heading "كيف تتم العملية؟" [level=2] [ref=e831]
+            - paragraph [ref=e832]: خطوات بسيطة ومريحة لتحقيق أفضل النتائج
+          - generic [ref=e833]:
+            - generic [ref=e834]:
+              - generic [ref=e836]: "1"
+              - generic [ref=e838]:
+                - heading "الاستشارة والتصميم" [level=3] [ref=e839]
+                - paragraph [ref=e840]: نحلل ملامح وجهك ونناقش أهدافك وننشئ معاينة رقمية لابتسامتك الجديدة
+            - generic [ref=e841]:
+              - generic [ref=e843]: "2"
+              - generic [ref=e845]:
+                - heading "التحضير" [level=3] [ref=e846]
+                - paragraph [ref=e847]: تتم إزالة طبقة رقيقة جداً من المينا بلطف وأخذ طبعة لأسنانك لصنع القشور المخصصة
+            - generic [ref=e848]:
+              - generic [ref=e850]: "3"
+              - generic [ref=e852]:
+                - heading "التصنيع والتركيب" [level=3] [ref=e853]
+                - paragraph [ref=e854]: يصنع المختبر قشورك بدقة وتعود لجلسة تثبيت غير مؤلمة
+            - generic [ref=e855]:
+              - generic [ref=e857]: "4"
+              - generic [ref=e858]:
+                - heading "ابتسامتك الجديدة" [level=3] [ref=e859]
+                - paragraph [ref=e860]: تظهر ابتسامة هوليود الخاصة بك — متناسقة تماماً، بيضاء ناصعة، وفريدة لك
+        - generic [ref=e862]:
+          - generic [ref=e863]:
+            - generic [ref=e867]: الأسئلة الشائعة
+            - heading "أسئلة شائعة" [level=2] [ref=e868]
+            - paragraph [ref=e869]: إجابات على أكثر الأسئلة شيوعاً حول هذه الخدمة
+          - generic [ref=e870]:
+            - generic [ref=e871]:
+              - button "هل تركيب القشور مؤلم؟" [active] [ref=e872] [cursor=pointer]:
+                - generic [ref=e873]: هل تركيب القشور مؤلم؟
+                - img [ref=e902]
+              - paragraph [ref=e905]: الإجراء غير مؤلم تقريباً. يتم استخدام التخدير الموضعي أثناء التحضير، ومعظم المرضى يشعرون بحساسية خفيفة فقط تزول خلال أيام.
+            - generic [ref=e876]:
+              - button "كم تدوم القشور الخزفية؟" [ref=e877] [cursor=pointer]:
+                - generic [ref=e878]: كم تدوم القشور الخزفية؟
+                - img [ref=e879]
+              - generic:
+                - paragraph: مع العناية المناسبة وزيارات الأسنان المنتظمة، تدوم القشور الخزفية عادة من 10-15 سنة قبل الحاجة للاستبدال.
+            - generic [ref=e881]:
+              - button "هل يمكنني الأكل بشكل طبيعي بالقشور؟" [ref=e882] [cursor=pointer]:
+                - generic [ref=e883]: هل يمكنني الأكل بشكل طبيعي بالقشور؟
+                - img [ref=e884]
+              - generic:
+                - paragraph: نعم، بمجرد تثبيتها يمكنك الأكل بشكل طبيعي. ننصح بتجنب الأطعمة القاسية جداً مثل الثلج أو الحلوى الصلبة.
+        - generic [ref=e888]:
+          - img [ref=e890]
+          - heading "جاهز للحصول على ابتسامتك المثالية؟" [level=2] [ref=e893]
+          - paragraph [ref=e894]: احجز موعدك الآن واستعد لتجربة أسنان استثنائية مع فريق بلازا
+          - generic [ref=e895]:
+            - button "احجز موعد" [ref=e896] [cursor=pointer]:
+              - img [ref=e897]
+              - text: احجز موعد
+            - link "واتساب" [ref=e899] [cursor=pointer]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e900]
+              - text: واتساب
+    - contentinfo [ref=e671]:
+      - generic [ref=e672]:
+        - generic [ref=e673]:
+          - generic [ref=e674]:
+            - link "Plaza Dental Care مركز بلازا لتجميل الاسنان" [ref=e675] [cursor=pointer]:
+              - /url: "#home"
+              - img "Plaza Dental Care" [ref=e677]
+              - generic [ref=e678]: مركز بلازا لتجميل الاسنان
+            - paragraph [ref=e679]: عيادة متخصصة في رعاية وتجميل الأسنان، نقدم أفضل الخدمات الطبية بأيدي فريق متخصص وأجهزة حديثة.
+            - generic [ref=e680]:
+              - link "Facebook" [ref=e681] [cursor=pointer]:
+                - /url: https://www.facebook.com/Plazadentalcareclinic/
+                - img [ref=e682]
+              - link "WhatsApp" [ref=e684] [cursor=pointer]:
+                - /url: https://wa.me/201200077665
+                - img [ref=e685]
+          - generic [ref=e687]:
+            - heading "الخدمات" [level=4] [ref=e688]
+            - list [ref=e689]:
+              - listitem [ref=e690]:
+                - link "ابتسامة هوليود" [ref=e691] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e692]:
+                - link "زراعة الأسنان" [ref=e693] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e694]:
+                - link "تقويم الأسنان" [ref=e695] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e696]:
+                - link "علاج الجذور" [ref=e697] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e698]:
+                - link "أسنان الأطفال" [ref=e699] [cursor=pointer]:
+                  - /url: "#services"
+              - listitem [ref=e700]:
+                - link "تبييض الأسنان" [ref=e701] [cursor=pointer]:
+                  - /url: "#services"
+          - generic [ref=e702]:
+            - heading "تواصل معنا" [level=4] [ref=e703]
+            - list [ref=e704]:
+              - listitem [ref=e705]:
+                - link "+20 120 007 7665" [ref=e706] [cursor=pointer]:
+                  - /url: tel:+201200077665
+                  - img [ref=e707]
+                  - generic [ref=e709]: +20 120 007 7665
+              - listitem [ref=e710]:
+                - generic [ref=e711]:
+                  - img [ref=e712]
+                  - generic [ref=e715]: الإسكندرية، مصر
+              - listitem [ref=e716]:
+                - link "+20 120 007 7665" [ref=e717] [cursor=pointer]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e718]
+                  - generic [ref=e720]: +20 120 007 7665
+        - generic [ref=e721]:
+          - generic [ref=e722]: © 2025 مركز بلازا لتجميل الاسنان — جميع الحقوق محفوظة
+          - generic [ref=e723]: تصميم احترافي لتجربة طبية متميزة
+    - link "+201200077665 1" [ref=e724] [cursor=pointer]:
+      - /url: https://wa.me/201200077665
+      - img [ref=e726]
+      - generic: "+201200077665"
+      - generic [ref=e728]: "1"
+  - generic [ref=e11]:
+    - generic "Toggle devtools panel" [ref=e12] [cursor=pointer]:
+      - img [ref=e13]
+    - generic "Toggle Component Inspector" [ref=e18] [cursor=pointer]:
+      - img [ref=e19]

@@ -1,0 +1,603 @@
+- generic [ref=e23]:
+  - generic [ref=e25]:
+    - navigation [ref=e26]:
+      - generic [ref=e27]:
+        - link "Plaza Dental Care Plaza Dental Cosmetic Center Premium Dental Clinic" [ref=e28]:
+          - /url: "#home"
+          - img "Plaza Dental Care" [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]: Plaza Dental Cosmetic Center
+            - generic [ref=e33]: Premium Dental Clinic
+        - generic [ref=e34]:
+          - link "Home" [ref=e35]:
+            - /url: "#home"
+          - link "About Us" [ref=e36]:
+            - /url: "#about"
+          - generic [ref=e38]:
+            - text: Services
+            - img [ref=e39]
+          - link "Before & After" [ref=e41]:
+            - /url: "#before-after"
+          - link "Our Team" [ref=e42]:
+            - /url: "#team"
+          - link "Testimonials" [ref=e43]:
+            - /url: "#testimonials"
+          - link "Contact Us" [ref=e44]:
+            - /url: "#contact"
+        - generic [ref=e45]:
+          - button "العربية" [ref=e46] [cursor=pointer]
+          - link "Book Appointment" [ref=e47]:
+            - /url: https://wa.me/201200077665
+            - img [ref=e48]
+            - generic [ref=e50]: Book Appointment
+          - text: Menu
+    - main [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e57]: Your Smile Is Our Priority
+            - heading "Your Smile Our Mission Complete Care for Bright, Healthy Teeth" [level=1] [ref=e58]:
+              - generic [ref=e59]: Your Smile Our Mission
+              - generic [ref=e60]: Complete Care for
+              - generic [ref=e61]: Bright, Healthy Teeth
+            - paragraph [ref=e62]: Plaza Dental Care — a specialist clinic combining the latest dental technology with a comfortable environment. Our team of expert doctors is always at your service.
+            - generic [ref=e63]:
+              - button "Book Your Appointment" [ref=e64]:
+                - text: Book Your Appointment
+                - img [ref=e65]
+              - button "Explore Services" [ref=e67]
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - generic [ref=e70]: "+5000"
+                - generic [ref=e71]: Happy Patients
+              - generic [ref=e72]:
+                - generic [ref=e73]: "+15"
+                - generic [ref=e74]: Years Experience
+              - generic [ref=e75]:
+                - generic [ref=e76]: "+20"
+                - generic [ref=e77]: Specialists
+          - generic [ref=e78]:
+            - generic [ref=e79]:
+              - img [ref=e82]
+              - heading "Plaza Dental Clinic" [level=3] [ref=e86]
+              - paragraph [ref=e87]: Premium care with modern technology
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - img [ref=e90]
+                  - img [ref=e92]
+                  - img [ref=e94]
+                  - img [ref=e96]
+                  - img [ref=e98]
+                - generic [ref=e100]: "4.9"
+                - generic [ref=e101]: (+500 reviews)
+              - generic [ref=e102]:
+                - generic [ref=e103]:
+                  - generic [ref=e104]: "+15"
+                  - generic [ref=e105]: Years Experience
+                - generic [ref=e106]:
+                  - generic [ref=e107]: 98%
+                  - generic [ref=e108]: Satisfaction
+            - generic:
+              - generic [ref=e109]:
+                - img [ref=e111]
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Latest Technology
+                  - generic [ref=e117]: Advanced Laser
+              - generic [ref=e118]:
+                - img [ref=e120]
+                - generic [ref=e123]:
+                  - generic [ref=e124]: Comfortable Visit
+                  - generic [ref=e125]: Pain Free
+        - generic [ref=e127]: Scroll down
+      - generic [ref=e131]:
+        - generic [ref=e132]:
+          - generic [ref=e133]:
+            - generic [ref=e136]: About Us
+            - heading "ExceptionalCare Standards" [level=2] [ref=e137]
+            - paragraph [ref=e138]: We provide a comfortable, safe treatment environment combining medical expertise and modern technology
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - img [ref=e142]
+                - generic [ref=e145]: Latest Laser Tech
+              - generic [ref=e146]:
+                - img [ref=e148]
+                - generic [ref=e151]: Internationally Certified Team
+              - generic [ref=e152]:
+                - img [ref=e154]
+                - generic [ref=e157]: Sterile & Safe Environment
+              - generic [ref=e158]:
+                - img [ref=e160]
+                - generic [ref=e163]: Lifetime Follow-up Care
+            - link "Book Your Appointment" [ref=e165]:
+              - /url: "#contact"
+          - generic [ref=e166]:
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - img [ref=e170]
+                - generic [ref=e172]:
+                  - generic [ref=e173]: "+15"
+                  - text: Years Exp.
+              - generic [ref=e179]:
+                - img [ref=e180]
+                - generic [ref=e183]: Internationally Accredited
+              - generic [ref=e184]:
+                - generic [ref=e187]: Advanced Tech
+                - generic [ref=e190]: Expert Team
+                - generic [ref=e193]: High Quality
+                - generic [ref=e196]: Full Care
+            - generic [ref=e197]:
+              - img [ref=e198]
+              - generic [ref=e203]: +5000 Patients
+            - generic [ref=e204]:
+              - img [ref=e205]
+              - generic [ref=e208]: 98% Satisfaction
+        - generic [ref=e209]:
+          - generic [ref=e210]:
+            - generic [ref=e211]: "+5000"
+            - generic [ref=e212]: Happy Patients
+          - generic [ref=e213]:
+            - generic [ref=e214]: "+15"
+            - generic [ref=e215]: Years Experience
+          - generic [ref=e216]:
+            - generic [ref=e217]: "+20"
+            - generic [ref=e218]: Specialists
+          - generic [ref=e219]:
+            - generic [ref=e220]: 98%
+            - generic [ref=e221]: Satisfaction
+      - generic [ref=e223]:
+        - generic [ref=e224]:
+          - generic [ref=e227]: Our Services
+          - heading "Comprehensive Dental Services" [level=2] [ref=e228]
+          - paragraph [ref=e229]: We offer a wide range of cosmetic and therapeutic dental services at the highest quality standards
+        - generic [ref=e230]:
+          - generic [ref=e231] [cursor=pointer]:
+            - generic: "01"
+            - generic [ref=e232]:
+              - generic [ref=e233]: ✨
+              - heading "Hollywood Smile" [level=3] [ref=e234]
+              - paragraph [ref=e235]: Complete smile transformation for dazzling white, perfectly proportioned teeth that reflect your natural beauty
+            - generic [ref=e236]:
+              - generic [ref=e237]: Learn more
+              - img [ref=e239]
+          - generic [ref=e241] [cursor=pointer]:
+            - generic: "02"
+            - generic [ref=e242]:
+              - generic [ref=e243]: 🦷
+              - heading "Dental Implants" [level=3] [ref=e244]
+              - paragraph [ref=e245]: The ideal solution for replacing missing teeth with permanent, natural-looking implants built to last a lifetime
+            - generic [ref=e246]:
+              - generic [ref=e247]: Learn more
+              - img [ref=e249]
+          - generic [ref=e251] [cursor=pointer]:
+            - generic: "03"
+            - generic [ref=e252]:
+              - generic [ref=e253]: 😁
+              - heading "Orthodontics" [level=3] [ref=e254]
+              - paragraph [ref=e255]: Aligned teeth and a perfect smile using the latest clear and traditional braces technology for maximum comfort
+            - generic [ref=e256]:
+              - generic [ref=e257]: Learn more
+              - img [ref=e259]
+          - generic [ref=e261] [cursor=pointer]:
+            - generic: "04"
+            - generic [ref=e262]:
+              - generic [ref=e263]: 💉
+              - heading "Root Canal" [level=3] [ref=e264]
+              - paragraph [ref=e265]: Eliminate pain and preserve your natural teeth using precision instruments and modern pain-free techniques
+            - generic [ref=e266]:
+              - generic [ref=e267]: Learn more
+              - img [ref=e269]
+          - generic [ref=e271] [cursor=pointer]:
+            - generic: "05"
+            - generic [ref=e272]:
+              - generic [ref=e273]: 👶
+              - heading "Pediatric Dentistry" [level=3] [ref=e274]
+              - paragraph [ref=e275]: Gentle, comprehensive care to protect your child's teeth and ensure healthy growth from an early age
+            - generic [ref=e276]:
+              - generic [ref=e277]: Learn more
+              - img [ref=e279]
+          - generic [ref=e281] [cursor=pointer]:
+            - generic: "06"
+            - generic [ref=e282]:
+              - generic [ref=e283]: 🌿
+              - heading "Gum Treatment" [level=3] [ref=e284]
+              - paragraph [ref=e285]: Maintain oral health by eliminating inflammation and improving gum appearance for a lasting healthy smile
+            - generic [ref=e286]:
+              - generic [ref=e287]: Learn more
+              - img [ref=e289]
+          - generic [ref=e291] [cursor=pointer]:
+            - generic: "07"
+            - generic [ref=e292]:
+              - generic [ref=e293]: 👑
+              - heading "Crowns & Bridges" [level=3] [ref=e294]
+              - paragraph [ref=e295]: Aesthetic appearance and strong function using premium materials to cover damaged teeth professionally
+            - generic [ref=e296]:
+              - generic [ref=e297]: Learn more
+              - img [ref=e299]
+          - generic [ref=e301] [cursor=pointer]:
+            - generic: "08"
+            - generic [ref=e302]:
+              - generic [ref=e303]: ⚡
+              - heading "Teeth Whitening" [level=3] [ref=e304]
+              - paragraph [ref=e305]: A brilliant smile in a single session using safe, fast techniques to restore your teeth's natural radiance
+            - generic [ref=e306]:
+              - generic [ref=e307]: Learn more
+              - img [ref=e309]
+          - generic [ref=e311] [cursor=pointer]:
+            - generic: "09"
+            - generic [ref=e312]:
+              - generic [ref=e313]: 🎨
+              - heading "Cosmetic Fillings" [level=3] [ref=e314]
+              - paragraph [ref=e315]: Restore the natural shape of your tooth with high precision using color-matched materials with zero pain
+            - generic [ref=e316]:
+              - generic [ref=e317]: Learn more
+              - img [ref=e319]
+      - generic [ref=e322]:
+        - generic [ref=e323]:
+          - generic [ref=e326]: Before & After
+          - heading "Real Results From Our Clinic" [level=2] [ref=e327]
+          - paragraph [ref=e328]: See the difference for yourself — amazing, real results with our patients
+        - generic [ref=e330]:
+          - button "Previous case" [ref=e331] [cursor=pointer]:
+            - img [ref=e332]
+          - button "Next case" [ref=e334] [cursor=pointer]:
+            - img [ref=e335]
+          - generic [ref=e337]:
+            - generic [ref=e338]:
+              - generic [ref=e339]:
+                - generic [ref=e340]: ✨
+                - generic [ref=e341]:
+                  - generic [ref=e342]: Before
+                  - generic [ref=e343]: Hollywood Smile
+              - generic:
+                - img
+                - img
+            - generic [ref=e344]:
+              - generic [ref=e345]:
+                - generic [ref=e346]: ✨
+                - generic [ref=e347]:
+                  - generic [ref=e348]: After
+                  - generic [ref=e349]: Hollywood Smile
+              - generic:
+                - img
+            - generic [ref=e352]:
+              - img [ref=e353]
+              - img [ref=e355]
+          - generic [ref=e357]:
+            - generic [ref=e358]:
+              - button "Case 1" [ref=e359] [cursor=pointer]
+              - button "Case 2" [ref=e360] [cursor=pointer]
+              - button "Case 3" [ref=e361] [cursor=pointer]
+              - button "Case 4" [ref=e362] [cursor=pointer]
+            - paragraph [ref=e363]: Complete smile transformation with veneers
+        - generic [ref=e364]:
+          - generic [ref=e365] [cursor=pointer]:
+            - generic [ref=e366]:
+              - generic [ref=e368]: Before
+              - generic [ref=e370]: After
+            - generic [ref=e372]:
+              - generic [ref=e373]: ✨
+              - generic [ref=e374]:
+                - heading "Hollywood Smile" [level=4] [ref=e375]
+                - paragraph [ref=e376]: Complete smile transformation with veneers
+          - generic [ref=e377] [cursor=pointer]:
+            - generic [ref=e378]:
+              - generic [ref=e380]: Before
+              - generic [ref=e382]: After
+            - generic [ref=e384]:
+              - generic [ref=e385]: 🦷
+              - generic [ref=e386]:
+                - heading "Dental Implants" [level=4] [ref=e387]
+                - paragraph [ref=e388]: Full upper and lower jaw implant restoration
+          - generic [ref=e389] [cursor=pointer]:
+            - generic [ref=e390]:
+              - generic [ref=e392]: Before
+              - generic [ref=e394]: After
+            - generic [ref=e396]:
+              - generic [ref=e397]: ⚡
+              - generic [ref=e398]:
+                - heading "Teeth Whitening" [level=4] [ref=e399]
+                - paragraph [ref=e400]: Professional whitening in a single session
+          - generic [ref=e401] [cursor=pointer]:
+            - generic [ref=e402]:
+              - generic [ref=e404]: Before
+              - generic [ref=e406]: After
+            - generic [ref=e408]:
+              - generic [ref=e409]: 😁
+              - generic [ref=e410]:
+                - heading "Orthodontics" [level=4] [ref=e411]
+                - paragraph [ref=e412]: Clear aligners for perfect smile alignment
+      - generic [ref=e414]:
+        - generic [ref=e415]:
+          - generic [ref=e418]: Our Medical Team
+          - heading "Doctors at Your Smile's Service" [level=2] [ref=e419]
+          - paragraph [ref=e420]: A team of the finest specialist dentists with extensive expertise and high qualifications
+        - generic [ref=e421]:
+          - generic [ref=e423]:
+            - generic [ref=e427]: MA
+            - heading "Dr. Mohamed Ahmed" [level=3] [ref=e428]
+            - paragraph [ref=e429]: Cosmetic Dentistry Specialist
+            - generic [ref=e430]: 15 Yrs Experience
+          - generic [ref=e432]:
+            - generic [ref=e436]: SH
+            - heading "Dr. Sara Hassan" [level=3] [ref=e437]
+            - paragraph [ref=e438]: Orthodontic Specialist
+            - generic [ref=e439]: International Fellow
+          - generic [ref=e441]:
+            - generic [ref=e445]: KM
+            - heading "Dr. Khaled Mahmoud" [level=3] [ref=e446]
+            - paragraph [ref=e447]: Implant Consultant
+            - generic [ref=e448]: European Board
+          - generic [ref=e450]:
+            - generic [ref=e454]: NF
+            - heading "Dr. Nour Farouk" [level=3] [ref=e455]
+            - paragraph [ref=e456]: Pediatric Dentist
+            - generic [ref=e457]: PhD
+          - generic [ref=e459]:
+            - generic [ref=e463]: AW
+            - heading "Dr. Ahmed Walid" [level=3] [ref=e464]
+            - paragraph [ref=e465]: Endodontic Specialist
+            - generic [ref=e466]: MSc
+          - generic [ref=e468]:
+            - generic [ref=e472]: RI
+            - heading "Dr. Rania Ibrahim" [level=3] [ref=e473]
+            - paragraph [ref=e474]: Periodontist
+            - generic [ref=e475]: Fellowship
+      - generic [ref=e477]:
+        - generic [ref=e478]:
+          - generic [ref=e481]: Patient Reviews
+          - heading "What Our Patients Say" [level=2] [ref=e482]
+          - paragraph [ref=e483]: Our patients' trust is the greatest award we celebrate daily
+        - generic [ref=e484]:
+          - generic [ref=e485]:
+            - generic [ref=e487]:
+              - img [ref=e489]
+              - generic [ref=e492]:
+                - img [ref=e493]
+                - img [ref=e495]
+                - img [ref=e497]
+                - img [ref=e499]
+                - img [ref=e501]
+              - paragraph [ref=e503]: "\"Amazing experience! The doctors are highly professional and kind, the clinic is clean and comfortable. My dental implants results are stunning.\""
+              - generic [ref=e504]:
+                - generic [ref=e505]: AS
+                - generic [ref=e506]:
+                  - generic [ref=e507]: Ahmed Salem
+                  - generic [ref=e508]: Patient — Dental Implants
+            - generic [ref=e511]:
+              - img [ref=e513]
+              - generic [ref=e516]:
+                - img [ref=e517]
+                - img [ref=e519]
+                - img [ref=e521]
+                - img [ref=e523]
+                - img [ref=e525]
+              - paragraph [ref=e527]: "\"I was terrified of dentists, but the Plaza team made me feel comfortable from session one. My Hollywood smile has changed my life!\""
+              - generic [ref=e528]:
+                - generic [ref=e529]: SH
+                - generic [ref=e530]:
+                  - generic [ref=e531]: Samar Hussein
+                  - generic [ref=e532]: Patient — Hollywood Smile
+            - generic [ref=e535]:
+              - img [ref=e537]
+              - generic [ref=e540]:
+                - img [ref=e541]
+                - img [ref=e543]
+                - img [ref=e545]
+                - img [ref=e547]
+                - img [ref=e549]
+              - paragraph [ref=e551]: "\"The level of service and professionalism is outstanding. My orthodontic results exceeded my expectations by far. Highly recommended!\""
+              - generic [ref=e552]:
+                - generic [ref=e553]: MA
+                - generic [ref=e554]:
+                  - generic [ref=e555]: Mostafa Ali
+                  - generic [ref=e556]: Patient — Orthodontics
+            - generic [ref=e559]:
+              - img [ref=e561]
+              - generic [ref=e564]:
+                - img [ref=e565]
+                - img [ref=e567]
+                - img [ref=e569]
+                - img [ref=e571]
+                - img [ref=e573]
+              - paragraph [ref=e575]: "\"I've visited many clinics but Plaza is different. The attention to detail and post-treatment follow-up is truly exceptional.\""
+              - generic [ref=e576]:
+                - generic [ref=e577]: HM
+                - generic [ref=e578]:
+                  - generic [ref=e579]: Hend Mahmoud
+                  - generic [ref=e580]: Patient — Teeth Whitening
+          - button "Previous" [ref=e582] [cursor=pointer]:
+            - img [ref=e583]
+          - button "Next" [ref=e585] [cursor=pointer]:
+            - img [ref=e586]
+        - generic [ref=e588]:
+          - button "Testimonial 1" [active] [ref=e589] [cursor=pointer]
+          - button "Testimonial 2" [ref=e591] [cursor=pointer]
+          - button "Testimonial 3" [ref=e593] [cursor=pointer]
+          - button "Testimonial 4" [ref=e595] [cursor=pointer]
+      - generic [ref=e598]:
+        - generic [ref=e599]:
+          - generic [ref=e602]: Follow Us on Facebook
+          - heading "Latest Posts & Videos" [level=2] [ref=e603]
+          - paragraph [ref=e604]: Watch our latest work and medical tips on our Facebook page
+        - img [ref=e608]
+        - link "Follow on Facebook" [ref=e611]:
+          - /url: https://www.facebook.com/Plazadentalcareclinic/
+          - text: Follow on Facebook
+          - img [ref=e612]
+      - generic [ref=e617]:
+        - generic [ref=e618]:
+          - heading "Working Hours" [level=3] [ref=e619]
+          - paragraph [ref=e620]: We welcome you throughout the week
+        - generic [ref=e621]:
+          - generic [ref=e622]:
+            - generic [ref=e623]: Sun – Thu
+            - generic [ref=e624]: 10 AM – 8 PM
+          - generic [ref=e625]:
+            - generic [ref=e626]: Fri
+            - generic [ref=e627]: 2 PM – 8 PM
+          - generic [ref=e628]:
+            - generic [ref=e629]: Sat
+            - generic [ref=e630]: 11 AM – 6 PM
+        - button "Book Now" [ref=e631]:
+          - img [ref=e632]
+          - generic [ref=e634]: Book Now
+      - generic [ref=e637]:
+        - generic [ref=e638]:
+          - generic [ref=e641]: Contact Us
+          - heading "We're Here for Your Smile" [level=2] [ref=e642]
+          - paragraph [ref=e643]: We're happy to answer all your inquiries and book your appointments. Our team is at your service throughout the week
+          - generic [ref=e644]:
+            - link "Phone +20 120 007 7665" [ref=e645] [cursor=pointer]:
+              - /url: tel:+201200077665
+              - img [ref=e647]
+              - generic [ref=e649]:
+                - strong [ref=e650]: Phone
+                - text: +20 120 007 7665
+            - link "Address Alexandria, Egypt" [ref=e651] [cursor=pointer]:
+              - /url: "#map"
+              - img [ref=e653]
+              - generic [ref=e656]:
+                - strong [ref=e657]: Address
+                - text: Alexandria, Egypt
+            - link "WhatsApp +20 120 007 7665" [ref=e658] [cursor=pointer]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e660]
+              - generic [ref=e662]:
+                - strong [ref=e663]: WhatsApp
+                - text: +20 120 007 7665
+            - link "Email info@plazadentalcare.com" [ref=e664] [cursor=pointer]:
+              - /url: mailto:info@plazadentalcare.com
+              - img [ref=e666]
+              - generic [ref=e669]:
+                - strong [ref=e670]: Email
+                - text: info@plazadentalcare.com
+          - generic [ref=e671]:
+            - link "Facebook" [ref=e672]:
+              - /url: https://www.facebook.com/Plazadentalcareclinic/
+              - img [ref=e673]
+              - text: Facebook
+            - link "Instagram" [ref=e675]:
+              - /url: https://www.instagram.com/
+              - img [ref=e676]
+              - text: Instagram
+            - link "WhatsApp" [ref=e679]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e680]
+              - text: WhatsApp
+        - generic [ref=e684]:
+          - img [ref=e686]
+          - generic [ref=e688]:
+            - generic [ref=e689]:
+              - img [ref=e690]
+              - generic [ref=e693]: Alexandria, Egypt
+            - heading "Plaza Dental Cosmetic Center" [level=3] [ref=e694]
+            - generic [ref=e695]: Hours:10 AM – 8 PM (Sun-Thu)
+            - link "WhatsApp Us" [ref=e697]:
+              - /url: https://wa.me/201200077665
+              - img [ref=e698]
+              - text: WhatsApp Us
+    - generic [ref=e700]:
+      - generic [ref=e701]:
+        - iframe [ref=e702]:
+          
+        - generic:
+          - img
+          - generic: Drag to explore the map
+      - generic [ref=e704]:
+        - img [ref=e707]
+        - heading "Visit Our Clinic" [level=3] [ref=e711]
+        - paragraph [ref=e712]: Al Agamy Al Bahri, Dekhela, Alexandria 5312024
+        - generic [ref=e713]:
+          - generic [ref=e714]:
+            - img [ref=e715]
+            - generic [ref=e718]: "Sat - Thu: 10 AM - 8 PM Fri: 2 PM - 8 PM"
+          - link "+20 120 007 7665" [ref=e719]:
+            - /url: tel:+201200077665
+            - img [ref=e720]
+            - generic [ref=e722]: +20 120 007 7665
+        - generic [ref=e723]:
+          - link "Open in Google Maps" [ref=e724]:
+            - /url: https://www.google.com/maps/dir//Plaza+Dental+Care+Al+Agamy+Alexandria?hl=en
+            - img [ref=e725]
+            - generic [ref=e727]: Open in Google Maps
+          - button "Open full map" [ref=e728] [cursor=pointer]:
+            - img [ref=e729]
+            - text: Open full map
+        - generic:
+          - img
+    - contentinfo [ref=e734]:
+      - generic [ref=e735]:
+        - generic [ref=e736]:
+          - generic [ref=e737]:
+            - link "Plaza Dental Care Plaza Dental Cosmetic Center" [ref=e738]:
+              - /url: "#home"
+              - img "Plaza Dental Care" [ref=e740]
+              - generic [ref=e741]: Plaza Dental Cosmetic Center
+            - paragraph [ref=e742]: A specialized clinic in dental care and cosmetic dentistry, offering the best medical services with a dedicated team and modern equipment.
+            - generic [ref=e743]:
+              - link "Facebook" [ref=e744]:
+                - /url: https://www.facebook.com/Plazadentalcareclinic/
+                - img [ref=e745]
+              - link "WhatsApp" [ref=e747]:
+                - /url: https://wa.me/201200077665
+                - img [ref=e748]
+          - generic [ref=e750]:
+            - heading "Services" [level=4] [ref=e751]
+            - list [ref=e752]:
+              - listitem [ref=e753]:
+                - link "Hollywood Smile" [ref=e754]:
+                  - /url: "#"
+              - listitem [ref=e755]:
+                - link "Dental Implants" [ref=e756]:
+                  - /url: "#"
+              - listitem [ref=e757]:
+                - link "Orthodontics" [ref=e758]:
+                  - /url: "#"
+              - listitem [ref=e759]:
+                - link "Root Canal" [ref=e760]:
+                  - /url: "#"
+              - listitem [ref=e761]:
+                - link "Pediatric Dentistry" [ref=e762]:
+                  - /url: "#"
+              - listitem [ref=e763]:
+                - link "Gum Treatment" [ref=e764]:
+                  - /url: "#"
+              - listitem [ref=e765]:
+                - link "Crowns & Bridges" [ref=e766]:
+                  - /url: "#"
+              - listitem [ref=e767]:
+                - link "Teeth Whitening" [ref=e768]:
+                  - /url: "#"
+              - listitem [ref=e769]:
+                - link "Cosmetic Fillings" [ref=e770]:
+                  - /url: "#"
+          - generic [ref=e771]:
+            - heading "Contact Us" [level=4] [ref=e772]
+            - list [ref=e773]:
+              - listitem [ref=e774]:
+                - link "+20 120 007 7665" [ref=e775]:
+                  - /url: tel:+201200077665
+                  - img [ref=e776]
+                  - generic [ref=e778]: +20 120 007 7665
+              - listitem [ref=e779]:
+                - generic [ref=e780]:
+                  - img [ref=e781]
+                  - generic [ref=e784]: Alexandria, Egypt
+              - listitem [ref=e785]:
+                - link "+20 120 007 7665" [ref=e786]:
+                  - /url: https://wa.me/201200077665
+                  - img [ref=e787]
+                  - generic [ref=e789]: +20 120 007 7665
+        - generic [ref=e790]:
+          - generic [ref=e791]: © 2025 Plaza Dental Care — All Rights Reserved
+          - generic [ref=e792]: Professional design for an exceptional dental experience
+    - link "+201200077665 1" [ref=e793] [cursor=pointer]:
+      - /url: https://wa.me/201200077665
+      - img [ref=e795]
+      - generic: "+201200077665"
+      - generic [ref=e797]: "1"
+  - generic [ref=e11]:
+    - generic "Toggle devtools panel" [ref=e12] [cursor=pointer]:
+      - img [ref=e13]
+    - generic "Toggle Component Inspector" [ref=e18] [cursor=pointer]:
+      - img [ref=e19]

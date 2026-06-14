@@ -17,6 +17,7 @@ export const useLanguageStore = defineStore('language', () => {
     document.documentElement.setAttribute('dir', isRtl.value ? 'rtl' : 'ltr')
     document.documentElement.setAttribute('lang', lang.value)
     document.body.classList.toggle('ltr', !isRtl.value)
+    document.body.classList.toggle('rtl', isRtl.value)
     localStorage.setItem('plaza-lang', l)
   }
 
