@@ -23,6 +23,11 @@ const avatarColors = [
 
 // Generate decorative dots array
 const dotCount = 8
+
+// Safely cycle through avatar colors — wraps index to prevent out-of-bounds
+function avatarColor(index: number) {
+  return avatarColors[index % avatarColors.length]!
+}
 </script>
 
 <template>
@@ -93,7 +98,7 @@ const dotCount = 8
               <div class="team-avatar-ring"></div>
               <div
                 class="team-avatar"
-                :style="{ background: `linear-gradient(135deg, ${avatarColors[i][0]}, ${avatarColors[i][1]})` }"
+                :style="{ background: `linear-gradient(135deg, ${avatarColor(i)[0]}, ${avatarColor(i)[1]})` }"
               >
                 <span>{{ member.initials }}</span>
               </div>
@@ -107,7 +112,7 @@ const dotCount = 8
                 :style="{
                   width: 3 + (d % 3) + 'px',
                   height: 3 + (d % 3) + 'px',
-                  background: avatarColors[i][0],
+                  background: avatarColor(i)[0],
                   left: (d * 13) % 100 + '%',
                   top: (d * 17 + 30) % 100 + '%',
                   opacity: 0.15 + (d % 4) * 0.04,
