@@ -761,7 +761,8 @@ body.ltr .reveal-fade-right {
   display: none;
 }
 .sk-facebook-reels{
-  border: none;
+  border: none !important;
+  gap: 0 !important;
 }
 
 /* ----- Scrollbar ----- */
