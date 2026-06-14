@@ -760,6 +760,9 @@ body.ltr .reveal-fade-right {
 .sk-load-more-btn-container , .sk-branding-container{
   display: none;
 }
+.sk-facebook-reels{
+  border: none;
+}
 
 /* ----- Scrollbar ----- */
 ::-webkit-scrollbar {
