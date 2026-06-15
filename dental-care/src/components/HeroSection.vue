@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useLanguageStore } from '@/stores/language'
-import { ArrowDown, Star, CheckCircle, Phone } from '@lucide/vue'
-import { useGsapScrubReveal, useGsapParallax, useParallaxGroup } from '@/composables/useGsapReveal'
+import { Calendar, Eye } from '@lucide/vue'
+import gsap from 'gsap'
 import { useLenis } from 'lenis/vue'
 
 const store = useLanguageStore()
@@ -10,190 +10,130 @@ const lenis = useLenis()
 
 const heroRef = ref<HTMLElement | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
-const visualRef = ref<HTMLElement | null>(null)
-const bgRef = ref<HTMLElement | null>(null)
-const blobsRef = ref<HTMLElement | null>(null)
-const chipsRef = ref<HTMLElement | null>(null)
+const imageWrapRef = ref<HTMLElement | null>(null)
+const imageRef = ref<HTMLElement | null>(null)
+const badgeRef = ref<HTMLElement | null>(null)
+const titleRef = ref<HTMLElement | null>(null)
+const subtitleRef = ref<HTMLElement | null>(null)
+const buttonsRef = ref<HTMLElement | null>(null)
+const scrollRef = ref<HTMLElement | null>(null)
 
-// Scroll-linked reveals — animate in lock-step with scroll progress
-useGsapScrubReveal(contentRef, { animation: 'fadeUp' })
-useGsapScrubReveal(visualRef, { animation: 'fadeUp' })
+onMounted(() => {
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-// Parallax background layers at different speeds
-useGsapParallax(bgRef, 0.15)
-useParallaxGroup(blobsRef, { yRange: 60, xRange: 20 })
-useParallaxGroup(chipsRef, { yRange: 30 })
+  // Content stagger — badge, title lines, subtitle, buttons
+  tl.from(badgeRef.value, { y: 40, opacity: 0, duration: 0.9 })
+    .from(
+      titleRef.value?.querySelectorAll('.hero-title-line') ?? [],
+      { y: 70, opacity: 0, duration: 1, stagger: 0.15 },
+      '-=0.5',
+    )
+    .from(subtitleRef.value, { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
+    .from(
+      buttonsRef.value?.querySelectorAll('.hero-btn') ?? [],
+      { y: 20, opacity: 0, duration: 0.6, stagger: 0.12 },
+      '-=0.4',
+    )
 
-const stats = [
-  { num: '+5000', key: 'stat1' },
-  { num: '+15', key: 'stat2' },
-  { num: '+20', key: 'stat3' },
-]
+  // Image — cinematic slide-in with subtle scale
+  tl.from(imageWrapRef.value, {
+    x: '12%',
+    scale: 1.08,
+    opacity: 0,
+    duration: 1.4,
+    ease: 'power2.out',
+  }, '-=1.6')
 
-function scrollToServices() {
-  lenis.value?.scrollTo('#services')
-}
+  // Image inner — slow zoom settle (Ken Burns effect)
+  tl.from(imageRef.value, {
+    scale: 1.15,
+    duration: 2.5,
+    ease: 'power1.out',
+  }, '-=1.2')
+
+  // Scroll indicator
+  tl.from(scrollRef.value, { opacity: 0, y: 10, duration: 0.6 }, '-=0.4')
+})
 
 function scrollToContact() {
   lenis.value?.scrollTo('#contact')
+}
+
+function scrollToServices() {
+  lenis.value?.scrollTo('#services')
 }
 </script>
 
 <template>
   <section id="home" ref="heroRef" class="hero-section">
-    <!-- Background image (parallax) -->
-    <div ref="bgRef" class="hero-bg-image"></div>
+    <!-- Base gradient background -->
+    <div class="hero-bg"></div>
 
-    <!-- Background blobs (parallax group) -->
-    <div ref="blobsRef" class="hero-blobs">
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-      <div class="blob blob-3"></div>
-    </div>
+    <!-- Subtle grain/noise overlay -->
+    <div class="hero-grain"></div>
 
-    <!-- Subtle dots pattern -->
-    <div class="hero-pattern"></div>
+    <!-- Accent light ray -->
+    <div class="hero-light-ray"></div>
 
     <div class="hero-inner">
-      <!-- Left Content -->
+      <!-- Left: Content -->
       <div ref="contentRef" class="hero-content">
-        <div
-          class="hero-badge"
-        >
+        <!-- Badge -->
+        <div ref="badgeRef" class="hero-badge">
           <span class="badge-dot"></span>
           <span>{{ store.t.hero.badge }}</span>
         </div>
 
-        <h1
-          class="hero-title"
-        >
-          <span class="hero-title-line">
-            <span>{{ store.t.hero.title1 }}</span>
-            <span class="text-gradient"> {{ store.t.hero.title2 }}</span>
-          </span>
+        <!-- Title -->
+        <h1 ref="titleRef" class="hero-title">
+          <span class="hero-title-line">{{ store.t.hero.title1 }}</span>
+          <span class="hero-title-line text-gradient">{{ store.t.hero.title2 }}</span>
           <span class="hero-title-line">{{ store.t.hero.title3 }}</span>
           <span class="hero-title-line accent-line">{{ store.t.hero.title4 }}</span>
         </h1>
 
-        <p
-          class="hero-subtitle"
-        >
+        <!-- Subtitle -->
+        <p ref="subtitleRef" class="hero-subtitle">
           {{ store.t.hero.subtitle }}
         </p>
 
-        <div
-          class="hero-ctas"
-        >
-          <button class="btn btn-primary" @click="scrollToContact">
-            {{ store.t.hero.cta1 }}
-            <ArrowDown :size="18" />
+        <!-- Two CTAs -->
+        <div ref="buttonsRef" class="hero-ctas">
+          <button class="hero-btn btn-book" @click="scrollToContact">
+            <Calendar :size="18" />
+            <span>{{ store.t.hero.cta1 }}</span>
           </button>
-          <button class="btn btn-outline" @click="scrollToServices">
-            {{ store.t.hero.cta2 }}
+          <button class="hero-btn btn-cases" @click="scrollToServices">
+            <Eye :size="18" />
+            <span>{{ store.t.hero.cta3 }}</span>
           </button>
-        </div>
-
-        <!-- Stats -->
-        <div
-          class="hero-stats"
-        >
-          <div
-            v-for="(stat, i) in stats"
-            :key="stat.key"
-            class="stat-item"
-            :style="{ '--i': i }"
-          >
-            <span class="stat-num">{{ stat.num }}</span>
-            <span class="stat-label">{{ store.t.hero[stat.key as keyof typeof store.t.hero] }}</span>
-          </div>
         </div>
       </div>
 
-      <!-- Right Visual -->
-      <div ref="visualRef" class="hero-visual">
-        <!-- Main Card -->
-        <div class="hero-card">
-          <div class="hero-card-glow"></div>
-          <div class="hero-card-bg"></div>
-
-          <!-- Tooth icon -->
-          <div class="hero-tooth-wrap">
-            <div class="hero-tooth">
-              <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" class="tooth-svg">
-                <defs>
-                    <linearGradient id="toothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#27c8f7" />
-                      <stop offset="100%" stop-color="#31efc4" />
-                  </linearGradient>
-                </defs>
-                <path d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z" fill="url(#toothGrad)" opacity="0.9"/>
-                <path d="M25 26 Q40 20 55 26" stroke="white" stroke-width="2.5" fill="none" opacity="0.35" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="tooth-ring"></div>
-          </div>
-
-          <h3 class="hero-card-title">{{ store.t.hero.cardTitle }}</h3>
-          <p class="hero-card-sub">{{ store.t.hero.cardSub }}</p>
-
-          <!-- Rating -->
-          <div class="hero-rating">
-            <div class="stars">
-              <Star v-for="i in 5" :key="i" :size="14" fill="#F5A623" color="#F5A623" />
-            </div>
-            <span class="rating-num">4.9</span>
-            <span class="rating-count">({{ store.isRtl ? '+500 تقييم' : '+500 reviews' }})</span>
-          </div>
-
-          <!-- Mini stats -->
-          <div class="hero-card-stats">
-            <div class="mini-stat">
-              <span class="mini-num">+15</span>
-              <span class="mini-label">{{ store.t.hero.stat2 }}</span>
-            </div>
-            <div class="mini-stat">
-              <span class="mini-num">98%</span>
-              <span class="mini-label">{{ store.isRtl ? 'رضا' : 'Satisfaction' }}</span>
-            </div>
-          </div>
+      <!-- Right: Image -->
+      <div ref="imageWrapRef" class="hero-visual">
+        <div class="hero-image-frame">
+          <img ref="imageRef" src="/header.png" alt="" class="hero-image" />
         </div>
 
-        <!-- Floating Chips (parallax group) -->
-        <div ref="chipsRef" class="hero-chips">
-        <div class="floating-chip chip-1 float-1">
-          <div class="chip-icon chip-icon-green">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/><path d="M7 7v14"/></svg>
-          </div>
-          <div class="chip-text">
-            <span class="chip-label">{{ store.t.hero.chip1a }}</span>
-            <span class="chip-value">{{ store.t.hero.chip1b }}</span>
-          </div>
-        </div>
-
-        <div class="floating-chip chip-2 float-2">
-          <div class="chip-icon chip-icon-gold">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          </div>
-          <div class="chip-text">
-            <span class="chip-label">{{ store.t.hero.chip2a }}</span>
-            <span class="chip-value">{{ store.t.hero.chip2b }}</span>
-          </div>
-        </div>
-        </div>
+        <!-- Decorative accent ring -->
+        <div class="hero-ring"></div>
+        <div class="hero-ring hero-ring-2"></div>
       </div>
     </div>
 
     <!-- Scroll indicator -->
-    <div class="scroll-indicator">
-      <span class="scroll-text">{{ store.isRtl ? 'اسحب للأسفل' : 'Scroll down' }}</span>
-      <div class="scroll-mouse">
-        <div class="scroll-wheel"></div>
-      </div>
+    <div ref="scrollRef" class="scroll-indicator">
+      <span class="scroll-text">{{ store.isRtl ? 'اسحب للأسفل' : 'Scroll' }}</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 </template>
 
 <style scoped>
+/* ==========================================
+   HERO — Dark Cinematic Split
+   ========================================== */
 .hero-section {
   min-height: 100vh;
   display: flex;
@@ -201,123 +141,118 @@ function scrollToContact() {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: 72px;
-  background: var(--gradient-hero);
+  background: #0A1628;
 }
 
-/* Background image */
-.hero-bg-image {
+/* Background gradient layer */
+.hero-bg {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(160deg, rgba(248,250,249,0.88) 0%, rgba(218,252,242,0.82) 35%, rgba(197,245,234,0.78) 65%, rgba(248,250,249,0.88) 100%),
-    url('/header.png') center/cover no-repeat;
+    radial-gradient(ellipse 90% 70% at 70% 40%, rgba(37, 215, 184, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 20% 60%, rgba(39, 200, 247, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(10, 22, 40, 0.9) 0%, transparent 50%),
+    linear-gradient(165deg, #0A1628 0%, #0D2B3E 35%, #0E1F3A 65%, #0A1628 100%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Background blobs */
-.hero-blobs {
+/* Grain texture overlay */
+.hero-grain {
   position: absolute;
   inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
   pointer-events: none;
-  overflow: hidden;
   z-index: 1;
+  mix-blend-mode: overlay;
 }
 
-.blob {
+/* Accent light ray from top-right */
+.hero-light-ray {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.25;
-}
-
-.blob-1 {
-  width: 600px;
-  height: 600px;
-  background: var(--teal-100);
-  top: -150px;
-  right: -100px;
-  animation: blob1 15s ease-in-out infinite;
-}
-
-.blob-2 {
-  width: 500px;
-  height: 500px;
-  background: var(--blue-100);
-  bottom: -200px;
-  left: -100px;
-  animation: blob2 12s ease-in-out infinite;
-}
-
-.blob-3 {
-  width: 300px;
-  height: 300px;
-  background: var(--gold-light);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0.1;
-}
-
-/* Pattern overlay */
-.hero-pattern {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(37, 215, 184, 0.06) 1px, transparent 1px);
-  background-size: 30px 30px;
+  top: -30%;
+  right: -10%;
+  width: 70%;
+  height: 120%;
+  background: linear-gradient(
+    135deg,
+    rgba(49, 239, 196, 0.04) 0%,
+    rgba(39, 200, 247, 0.03) 30%,
+    transparent 70%
+  );
+  transform: rotate(-18deg);
   pointer-events: none;
   z-index: 1;
 }
 
+/* ==========================================
+   Inner — Split Layout
+   ========================================== */
 .hero-inner {
   width: 100%;
   margin: 0 auto;
   padding: 3rem 5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 2rem;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   flex: 1;
+  max-width: 1400px;
 }
 
-/* Content */
+/* ==========================================
+   Content — Left Side
+   ========================================== */
 .hero-content {
   display: flex;
   flex-direction: column;
   gap: 0;
+  padding-right: 2rem;
 }
 
+/* Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(37, 215, 184, 0.1);
-  border: 1px solid rgba(37, 215, 184, 0.2);
+  background: rgba(37, 215, 184, 0.08);
+  border: 1px solid rgba(37, 215, 184, 0.15);
   border-radius: 100px;
-  padding: 0.45rem 1.1rem;
-  font-size: 0.82rem;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--teal-600);
-  margin-bottom: 1.5rem;
+  color: var(--teal-300);
+  margin-bottom: 1.75rem;
   backdrop-filter: blur(4px);
+  width: fit-content;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .badge-dot {
-  width: 7px;
-  height: 7px;
-  background: var(--teal-500);
+  width: 6px;
+  height: 6px;
+  background: var(--teal-400);
   border-radius: 50%;
   animation: pulse-dot 2s ease-in-out infinite;
 }
 
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* Title */
 .hero-title {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
   font-weight: 900;
-  line-height: 1.15;
-  color: var(--text-primary);
+  line-height: 1.12;
+  color: #fff;
   margin-bottom: 0.5rem;
 }
 
@@ -326,375 +261,205 @@ function scrollToContact() {
 }
 
 .accent-line {
-  font-size: 1.15em;
+  font-size: 1.1em;
 }
 
+/* Subtitle */
 .hero-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1.8;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  max-width: 520px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 2.5rem;
+  max-width: 480px;
   font-weight: 400;
 }
 
+/* ==========================================
+   Buttons — Two CTAs
+   ========================================== */
 .hero-ctas {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-/* Stats */
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 2.5rem;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(37, 215, 184, 0.12);
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
 }
 
-.stat-item {
-  text-align: center;
-  animation: fade-up-stat 0.5s ease-out both;
-  animation-delay: calc(0.7s + var(--i) * 0.15s);
-}
-
-@keyframes fade-up-stat {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.stat-num {
-  display: block;
-  font-size: 1.8rem;
-  font-weight: 900;
+.btn-book {
   background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.1;
+  color: #0A1628;
+  box-shadow: 0 0 30px rgba(37, 215, 184, 0.2);
 }
 
-.stat-label {
-  display: block;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 0.2rem;
-  font-weight: 500;
+.btn-book:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(37, 215, 184, 0.35);
 }
 
-/* Hero Visual */
+.btn-book:active {
+  transform: translateY(0);
+}
+
+.btn-cases {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.btn-cases:hover {
+  border-color: var(--teal-400);
+  color: #fff;
+  background: rgba(37, 215, 184, 0.08);
+  transform: translateY(-3px);
+}
+
+.btn-cases:active {
+  transform: translateY(0);
+}
+
+/* ==========================================
+   Visual — Right Side Image
+   ========================================== */
 .hero-visual {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  min-height: 500px;
 }
 
-.hero-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: var(--radius-xl);
-  padding: 2.5rem;
+.hero-image-frame {
+  position: relative;
   width: 100%;
-  max-width: 400px;
-  position: relative;
-  z-index: 2;
-  border: 1px solid rgba(37, 215, 184, 0.12);
-  box-shadow: 0 20px 60px rgba(37, 215, 184, 0.12), 0 0 80px rgba(37, 215, 184, 0.05);
-  text-align: center;
+  height: 100%;
+  min-height: 520px;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(37, 215, 184, 0.06);
+  /* Gradient mask on the left edge so it blends subtly with dark bg */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 15%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 15%, #000 100%);
 }
 
-.hero-card-glow {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 20%, rgba(37, 215, 184, 0.06), transparent 60%);
-  pointer-events: none;
-}
-
-.hero-card-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: var(--gradient-primary-subtle);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* Tooth */
-.hero-tooth-wrap {
-  position: relative;
-  display: inline-flex;
-  margin-bottom: 1.5rem;
-  z-index: 1;
-}
-
-.hero-tooth {
-  width: 100px;
-  height: 100px;
-  background: var(--gradient-primary-subtle);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.tooth-svg {
-  width: 58px;
-  height: 58px;
-}
-
-.tooth-ring {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(37, 215, 184, 0.15);
-  animation: spin-slow 10s linear infinite;
-}
-
-.hero-card-title {
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 0.3rem;
-  color: var(--text-primary);
-  position: relative;
-  z-index: 1;
-}
-
-.hero-card-sub {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.hero-rating {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.stars {
-  display: flex;
-  gap: 2px;
-}
-
-.rating-num {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-left: 0.25rem;
-}
-
-body.rtl .rating-num {
-  margin-left: 0;
-  margin-right: 0.25rem;
-}
-
-.rating-count {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-
-.hero-card-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  position: relative;
-  z-index: 1;
-}
-
-.mini-stat {
-  background: var(--teal-50);
-  border-radius: var(--radius-sm);
-  padding: 0.85rem 0.5rem;
-  text-align: center;
-}
-
-.mini-stat:last-child {
-  background: var(--blue-50);
-}
-
-.mini-num {
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  font-size: 1.3rem;
-  font-weight: 900;
-  color: var(--teal-600);
-  line-height: 1.1;
 }
 
-.mini-stat:last-child .mini-num {
-  color: var(--blue-600);
-}
-
-.mini-label {
-  display: block;
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  margin-top: 0.15rem;
-}
-
-/* Floating Chips */
-.floating-chip {
+/* Decorative concentric rings behind the image */
+.hero-ring {
   position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-radius: var(--radius-md);
-  padding: 0.7rem 1.1rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  z-index: 3;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  top: 50%;
+  right: -8%;
+  transform: translateY(-50%);
+  width: 110%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 215, 184, 0.06);
+  pointer-events: none;
+  z-index: -1;
 }
 
-.chip-1 {
-  top: 5%;
+.hero-ring-2 {
+  width: 130%;
+  border-color: rgba(39, 200, 247, 0.04);
   right: -15%;
 }
 
-.chip-2 {
-  bottom: 10%;
-  left: -15%;
-}
-
-body.rtl .chip-1 {
-  right: auto;
-  left: -15%;
-}
-
-body.rtl .chip-2 {
-  left: auto;
-  right: -15%;
-}
-
-.chip-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.chip-icon-green {
-  background: var(--teal-50);
-  color: var(--teal-600);
-}
-
-.chip-icon-gold {
-  background: var(--gold-pale);
-  color: var(--gold);
-}
-
-.chip-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.3;
-}
-
-.chip-label {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.chip-value {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.chip-1 .chip-value {
-  color: var(--teal-600);
-}
-
-.chip-2 .chip-value {
-  color: var(--blue-600);
-}
-
-/* Scroll indicator */
+/* ==========================================
+   Scroll Indicator
+   ========================================== */
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 2.5rem;
+  left: 5rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  opacity: 0.6;
-  animation: fade-in-out 3s ease-in-out infinite;
-  z-index: 1;
-}
-
-@keyframes fade-in-out {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
+  gap: 0.75rem;
+  z-index: 2;
 }
 
 .scroll-text {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
 }
 
-.scroll-mouse {
-  width: 22px;
-  height: 34px;
-  border: 2px solid var(--gray-300);
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  padding-top: 6px;
+.scroll-line {
+  width: 40px;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-.scroll-wheel {
-  width: 3px;
-  height: 8px;
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
   background: var(--teal-400);
-  border-radius: 2px;
-  animation: scroll-wheel 2s ease-in-out infinite;
+  animation: scroll-line 2.4s ease-in-out infinite;
 }
 
-@keyframes scroll-wheel {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(10px); opacity: 0; }
+@keyframes scroll-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+/* ==========================================
+   Responsive
+   ========================================== */
+@media (max-width: 1024px) {
+  .hero-inner {
+    padding: 3rem 2.5rem;
+    gap: 3rem;
+  }
+  .hero-image-frame {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 800px) {
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+    padding: 6rem 1.5rem 3rem;
   }
   .hero-content {
     order: 1;
+    padding-right: 0;
+    align-items: center;
   }
-  .hero-visual {
-    order: 0;
-    max-width: 340px;
-    margin: 0 auto;
+  .hero-badge {
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero-subtitle {
     margin-left: auto;
@@ -704,25 +469,46 @@ body.rtl .chip-2 {
     justify-content: center;
   }
   .hero-visual {
+    order: 0;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: auto;
+  }
+  .hero-image-frame {
+    min-height: 300px;
+    -webkit-mask-image: none;
+    mask-image: none;
+    border-radius: 12px;
+  }
+  .hero-ring {
     display: none;
   }
   .scroll-indicator {
-    display: none;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
 @media (max-width: 480px) {
-  .hero-section {
-    padding-top: 60px;
-  }
   .hero-inner {
-    padding: 2rem 1.25rem;
+    padding: 5rem 1.25rem 2rem;
   }
-  .hero-stats {
-    gap: 0.5rem;
+  .hero-title {
+    font-size: 2rem;
   }
-  .stat-num {
-    font-size: 1.4rem;
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-image-frame {
+    min-height: 220px;
   }
 }
 </style>

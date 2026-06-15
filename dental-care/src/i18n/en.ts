@@ -18,6 +18,7 @@ export default {
     subtitle: 'Plaza Dental Care — a specialist clinic combining the latest dental technology with a comfortable environment. Our team of expert doctors is always at your service.',
     cta1: 'Book Your Appointment',
     cta2: 'Explore Services',
+    cta3: 'See Cases',
     stat1: 'Happy Patients',
     stat2: 'Years Experience',
     stat3: 'Specialists',
