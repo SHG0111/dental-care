@@ -14,12 +14,19 @@ useGsapScrubStagger(gridRef, '> .team-card-wrap', { stagger: 0.1 })
 
 const avatarColors = [
   ['#27c8f7', '#0D4F8B'],
-  ['#0D4F8B', '#1A6FC4'],
-  ['#F5A623', '#E8890C'],
   ['#31efc4', '#20b3a0'],
-  ['#27c8f7', '#0D4F8B'],
-  ['#F5A623', '#E8890C'],
+  ['#0D4F8B', '#1A6FC4'],
+
+
 ] as const
+
+const avatarImage = [
+  '/Dr_AbdelRahman.png',
+  '/Dr_Hesham.png',
+  '/Dr_Mohammed.png',
+
+
+] as unknown as string
 
 // Generate decorative dots array
 const dotCount = 8
@@ -34,18 +41,13 @@ function avatarColor(index: number) {
   <section id="team" ref="sectionRef" class="section team-section">
     <!-- Geometric background pattern -->
     <div class="team-pattern">
-      <div
-        v-for="n in 6"
-        :key="n"
-        class="team-pattern-ring"
-        :style="{
-          width: 60 + n * 40 + 'px',
-          height: 60 + n * 40 + 'px',
-          top: 10 + n * 12 + '%',
-          left: (n % 2 === 0 ? 80 : 5) + '%',
-          opacity: 0.03 + n * 0.01,
-        }"
-      ></div>
+      <div v-for="n in avatarImage.length" :key="n" class="team-pattern-ring" :style="{
+        width: 60 + n * 40 + 'px',
+        height: 60 + n * 40 + 'px',
+        top: 10 + n * 12 + '%',
+        left: (n % 2 === 0 ? 80 : 5) + '%',
+        opacity: 0.03 + n * 0.01,
+      }"></div>
     </div>
 
     <div class="section-inner">
@@ -53,9 +55,7 @@ function avatarColor(index: number) {
       <div ref="headerRef" class="section-header centered">
         <h2 class="section-title">
           {{ store.t.team.title.split("'")[0]
-          }}<span class="accent"
-            >'{{ store.t.team.title.includes("'") ? store.t.team.title.split("'")[1] : '' }}</span
-          >
+          }}<span class="accent">'{{ store.t.team.title.includes("'") ? store.t.team.title.split("'")[1] : '' }}</span>
         </h2>
         <p class="section-subtitle">
           {{ store.t.team.subtitle }}
@@ -65,60 +65,50 @@ function avatarColor(index: number) {
       <!-- Grid -->
       <div ref="gridRef" class="team-grid">
         <div v-for="(member, i) in store.t.team.items" :key="i" class="team-card-wrap">
-          <div
-            class="team-card"
-            @mousemove="
-              (e: MouseEvent) => {
-                const card = e.currentTarget as HTMLElement
-                const rect = card.getBoundingClientRect()
-                const x = (e.clientX - rect.left) / rect.width - 0.5
-                const y = (e.clientY - rect.top) / rect.height - 0.5
-                card.style.setProperty('--rotate-x', -y * 12 + 'deg')
-                card.style.setProperty('--rotate-y', x * 12 + 'deg')
-                card.style.setProperty('--glow-x', x * 50 + 50 + '%')
-                card.style.setProperty('--glow-y', y * 50 + 50 + '%')
-              }
-            "
-            @mouseleave="
-              (e: MouseEvent) => {
-                const card = e.currentTarget as HTMLElement
-                card.style.setProperty('--rotate-x', '0deg')
-                card.style.setProperty('--rotate-y', '0deg')
-                card.style.setProperty('--glow-x', '50%')
-                card.style.setProperty('--glow-y', '50%')
-              }
-            "
-          >
+          <div class="team-card" @mousemove="
+            (e: MouseEvent) => {
+              const card = e.currentTarget as HTMLElement
+              const rect = card.getBoundingClientRect()
+              const x = (e.clientX - rect.left) / rect.width - 0.5
+              const y = (e.clientY - rect.top) / rect.height - 0.5
+              card.style.setProperty('--rotate-x', -y * 12 + 'deg')
+              card.style.setProperty('--rotate-y', x * 12 + 'deg')
+              card.style.setProperty('--glow-x', x * 50 + 50 + '%')
+              card.style.setProperty('--glow-y', y * 50 + 50 + '%')
+            }
+          " @mouseleave="
+            (e: MouseEvent) => {
+              const card = e.currentTarget as HTMLElement
+              card.style.setProperty('--rotate-x', '0deg')
+              card.style.setProperty('--rotate-y', '0deg')
+              card.style.setProperty('--glow-x', '50%')
+              card.style.setProperty('--glow-y', '50%')
+            }
+          ">
             <!-- Animated gradient border -->
             <div class="team-card-border"></div>
 
             <!-- Avatar -->
             <div class="team-avatar-wrap">
               <div class="team-avatar-ring"></div>
-              <div
-                class="team-avatar"
-                :style="{
-                  background: `linear-gradient(135deg, ${avatarColor(i)[0]}, ${avatarColor(i)[1]})`,
-                }"
-              >
-                <span>{{ member.initials }}</span>
+              <div class="team-avatar" :style="{
+                background: `linear-gradient(135deg, ${avatarColor(i)[0]}, ${avatarColor(i)[1]})`,
+              }">
+                <!-- <span>{{ member.initials }}</span> -->
+                <img :src="avatarImage[i]" alt="Doctor Avatar" />
               </div>
             </div>
 
             <!-- Decorative dots -->
             <div class="team-card-dots">
-              <span
-                v-for="d in dotCount"
-                :key="d"
-                :style="{
-                  width: 3 + (d % 3) + 'px',
-                  height: 3 + (d % 3) + 'px',
-                  background: avatarColor(i)[0],
-                  left: ((d * 13) % 100) + '%',
-                  top: ((d * 17 + 30) % 100) + '%',
-                  opacity: 0.15 + (d % 4) * 0.04,
-                }"
-              ></span>
+              <span v-for="d in dotCount" :key="d" :style="{
+                width: 3 + (d % 3) + 'px',
+                height: 3 + (d % 3) + 'px',
+                background: avatarColor(i)[0],
+                left: ((d * 13) % 100) + '%',
+                top: ((d * 17 + 30) % 100) + '%',
+                opacity: 0.15 + (d % 4) * 0.04,
+              }"></span>
             </div>
 
             <h3>{{ member.name }}</h3>
@@ -215,16 +205,14 @@ function avatarColor(index: number) {
   inset: -1px;
   border-radius: inherit;
   padding: 1.5px;
-  background: conic-gradient(
-    from var(--angle, 0deg),
-    transparent,
-    transparent 30%,
-    rgba(37, 215, 184, 0.3),
-    rgba(39, 200, 247, 0.5),
-    rgba(37, 215, 184, 0.3),
-    transparent 70%,
-    transparent
-  );
+  background: conic-gradient(from var(--angle, 0deg),
+      transparent,
+      transparent 30%,
+      rgba(37, 215, 184, 0.3),
+      rgba(39, 200, 247, 0.5),
+      rgba(37, 215, 184, 0.3),
+      transparent 70%,
+      transparent);
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -288,9 +276,9 @@ function avatarColor(index: number) {
 }
 
 .team-avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -304,6 +292,7 @@ function avatarColor(index: number) {
     0 4px 20px rgba(0, 0, 0, 0.12),
     0 0 0 3px rgba(255, 255, 255, 0.8);
   transition: box-shadow 0.4s ease;
+  overflow: hidden;
 }
 
 .team-card:hover .team-avatar {
@@ -318,12 +307,12 @@ function avatarColor(index: number) {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 112px;
-  height: 112px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(37, 215, 184, 0.15);
-  animation: ring-spin 12s linear infinite;
-  transition: border-color 0.4s ease;
+  width: 220px;
+  height: 220px;
+  border-radius: 3000px;
+  border: 3px dashed rgba(37, 215, 184, 0.15);
+  animation: ring-spin-68871bab 54s linear infinite;
+  transition: border-color 0.8s ease-in-out;
 }
 
 .team-card:hover .team-avatar-ring {
@@ -410,11 +399,9 @@ function avatarColor(index: number) {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(
-    circle at var(--glow-x, 50%) var(--glow-y, 50%),
-    rgba(37, 215, 184, 0.06),
-    transparent 50%
-  );
+  background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(37, 215, 184, 0.06),
+      transparent 50%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s ease;
