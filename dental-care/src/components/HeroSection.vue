@@ -22,34 +22,38 @@ onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
   // Content stagger — badge, title lines, subtitle, buttons
-  tl.from(badgeRef.value, { y: 40, opacity: 0, duration: 0.9 })
+  tl.from(badgeRef.value, { y: 40, opacity: 0, duration: 0.9, ease: 'power2.inOut' })
     .from(
-      titleRef.value?.querySelectorAll('.hero-title-line') ?? [],
-      { y: 70, opacity: 0, duration: 1, stagger: 0.15 },
+      titleRef.value,
+      { y: 70, opacity: 0, duration: 1, stagger: 0.15, ease: 'power2.inOut' },
       '-=0.5',
     )
-    .from(subtitleRef.value, { y: 30, opacity: 0, duration: 0.8 }, '-=0.6')
-    .from(
-      buttonsRef.value?.querySelectorAll('.hero-btn') ?? [],
-      { y: 20, opacity: 0, duration: 0.6, stagger: 0.12 },
-      '-=0.4',
-    )
+    .from(subtitleRef.value, { y: 30, opacity: 0, duration: 0.8, ease: 'power2.inOut' }, '-=0.6')
+    .from(buttonsRef.value, { y: 30, opacity: 0, duration: 0.8, ease: 'power2.inOut' }, '-=0.7')
 
   // Image — cinematic slide-in with subtle scale
-  tl.from(imageWrapRef.value, {
-    x: '12%',
-    scale: 1.08,
-    opacity: 0,
-    duration: 1.4,
-    ease: 'power2.out',
-  }, '-=1.6')
+  tl.from(
+    imageWrapRef.value,
+    {
+      x: '12%',
+      scale: 1.08,
+      opacity: 0,
+      duration: 1.4,
+      ease: 'power2.inOut',
+    },
+    '-=1.6',
+  )
 
   // Image inner — slow zoom settle (Ken Burns effect)
-  tl.from(imageRef.value, {
-    scale: 1.15,
-    duration: 2.5,
-    ease: 'power1.out',
-  }, '-=1.2')
+  tl.from(
+    imageRef.value,
+    {
+      scale: 1.15,
+      duration: 2.5,
+      ease: 'power1.inOut',
+    },
+    '-=1.2',
+  )
 
   // Scroll indicator
   tl.from(scrollRef.value, { opacity: 0, y: 10, duration: 0.6 }, '-=0.4')
@@ -75,21 +79,15 @@ function scrollToServices() {
     <!-- Accent light ray -->
     <div class="hero-light-ray"></div>
 
-    <div class="hero-inner">
+    <div class="hero-inner px-4">
       <!-- Left: Content -->
       <div ref="contentRef" class="hero-content">
-        <!-- Badge -->
-        <div ref="badgeRef" class="hero-badge">
-          <span class="badge-dot"></span>
-          <span>{{ store.t.hero.badge }}</span>
-        </div>
-
         <!-- Title -->
-        <h1 ref="titleRef" class="hero-title">
-          <span class="hero-title-line">{{ store.t.hero.title1 }}</span>
-          <span class="hero-title-line text-gradient">{{ store.t.hero.title2 }}</span>
-          <span class="hero-title-line">{{ store.t.hero.title3 }}</span>
-          <span class="hero-title-line accent-line">{{ store.t.hero.title4 }}</span>
+        <h1 ref="titleRef" class="hero-title hero-title-line">
+          {{ store.t.hero.title1 }}
+          {{ store.t.hero.title2 }}
+          {{ store.t.hero.title3 }}
+          <span class="text-gradient">{{ store.t.hero.title4 }}</span>
         </h1>
 
         <!-- Subtitle -->
@@ -113,7 +111,7 @@ function scrollToServices() {
       <!-- Right: Image -->
       <div ref="imageWrapRef" class="hero-visual">
         <div class="hero-image-frame">
-          <img ref="imageRef" src="/header.png" alt="" class="hero-image" />
+          <img ref="imageRef" src="/header_image.png" alt="" class="hero-image" />
         </div>
 
         <!-- Decorative accent ring -->
@@ -141,7 +139,7 @@ function scrollToServices() {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: #0A1628;
+  background: #0a1628;
 }
 
 /* Background gradient layer */
@@ -152,7 +150,7 @@ function scrollToServices() {
     radial-gradient(ellipse 90% 70% at 70% 40%, rgba(37, 215, 184, 0.08) 0%, transparent 70%),
     radial-gradient(ellipse 60% 50% at 20% 60%, rgba(39, 200, 247, 0.05) 0%, transparent 60%),
     radial-gradient(ellipse 100% 80% at 50% 100%, rgba(10, 22, 40, 0.9) 0%, transparent 50%),
-    linear-gradient(165deg, #0A1628 0%, #0D2B3E 35%, #0E1F3A 65%, #0A1628 100%);
+    linear-gradient(165deg, #0a1628 0%, #0d2b3e 35%, #0e1f3a 65%, #0a1628 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -161,7 +159,7 @@ function scrollToServices() {
 .hero-grain {
   position: absolute;
   inset: 0;
-  opacity: 0.035;
+  opacity: 0.5;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 180px 180px;
@@ -171,7 +169,7 @@ function scrollToServices() {
 }
 
 /* Accent light ray from top-right */
-.hero-light-ray {
+/* .hero-light-ray {
   position: absolute;
   top: -30%;
   right: -10%;
@@ -186,7 +184,7 @@ function scrollToServices() {
   transform: rotate(-18deg);
   pointer-events: none;
   z-index: 1;
-}
+} */
 
 /* ==========================================
    Inner — Split Layout
@@ -194,15 +192,16 @@ function scrollToServices() {
 .hero-inner {
   width: 100%;
   margin: 0 auto;
-  padding: 3rem 5rem;
+  /* padding: 3rem 5rem; */
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  /* grid-template-columns: 1.5fr 1fr; */
+  /* gap: 2rem; */
   align-items: center;
   position: relative;
   z-index: 2;
   flex: 1;
-  max-width: 1400px;
+  margin-top: 110px;
+  /* max-width: 1400px; */
 }
 
 /* ==========================================
@@ -212,10 +211,11 @@ function scrollToServices() {
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding-right: 2rem;
+  max-width: 1000px;
+  padding: 0 5rem;
 }
 
-/* Badge */
+/* Badge
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -232,25 +232,32 @@ function scrollToServices() {
   width: fit-content;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-}
+} */
 
-.badge-dot {
+/* .badge-dot {
   width: 6px;
   height: 6px;
   background: var(--teal-400);
   border-radius: 50%;
   animation: pulse-dot 2s ease-in-out infinite;
-}
+} */
 
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
-}
+/* @keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+} */
 
 /* Title */
 .hero-title {
   font-size: clamp(2.6rem, 4.5vw, 3.8rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.12;
   color: #fff;
   margin-bottom: 0.5rem;
@@ -268,10 +275,13 @@ function scrollToServices() {
 .hero-subtitle {
   font-size: 1rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.55);
+  background: var(--gradient-primary-subtle);
   margin-bottom: 2.5rem;
   max-width: 480px;
   font-weight: 400;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ==========================================
@@ -302,7 +312,7 @@ function scrollToServices() {
 
 .btn-book {
   background: var(--gradient-primary);
-  color: #0A1628;
+  color: #0a1628;
   box-shadow: 0 0 30px rgba(37, 215, 184, 0.2);
 }
 
@@ -336,16 +346,16 @@ function scrollToServices() {
 /* ==========================================
    Visual — Right Side Image
    ========================================== */
-.hero-visual {
+/* .hero-visual {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   min-height: 500px;
-}
+} */
 
-.hero-image-frame {
+/* .hero-image-frame {
   position: relative;
   width: 100%;
   height: 100%;
@@ -355,36 +365,44 @@ function scrollToServices() {
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(37, 215, 184, 0.06);
-  /* Gradient mask on the left edge so it blends subtly with dark bg */
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 15%, #000 100%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 15%, #000 100%);
-}
+} */
 
 .hero-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  min-width: 700px;
 }
 
 /* Decorative concentric rings behind the image */
+html[dir='ltr'] .hero-ring {
+  right: 17%;
+  left: unset;
+}
+html[dir='ltr'] .hero-ring-2 {
+  right: 25%;
+}
 .hero-ring {
   position: absolute;
-  top: 50%;
-  right: -8%;
-  transform: translateY(-50%);
-  width: 110%;
+  top: 55%;
+  left: 17%;
+  transform: translateY(-125%);
+  width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 1px solid rgba(37, 215, 184, 0.06);
   pointer-events: none;
   z-index: -1;
+  box-shadow: 0 0px 200px #25d7b812;
 }
 
 .hero-ring-2 {
-  width: 130%;
+  width: 85%;
   border-color: rgba(39, 200, 247, 0.04);
-  right: -15%;
+  left: 25%;
 }
 
 /* ==========================================
@@ -428,8 +446,12 @@ function scrollToServices() {
 }
 
 @keyframes scroll-line {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(300%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
 }
 
 /* ==========================================
@@ -440,9 +462,9 @@ function scrollToServices() {
     padding: 3rem 2.5rem;
     gap: 3rem;
   }
-  .hero-image-frame {
+  /* .hero-image-frame {
     min-height: 400px;
-  }
+  } */
 }
 
 @media (max-width: 800px) {
@@ -450,7 +472,7 @@ function scrollToServices() {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
-    padding: 6rem 1.5rem 3rem;
+    /* padding: 6rem 1.5rem 3rem; */
   }
   .hero-content {
     order: 1;
@@ -470,15 +492,15 @@ function scrollToServices() {
   }
   .hero-visual {
     order: 0;
-    max-width: 500px;
+    /* max-width: 500px; */
     margin: 0 auto;
     min-height: auto;
   }
   .hero-image-frame {
-    min-height: 300px;
+    /* min-height: 300px; */
     -webkit-mask-image: none;
     mask-image: none;
-    border-radius: 12px;
+    /* border-radius: 12px; */
   }
   .hero-ring {
     display: none;
@@ -491,7 +513,7 @@ function scrollToServices() {
 
 @media (max-width: 480px) {
   .hero-inner {
-    padding: 5rem 1.25rem 2rem;
+    /* padding: 5rem 1.25rem 2rem; */
   }
   .hero-title {
     font-size: 2rem;
@@ -508,7 +530,7 @@ function scrollToServices() {
     justify-content: center;
   }
   .hero-image-frame {
-    min-height: 220px;
+    /* min-height: 220px; */
   }
 }
 </style>

@@ -12,7 +12,7 @@ const waLink = `https://wa.me/201200077665`
     rel="noopener noreferrer"
     class="whatsapp-float"
     :title="`WhatsApp: ${waNumber}`"
-    :dir="$attrs.dir as string || 'ltr'"
+    :dir="($attrs.dir as string) || 'ltr'"
   >
     <div class="wa-icon">
       <WhatsAppIcon :size="28" />
@@ -95,14 +95,13 @@ body.rtl .whatsapp-float {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--gold);
-  color: white;
+  background: var(--gold-light);
+  color: black;
   font-size: 0.65rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid white;
 }
 
 body.rtl .wa-badge {
@@ -115,9 +114,15 @@ body.rtl .wa-badge {
 }
 
 @keyframes badge-pop {
-  0% { transform: scale(0); }
-  70% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .wa-tooltip {

@@ -36,11 +36,6 @@ function goToMap(e: MouseEvent) {
       <div class="contact-grid">
         <!-- Info Side -->
         <div ref="infoRef" class="contact-info">
-          <div class="section-label">
-            <span class="section-label-dot"></span>
-            <span>{{ store.t.contact.label }}</span>
-          </div>
-
           <h2 class="contact-title">
             {{ store.t.contact.title }}
           </h2>
@@ -54,13 +49,15 @@ function goToMap(e: MouseEvent) {
             <a
               v-for="(item, i) in items"
               :key="item.key"
-              :href="item.key === 'whatsapp'
-                ? 'https://wa.me/201200077665'
-                : item.key === 'phone'
-                  ? 'tel:+201200077665'
-                  : item.key === 'email'
-                    ? 'mailto:info@plazadentalcare.com'
-                    : '#map'"
+              :href="
+                item.key === 'whatsapp'
+                  ? 'https://wa.me/201200077665'
+                  : item.key === 'phone'
+                    ? 'tel:+201200077665'
+                    : item.key === 'email'
+                      ? 'mailto:info@plazadentalcare.com'
+                      : '#map'
+              "
               :target="item.key === 'whatsapp' ? '_blank' : undefined"
               :class="['contact-item', { 'contact-item-address': item.key === 'address' }]"
               @click="item.key === 'address' ? goToMap($event) : undefined"
@@ -93,7 +90,9 @@ function goToMap(e: MouseEvent) {
               :data-tooltip="store.isRtl ? 'فيسبوك' : 'Facebook'"
             >
               <!-- Facebook SVG -->
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
             </a>
             <a
               href="https://www.instagram.com/"
@@ -103,7 +102,20 @@ function goToMap(e: MouseEvent) {
               :data-tooltip="store.isRtl ? 'انستغرام' : 'Instagram'"
             >
               <!-- Instagram SVG -->
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
             </a>
             <a
               href="https://wa.me/201200077665"
@@ -130,7 +142,11 @@ function goToMap(e: MouseEvent) {
                       <stop offset="100%" stop-color="#31efc4" />
                     </linearGradient>
                   </defs>
-                  <path d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z" fill="url(#mapGrad)" opacity="0.15"/>
+                  <path
+                    d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z"
+                    fill="url(#mapGrad)"
+                    opacity="0.15"
+                  />
                 </svg>
               </div>
 
@@ -139,13 +155,24 @@ function goToMap(e: MouseEvent) {
                   <MapPin :size="16" />
                   <span>{{ store.t.contact.addressValue }}</span>
                 </div>
-                <h3>{{ store.isRtl ? 'مركز بلازا لتجميل الاسنان' : 'Plaza Dental Cosmetic Center' }}</h3>
+                <h3>
+                  {{ store.isRtl ? 'مركز بلازا لتجميل الاسنان' : 'Plaza Dental Cosmetic Center' }}
+                </h3>
                 <div class="map-hours-line">
                   <span class="map-label">{{ store.isRtl ? 'ساعات العمل:' : 'Hours:' }}</span>
-                  <span>{{ store.t.hours.weekdays }} ({{ store.t.hours.sun }}-{{ store.t.hours.thu }})</span>
+                  <span
+                    >{{ store.t.hours.weekdays }} ({{ store.t.hours.sun }}-{{
+                      store.t.hours.thu
+                    }})</span
+                  >
                 </div>
                 <div class="map-cta-row">
-                  <a :href="`https://wa.me/201200077665`" target="_blank" class="btn btn-primary" style="flex:1;justify-content:center">
+                  <a
+                    :href="`https://wa.me/201200077665`"
+                    target="_blank"
+                    class="btn btn-primary"
+                    style="flex: 1; justify-content: center"
+                  >
                     <WhatsAppIcon :size="18" />
                     {{ store.isRtl ? 'راسلنا واتساب' : 'WhatsApp Us' }}
                   </a>
@@ -155,9 +182,8 @@ function goToMap(e: MouseEvent) {
 
             <!-- Decorative elements -->
             <div class="map-dots">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span> <span></span><span></span
+              ><span></span><span></span> <span></span><span></span><span></span><span></span>
             </div>
           </div>
         </div>
@@ -289,13 +315,13 @@ function goToMap(e: MouseEvent) {
 }
 
 .social-btn.facebook {
-  background: #E8F0FE;
-  color: #1877F2;
+  background: #e8f0fe;
+  color: #1877f2;
 }
 
 .social-btn.instagram {
-  background: #FDE7F5;
-  color: #E14B6A;
+  background: #fde7f5;
+  color: #e14b6a;
 }
 
 .social-btn.whatsapp {
@@ -309,11 +335,11 @@ function goToMap(e: MouseEvent) {
 }
 
 .social-btn.facebook:hover {
-  background: #1877F2;
+  background: #1877f2;
 }
 
 .social-btn.instagram:hover {
-  background: #E14B6A;
+  background: #e14b6a;
 }
 
 .social-btn.whatsapp:hover {

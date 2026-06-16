@@ -51,12 +51,11 @@ function avatarColor(index: number) {
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header centered">
-        <div class="section-label">
-          <span class="section-label-dot"></span>
-          <span>{{ store.t.team.label }}</span>
-        </div>
         <h2 class="section-title">
-          {{ store.t.team.title.split("'")[0] }}<span class="accent">'{{ store.t.team.title.includes("'") ? store.t.team.title.split("'")[1] : '' }}</span>
+          {{ store.t.team.title.split("'")[0]
+          }}<span class="accent"
+            >'{{ store.t.team.title.includes("'") ? store.t.team.title.split("'")[1] : '' }}</span
+          >
         </h2>
         <p class="section-subtitle">
           {{ store.t.team.subtitle }}
@@ -65,30 +64,30 @@ function avatarColor(index: number) {
 
       <!-- Grid -->
       <div ref="gridRef" class="team-grid">
-        <div
-          v-for="(member, i) in store.t.team.items"
-          :key="i"
-          class="team-card-wrap"
-        >
+        <div v-for="(member, i) in store.t.team.items" :key="i" class="team-card-wrap">
           <div
             class="team-card"
-            @mousemove="(e: MouseEvent) => {
-              const card = (e.currentTarget as HTMLElement)
-              const rect = card.getBoundingClientRect()
-              const x = (e.clientX - rect.left) / rect.width - 0.5
-              const y = (e.clientY - rect.top) / rect.height - 0.5
-              card.style.setProperty('--rotate-x', (-y * 12) + 'deg')
-              card.style.setProperty('--rotate-y', (x * 12) + 'deg')
-              card.style.setProperty('--glow-x', (x * 50 + 50) + '%')
-              card.style.setProperty('--glow-y', (y * 50 + 50) + '%')
-            }"
-            @mouseleave="(e: MouseEvent) => {
-              const card = (e.currentTarget as HTMLElement)
-              card.style.setProperty('--rotate-x', '0deg')
-              card.style.setProperty('--rotate-y', '0deg')
-              card.style.setProperty('--glow-x', '50%')
-              card.style.setProperty('--glow-y', '50%')
-            }"
+            @mousemove="
+              (e: MouseEvent) => {
+                const card = e.currentTarget as HTMLElement
+                const rect = card.getBoundingClientRect()
+                const x = (e.clientX - rect.left) / rect.width - 0.5
+                const y = (e.clientY - rect.top) / rect.height - 0.5
+                card.style.setProperty('--rotate-x', -y * 12 + 'deg')
+                card.style.setProperty('--rotate-y', x * 12 + 'deg')
+                card.style.setProperty('--glow-x', x * 50 + 50 + '%')
+                card.style.setProperty('--glow-y', y * 50 + 50 + '%')
+              }
+            "
+            @mouseleave="
+              (e: MouseEvent) => {
+                const card = e.currentTarget as HTMLElement
+                card.style.setProperty('--rotate-x', '0deg')
+                card.style.setProperty('--rotate-y', '0deg')
+                card.style.setProperty('--glow-x', '50%')
+                card.style.setProperty('--glow-y', '50%')
+              }
+            "
           >
             <!-- Animated gradient border -->
             <div class="team-card-border"></div>
@@ -98,7 +97,9 @@ function avatarColor(index: number) {
               <div class="team-avatar-ring"></div>
               <div
                 class="team-avatar"
-                :style="{ background: `linear-gradient(135deg, ${avatarColor(i)[0]}, ${avatarColor(i)[1]})` }"
+                :style="{
+                  background: `linear-gradient(135deg, ${avatarColor(i)[0]}, ${avatarColor(i)[1]})`,
+                }"
               >
                 <span>{{ member.initials }}</span>
               </div>
@@ -113,8 +114,8 @@ function avatarColor(index: number) {
                   width: 3 + (d % 3) + 'px',
                   height: 3 + (d % 3) + 'px',
                   background: avatarColor(i)[0],
-                  left: (d * 13) % 100 + '%',
-                  top: (d * 17 + 30) % 100 + '%',
+                  left: ((d * 13) % 100) + '%',
+                  top: ((d * 17 + 30) % 100) + '%',
                   opacity: 0.15 + (d % 4) * 0.04,
                 }"
               ></span>
@@ -224,7 +225,9 @@ function avatarColor(index: number) {
     transparent 70%,
     transparent
   );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -238,7 +241,9 @@ function avatarColor(index: number) {
 }
 
 @keyframes border-rotate {
-  to { --angle: 360deg; }
+  to {
+    --angle: 360deg;
+  }
 }
 
 @property --angle {
@@ -326,7 +331,9 @@ function avatarColor(index: number) {
 }
 
 @keyframes ring-spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 /* ============================================

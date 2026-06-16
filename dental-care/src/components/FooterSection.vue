@@ -35,16 +35,30 @@ function goToService(slug: string) {
               <img src="/logo.png" alt="Plaza Dental Care" class="footer-logo-img" />
             </div>
             <div class="footer-logo-text">
-              <span>{{ store.isRtl ? 'مركز بلازا لتجميل الاسنان' : 'Plaza Dental Cosmetic Center' }}</span>
+              <span>{{
+                store.isRtl ? 'مركز بلازا لتجميل الاسنان' : 'Plaza Dental Cosmetic Center'
+              }}</span>
             </div>
           </a>
           <p class="footer-desc">{{ store.t.footer.description }}</p>
           <div class="footer-socials">
-            <a href="https://www.facebook.com/Plazadentalcareclinic/" target="_blank" class="footer-social-link" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/Plazadentalcareclinic/"
+              target="_blank"
+              class="footer-social-link"
+              aria-label="Facebook"
+            >
               <!-- Facebook SVG -->
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
             </a>
-            <a href="https://wa.me/201200077665" target="_blank" class="footer-social-link" aria-label="WhatsApp">
+            <a
+              href="https://wa.me/201200077665"
+              target="_blank"
+              class="footer-social-link"
+              aria-label="WhatsApp"
+            >
               <WhatsAppIcon :size="18" />
             </a>
           </div>
@@ -88,8 +102,13 @@ function goToService(slug: string) {
 
       <!-- Bottom -->
       <div class="footer-bottom">
-        <span>{{ store.t.footer.rights }}</span>
-        <span class="footer-made">{{ store.t.footer.made }}</span>
+        <span>{{ store.t.footer.rights }} &copy; {{ new Date().getFullYear() }}</span>
+        <span class="footer-made"
+          >{{ store.t.footer.made }} &mdash;
+          <a href="https://shahenda-creative-developer.vercel.app/" class="capitalize"
+            >shahenda galal</a
+          >
+        </span>
       </div>
     </div>
   </footer>

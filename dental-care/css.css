@@ -1,0 +1,18 @@
+.hero-ring[data-v-9caf22ae] {
+    position: absolute;
+    top: 55%;
+    right: 17%;
+    transform: translateY(-125%);
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(37, 215, 184, 0.06);
+    pointer-events: none;
+    z-index: -1;
+    box-shadow: 0 0px 200px #25d7b812;
+}
+.hero-ring-2[data-v-9caf22ae] {
+    width: 85%;
+    border-color: rgba(39, 200, 247, 0.04);
+    right: 25%;
+}

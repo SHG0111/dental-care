@@ -29,10 +29,6 @@ onMounted(() => {
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header centered">
-        <div class="section-label">
-          <span class="section-label-dot"></span>
-          <span>{{ store.t.facebookReels.label }}</span>
-        </div>
         <h2 class="section-title">
           {{ store.t.facebookReels.title }}
         </h2>
@@ -43,7 +39,7 @@ onMounted(() => {
 
       <!-- Widget -->
       <div ref="widgetRef" class="reels-widget">
-        <div class='sk-ww-facebook-reels' data-embed-id='25689075'></div>
+        <div class="sk-ww-facebook-reels" data-embed-id="25689075"></div>
       </div>
 
       <!-- Follow CTA -->

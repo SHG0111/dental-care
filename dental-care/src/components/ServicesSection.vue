@@ -2,7 +2,11 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useLanguageStore } from '@/stores/language'
-import { useGsapScrubReveal, useGsapScrubStagger, useParallaxGroup } from '@/composables/useGsapReveal'
+import {
+  useGsapScrubReveal,
+  useGsapScrubStagger,
+  useParallaxGroup,
+} from '@/composables/useGsapReveal'
 import { ArrowLeft, ArrowRight } from '@lucide/vue'
 
 const router = useRouter()
@@ -30,10 +34,6 @@ function goToService(slug: string) {
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header">
-        <div class="section-label">
-          <span class="section-label-dot"></span>
-          <span>{{ store.t.services.label }}</span>
-        </div>
         <h2 class="section-title">
           {{ store.t.services.title.split(' ').slice(0, 2).join(' ') }}
           <span class="accent"> {{ store.t.services.title.split(' ').slice(2).join(' ') }}</span>

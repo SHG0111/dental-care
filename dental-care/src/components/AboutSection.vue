@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useLanguageStore } from '@/stores/language'
-import { useGsapScrubReveal, useGsapScrubStagger, useParallaxGroup } from '@/composables/useGsapReveal'
+import {
+  useGsapScrubReveal,
+  useGsapScrubStagger,
+  useParallaxGroup,
+} from '@/composables/useGsapReveal'
 import { Users, Award, CheckCircle } from '@lucide/vue'
 
 const store = useLanguageStore()
@@ -18,7 +22,7 @@ useParallaxGroup(sectionRef, { selector: '.about-pattern', yRange: 30 })
 
 const highlights = [
   { ar: 'أحدث تقنيات الليزر', en: 'Latest Laser Tech' },
-  { ar: 'فريق طبي معتمد دولياً', en: 'Internationally Certified Team' },
+  { ar: 'معايير جودة عالية', en: 'High-quality standards' },
   { ar: 'بيئة معقمة وآمنة', en: 'Sterile & Safe Environment' },
   { ar: 'متابعة شخصية مدى الحياة', en: 'Lifetime Follow-up Care' },
 ]
@@ -34,14 +38,12 @@ const highlights = [
       <div class="about-split">
         <!-- Text Side -->
         <div ref="textRef" class="about-text-side">
-          <div class="section-label">
-            <span class="section-label-dot"></span>
-            <span>{{ store.t.about.label }}</span>
-          </div>
-
           <h2 class="about-title">
             <span>{{ store.t.about.title.split(' ').slice(0, 1).join(' ') }}</span>
-            <span class="text-gradient"> {{ store.t.about.title.split(' ').slice(1).join(' ') }}</span>
+            &nbsp;
+            <span class="text-gradient">
+              {{ store.t.about.title.split(' ').slice(1).join(' ') }}</span
+            >
           </h2>
 
           <p class="about-intro">
@@ -50,11 +52,7 @@ const highlights = [
 
           <!-- Highlights list -->
           <div class="about-highlights">
-            <div
-              v-for="(h, i) in highlights"
-              :key="i"
-              class="about-highlight-item"
-            >
+            <div v-for="(h, i) in highlights" :key="i" class="about-highlight-item">
               <div class="highlight-icon">
                 <CheckCircle :size="18" />
               </div>
@@ -64,7 +62,7 @@ const highlights = [
 
           <!-- CTA -->
           <div>
-            <a href="#contact" class="btn btn-primary" style="margin-top: 1.5rem;">
+            <a href="#contact" class="btn btn-primary" style="margin-top: 1.5rem">
               {{ store.isRtl ? 'احجز موعدك الآن' : 'Book Your Appointment' }}
             </a>
           </div>
@@ -76,19 +74,15 @@ const highlights = [
             <!-- Card decorative top -->
             <div class="showcase-top">
               <div class="showcase-tooth-icon">
-                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" width="50" height="50">
-                  <defs>
-                    <linearGradient id="aboutToothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#27c8f7" />
-                      <stop offset="100%" stop-color="#31efc4" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z" fill="url(#aboutToothGrad)" opacity="0.2"/>
-                </svg>
+                <div class="logo-icon">
+                  <img src="/logo.png" alt="Plaza Dental Care" class="logo-img w-10" />
+                </div>
               </div>
               <div class="showcase-experience">
                 <span class="showcase-exp-num">+15</span>
-                <span class="showcase-exp-label">{{ store.isRtl ? 'عام خبرة' : 'Years Exp.' }}</span>
+                <span class="showcase-exp-label">{{
+                  store.isRtl ? 'عام خبرة' : 'Years Exp.'
+                }}</span>
               </div>
             </div>
 
@@ -100,18 +94,36 @@ const highlights = [
                 <div class="clinic-circle clinic-circle-3"></div>
               </div>
               <div class="showcase-badge">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
-                <span>{{ store.isRtl ? 'معتمد دولياً' : 'Internationally Accredited' }}</span>
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+                  />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+                <span>{{ store.isRtl ? 'معايير جودة عالية' : 'High-quality standards' }}</span>
               </div>
             </div>
 
             <!-- Card footer with features -->
             <div class="showcase-features">
               <div class="showcase-feature" v-for="f in 4" :key="f">
-                <div class="feature-dot" :style="{ background: ['#27c8f7', '#0D4F8B', '#F5A623', '#31efc4'][f-1] }"></div>
-                <span>{{ store.isRtl
-                  ? ['تقنية متقدمة', 'فريق متخصص', 'جودة عالية', 'رعاية شاملة'][f-1]
-                  : ['Advanced Tech', 'Expert Team', 'High Quality', 'Full Care'][f-1]
+                <div
+                  class="feature-dot"
+                  :style="{ background: ['#27c8f7', '#0D4F8B', '#F5A623', '#31efc4'][f - 1] }"
+                ></div>
+                <span>{{
+                  store.isRtl
+                    ? ['تقنية متقدمة', 'فريق متخصص', 'جودة عالية', 'رعاية شاملة'][f - 1]
+                    : ['Advanced Tech', 'Expert Team', 'High Quality', 'Full Care'][f - 1]
                 }}</span>
               </div>
             </div>
@@ -120,7 +132,7 @@ const highlights = [
           <!-- Floating stat badges -->
           <div class="about-float-badge badge-1 float-1">
             <Users :size="16" />
-            <span>+5000 {{ store.isRtl ? 'مريض' : 'Patients' }}</span>
+            <span>+5000 {{ store.isRtl ? 'عملاء' : 'Clients' }}</span>
           </div>
           <div class="about-float-badge badge-2 float-2">
             <Award :size="16" />
@@ -130,16 +142,12 @@ const highlights = [
       </div>
 
       <!-- Stats Bar -->
-      <div ref="statsRef" class="about-stats-bar">
-        <div
-          v-for="(stat, i) in store.t.about.stats"
-          :key="i"
-          class="about-stat-item"
-        >
+      <!-- <div ref="statsRef" class="about-stats-bar">
+        <div v-for="(stat, i) in store.t.about.stats" :key="i" class="about-stat-item">
           <span class="stat-num">{{ stat.num }}</span>
           <span class="stat-label">{{ stat.label }}</span>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

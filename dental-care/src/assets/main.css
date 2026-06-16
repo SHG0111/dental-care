@@ -2,7 +2,7 @@
    Plaza Dental Care — Global Styles
    Light theme with teal gradient palette
    ============================================ */
-
+@import 'tailwindcss';
 /* ----- CeraRound Font (Arabic) ----- */
 @font-face {
   font-family: 'CeraRound';
@@ -11,7 +11,6 @@
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
-
 }
 
 @font-face {
@@ -21,7 +20,6 @@
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
-
 }
 
 @font-face {
@@ -31,7 +29,6 @@
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
-
 }
 
 @font-face {
@@ -41,7 +38,6 @@
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
-
 }
 
 @font-face {
@@ -51,7 +47,6 @@
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
-
 }
 
 @font-face {
@@ -61,14 +56,14 @@
   font-style: normal;
   font-display: swap;
   unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
-
 }
 
 /* ----- PilcrowRound Font (English headings) ----- */
 @font-face {
   font-family: 'PilcrowRound';
-  src: url('/fonts/pilcrowRound/PilcrowRounded-Regular.woff2') format('woff2'),
-       url('/fonts/pilcrowRound/PilcrowRounded-Regular.woff') format('woff');
+  src:
+    url('/fonts/pilcrowRound/PilcrowRounded-Regular.woff2') format('woff2'),
+    url('/fonts/pilcrowRound/PilcrowRounded-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -76,8 +71,9 @@
 
 @font-face {
   font-family: 'PilcrowRound';
-  src: url('/fonts/pilcrowRound/PilcrowRounded-Medium.woff2') format('woff2'),
-       url('/fonts/pilcrowRound/PilcrowRounded-Medium.woff') format('woff');
+  src:
+    url('/fonts/pilcrowRound/PilcrowRounded-Medium.woff2') format('woff2'),
+    url('/fonts/pilcrowRound/PilcrowRounded-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -85,8 +81,9 @@
 
 @font-face {
   font-family: 'PilcrowRound';
-  src: url('/fonts/pilcrowRound/PilcrowRounded-Semibold.woff2') format('woff2'),
-       url('/fonts/pilcrowRound/PilcrowRounded-Semibold.woff') format('woff');
+  src:
+    url('/fonts/pilcrowRound/PilcrowRounded-Semibold.woff2') format('woff2'),
+    url('/fonts/pilcrowRound/PilcrowRounded-Semibold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -94,8 +91,9 @@
 
 @font-face {
   font-family: 'PilcrowRound';
-  src: url('/fonts/pilcrowRound/PilcrowRounded-Bold.woff2') format('woff2'),
-       url('/fonts/pilcrowRound/PilcrowRounded-Bold.woff') format('woff');
+  src:
+    url('/fonts/pilcrowRound/PilcrowRounded-Bold.woff2') format('woff2'),
+    url('/fonts/pilcrowRound/PilcrowRounded-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -103,8 +101,9 @@
 
 @font-face {
   font-family: 'PilcrowRound';
-  src: url('/fonts/pilcrowRound/PilcrowRounded-Heavy.woff2') format('woff2'),
-       url('/fonts/pilcrowRound/PilcrowRounded-Heavy.woff') format('woff');
+  src:
+    url('/fonts/pilcrowRound/PilcrowRounded-Heavy.woff2') format('woff2'),
+    url('/fonts/pilcrowRound/PilcrowRounded-Heavy.woff') format('woff');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -113,8 +112,9 @@
 /* ----- Ranade Font (English body) ----- */
 @font-face {
   font-family: 'Ranade';
-  src: url('/fonts/ranade/Ranade-Thin.woff2') format('woff2'),
-       url('/fonts/ranade/Ranade-Thin.woff') format('woff');
+  src:
+    url('/fonts/ranade/Ranade-Thin.woff2') format('woff2'),
+    url('/fonts/ranade/Ranade-Thin.woff') format('woff');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -122,8 +122,9 @@
 
 @font-face {
   font-family: 'Ranade';
-  src: url('/fonts/ranade/Ranade-Light.woff2') format('woff2'),
-       url('/fonts/ranade/Ranade-Light.woff') format('woff');
+  src:
+    url('/fonts/ranade/Ranade-Light.woff2') format('woff2'),
+    url('/fonts/ranade/Ranade-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -131,8 +132,9 @@
 
 @font-face {
   font-family: 'Ranade';
-  src: url('/fonts/ranade/Ranade-Regular.woff2') format('woff2'),
-       url('/fonts/ranade/Ranade-Regular.woff') format('woff');
+  src:
+    url('/fonts/ranade/Ranade-Regular.woff2') format('woff2'),
+    url('/fonts/ranade/Ranade-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -140,8 +142,9 @@
 
 @font-face {
   font-family: 'Ranade';
-  src: url('/fonts/ranade/Ranade-Medium.woff2') format('woff2'),
-       url('/fonts/ranade/Ranade-Medium.woff') format('woff');
+  src:
+    url('/fonts/ranade/Ranade-Medium.woff2') format('woff2'),
+    url('/fonts/ranade/Ranade-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -149,8 +152,9 @@
 
 @font-face {
   font-family: 'Ranade';
-  src: url('/fonts/ranade/Ranade-Bold.woff2') format('woff2'),
-       url('/fonts/ranade/Ranade-Bold.woff') format('woff');
+  src:
+    url('/fonts/ranade/Ranade-Bold.woff2') format('woff2'),
+    url('/fonts/ranade/Ranade-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -158,8 +162,9 @@
 
 @font-face {
   font-family: 'Ranade';
-  src: url('/fonts/ranade/Ranade-Italic.woff2') format('woff2'),
-       url('/fonts/ranade/Ranade-Italic.woff') format('woff');
+  src:
+    url('/fonts/ranade/Ranade-Italic.woff2') format('woff2'),
+    url('/fonts/ranade/Ranade-Italic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -167,8 +172,9 @@
 
 @font-face {
   font-family: 'Ranade';
-  src: url('/fonts/ranade/Ranade-BoldItalic.woff2') format('woff2'),
-       url('/fonts/ranade/Ranade-BoldItalic.woff') format('woff');
+  src:
+    url('/fonts/ranade/Ranade-BoldItalic.woff2') format('woff2'),
+    url('/fonts/ranade/Ranade-BoldItalic.woff') format('woff');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -187,21 +193,20 @@
   --teal-700: #198f82;
   --teal-800: #126b64;
   --teal-900: #0b4746;
-
-
-  /* Neutrals */
-  --white: #FFFFFF;
-  --offwhite: #F8FAF9;
-  --gray-50: #F3F5F4;
-  --gray-100: #E8EAE9;
-  --gray-200: #D0D4D2;
-  --gray-300: #A8AEA9;
-  --gray-400: #7E8681;
-  --gray-500: #5A635E;
-  --gray-600: #3D4641;
-  --gray-700: #2A322E;
-  --gray-800: #1A221E;
-  --gray-900: #0D1511;
+  --blue-200: oklch(88.2% 0.059 254.128);
+  --gold-light: #f8df62; /* Neutrals */
+  --white: #ffffff;
+  --offwhite: #f8faf9;
+  --gray-50: #f3f5f4;
+  --gray-100: #e8eae9;
+  --gray-200: #d0d4d2;
+  --gray-300: #a8aea9;
+  --gray-400: #7e8681;
+  --gray-500: #5a635e;
+  --gray-600: #3d4641;
+  --gray-700: #2a322e;
+  --gray-800: #1a221e;
+  --gray-900: #0d1511;
 
   /* Semantic */
   --text-primary: #202942;
@@ -214,9 +219,18 @@
   /* Gradients */
   --gradient-primary: linear-gradient(90deg, #31efc4, #2de8bf, #25d7b8, #20cdc8, #27c8f7);
   --gradient-primary-subtle: linear-gradient(90deg, #dafcf2, #d2f9ee, #c5f5ea, #bcf2ef, #baeefb);
-  --gradient-dark:  linear-gradient(106deg,rgba(8, 24, 41, 1) 0%, rgba(22, 22, 51, 1) 35%, rgba(29, 49, 82, 1) 100%);
-  --gradient-hero: linear-gradient(160deg, #F8FAF9 0%, #dafcf2 30%, #c5f5ea 70%, #F8FAF9 100%);
-  --gradient-card: linear-gradient(180deg, rgba(39, 200, 247, 0.05) 0%, rgba(255, 255, 255, 1) 100%);
+  --gradient-dark: linear-gradient(
+    106deg,
+    rgba(8, 24, 41, 1) 0%,
+    rgba(22, 22, 51, 1) 35%,
+    rgba(29, 49, 82, 1) 100%
+  );
+  --gradient-hero: linear-gradient(160deg, #f8faf9 0%, #dafcf2 30%, #c5f5ea 70%, #f8faf9 100%);
+  --gradient-card: linear-gradient(
+    180deg,
+    rgba(39, 200, 247, 0.05) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
 
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(39, 200, 247, 0.08);
@@ -320,9 +334,13 @@ ul {
 
 /* ----- Section Styles ----- */
 .section {
-  padding: 14rem 0;
+  /* padding: 14rem 0; */
   position: relative;
   overflow: hidden;
+  min-height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Section reveal transition - each section fades + slides up on scroll */
@@ -383,8 +401,15 @@ section:last-of-type::after {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
 }
 
 .section-title {
@@ -588,113 +613,234 @@ body.ltr .reveal-fade-right {
 
 /* Keyframe Animations */
 @keyframes float1 {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33% { transform: translateY(-10px) rotate(1deg); }
-  66% { transform: translateY(-5px) rotate(-1deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
 }
 
 @keyframes float2 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes float3 {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(8px, -8px); }
-  50% { transform: translate(0, -12px); }
-  75% { transform: translate(-8px, -4px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(8px, -8px);
+  }
+  50% {
+    transform: translate(0, -12px);
+  }
+  75% {
+    transform: translate(-8px, -4px);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes scale-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes count-up {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blob1 {
-  0%, 100% { border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%; }
-  25% { border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%; }
-  50% { border-radius: 60% 40% 50% 50% / 50% 40% 60% 50%; }
-  75% { border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%; }
+  0%,
+  100% {
+    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 50% 50% 40% 60% / 40% 60% 50% 50%;
+  }
+  50% {
+    border-radius: 60% 40% 50% 50% / 50% 40% 60% 50%;
+  }
+  75% {
+    border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%;
+  }
 }
 
 @keyframes blob2 {
-  0%, 100% { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
-  25% { border-radius: 40% 60% 50% 50% / 50% 60% 40% 50%; }
-  50% { border-radius: 60% 40% 60% 40% / 40% 50% 50% 60%; }
-  75% { border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; }
+  0%,
+  100% {
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  }
+  25% {
+    border-radius: 40% 60% 50% 50% / 50% 60% 40% 50%;
+  }
+  50% {
+    border-radius: 60% 40% 60% 40% / 40% 50% 50% 60%;
+  }
+  75% {
+    border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+  }
 }
 
 @keyframes border-dance {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -100; }
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -100;
+  }
 }
 
 @keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Enhanced scroll entrance animations */
 @keyframes section-fade-up {
-  0% { opacity: 0; transform: translateY(60px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes section-fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes scale-in {
-  0% { transform: scale(0.9); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes slide-blur-in {
-  0% { transform: translateY(30px); opacity: 0; filter: blur(4px); }
-  100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.15); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.08); }
-  60% { transform: scale(1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.15);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.08);
+  }
+  60% {
+    transform: scale(1);
+  }
 }
 
 @keyframes shimmer-slide {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
 }
 
 @keyframes rotate-gradient {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Float animation classes */
-.float-1 { animation: float1 6s ease-in-out infinite; }
-.float-2 { animation: float2 5s ease-in-out infinite; }
-.float-3 { animation: float3 7s ease-in-out infinite; }
-.blob-1 { animation: blob1 12s ease-in-out infinite; }
-.blob-2 { animation: blob2 10s ease-in-out infinite; }
+.float-1 {
+  animation: float1 6s ease-in-out infinite;
+}
+.float-2 {
+  animation: float2 5s ease-in-out infinite;
+}
+.float-3 {
+  animation: float3 7s ease-in-out infinite;
+}
+.blob-1 {
+  animation: blob1 12s ease-in-out infinite;
+}
+.blob-2 {
+  animation: blob2 10s ease-in-out infinite;
+}
 
 /* Gradient border */
 .gradient-border {
@@ -708,7 +854,9 @@ body.ltr .reveal-fade-right {
   border-radius: inherit;
   padding: 1.5px;
   background: var(--gradient-primary);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -757,10 +905,11 @@ body.ltr .reveal-fade-right {
   transform: translateY(0);
 }
 /* ----- custom Reel Carousel ----- */
-.sk-load-more-btn-container , .sk-branding-container{
+.sk-load-more-btn-container,
+.sk-branding-container {
   display: none;
 }
-.sk-facebook-reels{
+.sk-facebook-reels {
   border: none !important;
   gap: 0 !important;
 }
@@ -888,12 +1037,12 @@ body.rtl .lucide-chevron-left {
 }
 
 /* ── Bottom position ── */
-[data-tooltip-pos="bottom"]::after {
+[data-tooltip-pos='bottom']::after {
   bottom: auto;
   top: calc(100% + 6px);
 }
 
-[data-tooltip-pos="bottom"]::before {
+[data-tooltip-pos='bottom']::before {
   bottom: auto;
   top: calc(100% + 2px);
   border-top-color: transparent;

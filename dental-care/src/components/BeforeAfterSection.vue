@@ -85,10 +85,7 @@ const caseIcons = ['✨', '🦷', '⚡', '😁']
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header centered">
-        <div class="section-label">
-          <span class="section-label-dot"></span>
-          <span>{{ store.t.beforeAfter.label }}</span>
-        </div>
+
         <h2 class="section-title">
           {{ store.t.beforeAfter.title.split(' ').slice(0, 2).join(' ') }}
           <span class="accent"> {{ store.t.beforeAfter.title.split(' ').slice(2).join(' ') }}</span>

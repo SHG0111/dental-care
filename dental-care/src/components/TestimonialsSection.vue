@@ -42,8 +42,12 @@ function goTo(index: number) {
   animateTrack()
 }
 
-function nextSlide() { goTo(currentIndex.value + 1) }
-function prevSlide() { goTo(currentIndex.value - 1) }
+function nextSlide() {
+  goTo(currentIndex.value + 1)
+}
+function prevSlide() {
+  goTo(currentIndex.value - 1)
+}
 
 // ── Track animation ──
 function animateTrack(offset = 0) {
@@ -119,7 +123,9 @@ function onPointerUp() {
   }
   dragOffset.value = 0
   // Resume auto-play after a pause
-  setTimeout(() => { isAutoPlaying.value = true }, 4000)
+  setTimeout(() => {
+    isAutoPlaying.value = true
+  }, 4000)
 }
 
 // ── Resize ──
@@ -156,10 +162,6 @@ onUnmounted(() => {
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header centered">
-        <div class="section-label">
-          <span class="section-label-dot"></span>
-          <span>{{ store.t.testimonials.label }}</span>
-        </div>
         <h2 class="section-title">
           {{ store.t.testimonials.title }}
         </h2>
@@ -169,11 +171,7 @@ onUnmounted(() => {
       </div>
 
       <!-- ── Carousel ── -->
-      <div
-        class="testi-carousel"
-        @mouseenter="isHovered = true"
-        @mouseleave="isHovered = false"
-      >
+      <div class="testi-carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
         <!-- Track -->
         <div
           ref="trackRef"
@@ -184,17 +182,25 @@ onUnmounted(() => {
           @pointerleave="onPointerUp"
           :style="{ cursor: isDragging ? 'grabbing' : 'grab' }"
         >
-          <div
-            v-for="(testimonial, i) in items"
-            :key="i"
-            class="testi-slide"
-          >
+          <div v-for="(testimonial, i) in items" :key="i" class="testi-slide">
             <div class="testi-card">
               <!-- Decorative quote mark -->
               <div class="testi-quote-icon">
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-                  <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
-                  <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
+                <svg
+                  viewBox="0 0 24 24"
+                  width="32"
+                  height="32"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path
+                    d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
+                  />
+                  <path
+                    d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
+                  />
                 </svg>
               </div>
 
@@ -471,14 +477,28 @@ body.rtl .testi-author-dot {
   transform: translateY(-50%) scale(1.08);
 }
 
-.testi-nav-prev { left: 0; }
-.testi-nav-next { right: 0; }
+.testi-nav-prev {
+  left: 0;
+}
+.testi-nav-next {
+  right: 0;
+}
 
-body.rtl .testi-nav-prev { left: auto; right: 0; }
-body.rtl .testi-nav-next { right: auto; left: 0; }
+body.rtl .testi-nav-prev {
+  left: auto;
+  right: 0;
+}
+body.rtl .testi-nav-next {
+  right: auto;
+  left: 0;
+}
 
-body.rtl .testi-nav-prev :deep(svg) { transform: scaleX(-1); }
-body.rtl .testi-nav-next :deep(svg) { transform: scaleX(-1); }
+body.rtl .testi-nav-prev :deep(svg) {
+  transform: scaleX(-1);
+}
+body.rtl .testi-nav-next :deep(svg) {
+  transform: scaleX(-1);
+}
 
 /* ── Dots ── */
 .testi-dots {

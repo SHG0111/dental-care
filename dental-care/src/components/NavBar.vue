@@ -114,8 +114,12 @@ isHome.value = route.name === 'home'
           <img src="/logo.png" alt="Plaza Dental Care" class="logo-img" />
         </div>
         <div class="logo-text">
-          <span class="logo-ar">{{ store.t.nav.home === 'Home' ? 'Plaza Dental Cosmetic Center' : 'مركز بلازا لتجميل الاسنان' }}</span>
-          <span class="logo-en">{{ store.t.nav.home === 'Home' ? 'Premium Dental Clinic' : 'Plaza Dental Cosmetic Center' }}</span>
+          <span class="logo-ar capitalize">{{
+            store.t.nav.home === 'Home' ? 'Plaza Dental care Center' : 'مركز بلازا لتجميل الاسنان'
+          }}</span>
+          <span class="logo-en capitalize">{{
+            store.t.nav.home === 'Home' ? 'Premium Dental center' : 'Plaza Dental care Center'
+          }}</span>
         </div>
       </a>
 
@@ -129,12 +133,13 @@ isHome.value = route.name === 'home'
             @mouseenter="openDropdown"
             @mouseleave="closeDropdown"
           >
-            <a
-              class="nav-link nav-link-dd"
-              @click.prevent="toggleDropdown"
-            >
+            <a class="nav-link nav-link-dd" @click.prevent="toggleDropdown">
               {{ store.t.nav.services }}
-              <ChevronDown :size="14" class="dd-arrow" :class="{ 'dd-arrow-open': servicesDropdownOpen }" />
+              <ChevronDown
+                :size="14"
+                class="dd-arrow"
+                :class="{ 'dd-arrow-open': servicesDropdownOpen }"
+              />
             </a>
             <Transition name="mega">
               <div v-if="servicesDropdownOpen" class="mega-dropdown">
@@ -142,7 +147,6 @@ isHome.value = route.name === 'home'
                   <span class="mega-header-label">
                     {{ store.isRtl ? 'جميع خدماتنا' : 'All Services' }}
                   </span>
-
                 </div>
                 <div class="mega-grid">
                   <div
@@ -161,12 +165,7 @@ isHome.value = route.name === 'home'
               </div>
             </Transition>
           </div>
-          <a
-            v-else
-            :href="item.href"
-            class="nav-link"
-            @click.prevent="scrollToSection(item.href)"
-          >
+          <a v-else :href="item.href" class="nav-link" @click.prevent="scrollToSection(item.href)">
             {{ store.t.nav[item.key as keyof typeof store.t.nav] }}
           </a>
         </template>
@@ -174,8 +173,18 @@ isHome.value = route.name === 'home'
 
       <!-- Actions -->
       <div class="nav-actions">
-        <button class="lang-btn" @click="store.toggleLang" :data-tooltip="store.isRtl ? 'English' : 'العربية'">
-          <img :src="store.isRtl ? gbFlag : saFlag" class="flag-icon" alt="" width="22" height="16" />
+        <button
+          class="lang-btn"
+          @click="store.toggleLang"
+          :data-tooltip="store.isRtl ? 'English' : 'العربية'"
+        >
+          <img
+            :src="store.isRtl ? gbFlag : saFlag"
+            class="flag-icon"
+            alt=""
+            width="22"
+            height="16"
+          />
         </button>
 
         <a
@@ -187,7 +196,12 @@ isHome.value = route.name === 'home'
           <WhatsAppIcon :size="16" />
           <span>{{ store.t.nav.book }}</span>
         </a>
-        <button class="mobile-toggle" @click="isMobileMenuOpen = !isMobileMenuOpen" :data-tooltip="store.isRtl ? 'القائمة' : 'Menu'" aria-label="Toggle menu">
+        <button
+          class="mobile-toggle"
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+          :data-tooltip="store.isRtl ? 'القائمة' : 'Menu'"
+          aria-label="Toggle menu"
+        >
           <X v-if="isMobileMenuOpen" :size="22" />
           <Menu v-else :size="22" />
         </button>
@@ -201,12 +215,13 @@ isHome.value = route.name === 'home'
           <template v-for="item in navItems" :key="item.key">
             <!-- Mobile services — expandable -->
             <div v-if="item.key === 'services'">
-              <a
-                class="mobile-link mobile-link-dd"
-                @click.prevent="toggleMobileServices"
-              >
+              <a class="mobile-link mobile-link-dd" @click.prevent="toggleMobileServices">
                 <span>{{ store.t.nav.services }}</span>
-                <ChevronDown :size="16" class="dd-arrow" :class="{ 'dd-arrow-open': mobileServicesOpen }" />
+                <ChevronDown
+                  :size="16"
+                  class="dd-arrow"
+                  :class="{ 'dd-arrow-open': mobileServicesOpen }"
+                />
               </a>
               <Transition name="mega-sub">
                 <div v-if="mobileServicesOpen" class="mobile-services-sub">
@@ -248,10 +263,11 @@ isHome.value = route.name === 'home'
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    backdrop-filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   padding: 0 5rem;
 }
 
@@ -259,7 +275,6 @@ isHome.value = route.name === 'home'
   background: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-bottom: 1px solid transparent;
 }
 
 .navbar-scrolled {
@@ -267,7 +282,6 @@ isHome.value = route.name === 'home'
   backdrop-filter: blur(16px) saturate(200%);
   -webkit-backdrop-filter: blur(16px) saturate(200%);
   box-shadow: 0 1px 30px rgba(37, 215, 184, 0.08);
-  border-bottom: 1px solid rgba(37, 215, 184, 0.1);
 }
 
 .navbar-inner {
@@ -298,8 +312,6 @@ isHome.value = route.name === 'home'
   position: relative;
 }
 
-
-
 .logo-img {
   width: 100%;
   height: 100%;
@@ -327,6 +339,12 @@ isHome.value = route.name === 'home'
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
+.navbar-transparent .logo-ar {
+  color: var(--white);
+}
+.navbar-transparent .logo-en {
+  color: var(--gray-200);
+}
 
 body.ltr .logo-ar {
   font-size: 1rem;
@@ -345,15 +363,16 @@ body.ltr .logo-en {
 
 .nav-link {
   padding: 0.55rem 1rem;
-  border-radius: var(--radius-xs);
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--white);
   transition: all var(--transition-fast);
   white-space: nowrap;
   position: relative;
 }
-
+.navbar-scrolled .nav-link {
+  color: var(--text-secondary);
+}
 .nav-link::after {
   content: '';
   position: absolute;
@@ -365,11 +384,6 @@ body.ltr .logo-en {
   background: var(--gradient-primary);
   border-radius: 2px;
   transition: transform var(--transition-fast);
-}
-
-.nav-link:hover {
-  color: var(--teal-600);
-  background: var(--teal-50);
 }
 
 .nav-link:hover::after {
