@@ -357,8 +357,8 @@ ul {
   bottom: -1px;
   left: 0;
   right: 0;
-  height: 60px;
-  background: inherit;
+  height: 130px;
+  background: linear-gradient(175deg, #f8faf9, #f8faf9);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C300,60 600,0 1200,0 L1200,60 L0,60 Z' fill='black'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C300,60 600,0 1200,0 L1200,60 L0,60 Z' fill='black'/%3E%3C/svg%3E");
   -webkit-mask-size: 100% 100%;

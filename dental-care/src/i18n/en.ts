@@ -20,7 +20,7 @@ export default {
     cta1: 'Book Appointment',
     cta2: 'Explore Services',
     cta3: 'See Cases',
-    stat1: 'Happy Patients',
+    stat1: 'Happy clients',
     stat2: 'Years Experience',
     stat3: 'Specialists',
     cardTitle: 'Plaza Dental center',
@@ -58,7 +58,7 @@ export default {
       },
     ],
     stats: [
-      { num: '+5000', label: 'Happy Patients' },
+      { num: '+5000', label: 'Happy clients' },
       { num: '+15', label: 'Years Experience' },
       { num: '+20', label: 'Specialists' },
       { num: '98%', label: 'Satisfaction' },
@@ -72,55 +72,46 @@ export default {
     items: [
       {
         slug: 'hollywood-smile',
-        icon: '✨',
         title: 'Hollywood Smile',
         desc: 'Complete smile transformation for dazzling white, perfectly proportioned teeth that reflect your natural beauty',
       },
       {
         slug: 'dental-implants',
-        icon: '🦷',
         title: 'Dental Implants',
         desc: 'The ideal solution for replacing missing teeth with permanent, natural-looking implants built to last a lifetime',
       },
       {
         slug: 'orthodontics',
-        icon: '😁',
         title: 'Orthodontics',
         desc: 'Aligned teeth and a perfect smile using the latest clear and traditional braces technology for maximum comfort',
       },
       {
         slug: 'root-canal',
-        icon: '💉',
         title: 'Root Canal',
         desc: 'Eliminate pain and preserve your natural teeth using precision instruments and modern pain-free techniques',
       },
       {
         slug: 'pediatric-dentistry',
-        icon: '👶',
         title: 'Pediatric Dentistry',
         desc: "Gentle, comprehensive care to protect your child's teeth and ensure healthy growth from an early age",
       },
       {
         slug: 'gum-treatment',
-        icon: '🌿',
         title: 'Gum Treatment',
         desc: 'Maintain oral health by eliminating inflammation and improving gum appearance for a lasting healthy smile',
       },
       {
         slug: 'crowns-and-bridges',
-        icon: '👑',
         title: 'Crowns & Bridges',
         desc: 'Aesthetic appearance and strong function using premium materials to cover damaged teeth professionally',
       },
       {
         slug: 'teeth-whitening',
-        icon: '⚡',
         title: 'Teeth Whitening',
         desc: "A brilliant smile in a single session using safe, fast techniques to restore your teeth's natural radiance",
       },
       {
         slug: 'cosmetic-fillings',
-        icon: '🎨',
         title: 'Cosmetic Fillings',
         desc: 'Restore the natural shape of your tooth with high precision using color-matched materials with zero pain',
       },
@@ -157,8 +148,8 @@ export default {
   },
   testimonials: {
     label: 'Patient Reviews',
-    title: 'What Our Patients Say',
-    subtitle: "Our patients' trust is the greatest award we celebrate daily",
+    title: 'What Our clients Say',
+    subtitle: "Our clients' trust is the greatest award we celebrate daily",
     items: [
       {
         stars: 5,
@@ -189,7 +180,7 @@ export default {
   beforeAfter: {
     label: 'Before & After',
     title: 'Real Results From Our center',
-    subtitle: 'See the difference for yourself — amazing, real results with our patients',
+    subtitle: 'See the difference for yourself — amazing, real results with our clients',
     cases: [
       {
         beforeLabel: 'Before',
@@ -201,19 +192,19 @@ export default {
         beforeLabel: 'Before',
         afterLabel: 'After',
         title: 'Dental Implants',
-        desc: 'Full upper and lower jaw implant restoration',
+        desc: 'upper and lower jaw implant restoration',
       },
       {
         beforeLabel: 'Before',
         afterLabel: 'After',
-        title: 'Teeth Whitening',
-        desc: 'Professional whitening in a single session',
+        title: 'Child Orthodontics',
+        desc: ' aligners for perfect smile alignment for your child',
       },
       {
         beforeLabel: 'Before',
         afterLabel: 'After',
         title: 'Orthodontics',
-        desc: 'Clear aligners for perfect smile alignment',
+        desc: ' aligners for perfect smile alignment',
       },
     ],
   },
@@ -321,7 +312,7 @@ export default {
       faq: [
         {
           q: 'Does getting veneers hurt?',
-          a: 'The procedure is virtually painless. Local anesthesia is used during preparation, and most patients report only mild sensitivity afterward that subsides within days.',
+          a: 'The procedure is virtually painless. Local anesthesia is used during preparation, and most clients report only mild sensitivity afterward that subsides within days.',
         },
         {
           q: 'How long do veneers last?',
@@ -381,7 +372,7 @@ export default {
       faq: [
         {
           q: 'Is the implant procedure painful?',
-          a: 'Most patients report less discomfort than a tooth extraction. Local anesthesia ensures you feel no pain during placement, and over-the-counter pain relievers manage any post-procedure soreness.',
+          a: 'Most clients report less discomfort than a tooth extraction. Local anesthesia ensures you feel no pain during placement, and over-the-counter pain relievers manage any post-procedure soreness.',
         },
         {
           q: 'Am I a candidate for implants?',
@@ -413,7 +404,7 @@ export default {
         },
         {
           title: 'Discreet Options',
-          desc: 'Clear aligners and tooth-colored braces offer esthetic treatment for image-conscious patients',
+          desc: 'Clear aligners and tooth-colored braces offer esthetic treatment for image-conscious clients',
         },
         {
           title: 'Faster Results',
@@ -449,7 +440,7 @@ export default {
         },
         {
           q: 'Will braces or aligners affect my speech?',
-          a: 'There may be a brief adjustment period of a few days, but most patients adapt quickly and speak normally within a short time.',
+          a: 'There may be a brief adjustment period of a few days, but most clients adapt quickly and speak normally within a short time.',
         },
       ],
     },
@@ -457,7 +448,7 @@ export default {
       extendedDesc:
         'Root canal treatment is a precise, pain-relieving procedure that saves your natural tooth from extraction. Using advanced rotary instruments and digital imaging, we remove infected pulp tissue, thoroughly disinfect the root canal system, and seal it to prevent reinfection.',
       extendedDesc2:
-        'Modern root canal therapy at Plaza Dental is performed under complete local anesthesia using dental operating microscopes for enhanced visualization. The procedure is no more uncomfortable than a standard filling, and most patients report immediate relief from the pain caused by the infection.',
+        'Modern root canal therapy at Plaza Dental is performed under complete local anesthesia using dental operating microscopes for enhanced visualization. The procedure is no more uncomfortable than a standard filling, and most clients report immediate relief from the pain caused by the infection.',
       benefits: [
         {
           title: 'Save Your Natural Tooth',
@@ -469,7 +460,7 @@ export default {
         },
         {
           title: 'Efficient Recovery',
-          desc: 'Most patients resume normal activities the same day with minimal post-treatment sensitivity',
+          desc: 'Most clients resume normal activities the same day with minimal post-treatment sensitivity',
         },
         {
           title: 'Prevents Spread of Infection',
@@ -745,11 +736,11 @@ export default {
         },
         {
           q: 'How white will my teeth get?',
-          a: 'Most patients achieve 6-10 shades of whitening in a single session. Results vary based on the type and severity of discoloration.',
+          a: 'Most clients achieve 6-10 shades of whitening in a single session. Results vary based on the type and severity of discoloration.',
         },
         {
           q: 'Does whitening cause tooth sensitivity?',
-          a: 'Some patients experience temporary sensitivity during or after treatment. We use desensitizing agents to minimize discomfort, and any sensitivity typically resolves within 24-48 hours.',
+          a: 'Some clients experience temporary sensitivity during or after treatment. We use desensitizing agents to minimize discomfort, and any sensitivity typically resolves within 24-48 hours.',
         },
       ],
     },
@@ -824,7 +815,7 @@ export default {
       'To provide exceptional dental care that combines the latest medical technology with a warm human touch, ensuring a healthy and beautiful smile for every patient.',
     vision: 'Our Vision',
     visionText:
-      'To be the first choice for dental care in Egypt, through excellence in quality, innovation in services, and building lasting trust with our patients.',
+      'To be the first choice for dental care in Egypt, through excellence in quality, innovation in services, and building lasting trust with our clients.',
     values: 'Our Values',
     valuesList: [
       {
@@ -841,7 +832,7 @@ export default {
       },
       {
         title: 'Care',
-        desc: 'We put our patients first and provide them with a comfortable experience',
+        desc: 'We put our clients first and provide them with a comfortable experience',
       },
     ],
     teamTitle: 'Our Team',

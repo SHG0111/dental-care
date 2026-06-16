@@ -99,14 +99,10 @@ isHome.value = route.name === 'home'
 </script>
 
 <template>
-  <nav
-    class="navbar"
-    :class="{
-      'navbar-scrolled': isScrolled,
-      'navbar-transparent': !isScrolled,
-    }"
-    :dir="store.isRtl ? 'rtl' : 'ltr'"
-  >
+  <nav class="navbar" :class="{
+    'navbar-scrolled': isScrolled,
+    'navbar-transparent': !isScrolled,
+  }" :dir="store.isRtl ? 'rtl' : 'ltr'">
     <div class="navbar-inner">
       <!-- Logo -->
       <a href="#home" class="logo" @click.prevent="scrollToSection('#home')">
@@ -127,19 +123,11 @@ isHome.value = route.name === 'home'
       <div class="nav-links" :class="{ 'nav-open': isMobileMenuOpen }">
         <template v-for="item in navItems" :key="item.key">
           <!-- Services — mega dropdown -->
-          <div
-            v-if="item.key === 'services'"
-            class="nav-dd-wrap"
-            @mouseenter="openDropdown"
-            @mouseleave="closeDropdown"
-          >
+          <div v-if="item.key === 'services'" class="nav-dd-wrap" @mouseenter="openDropdown"
+            @mouseleave="closeDropdown">
             <a class="nav-link nav-link-dd" @click.prevent="toggleDropdown">
               {{ store.t.nav.services }}
-              <ChevronDown
-                :size="14"
-                class="dd-arrow"
-                :class="{ 'dd-arrow-open': servicesDropdownOpen }"
-              />
+              <ChevronDown :size="14" class="dd-arrow" :class="{ 'dd-arrow-open': servicesDropdownOpen }" />
             </a>
             <Transition name="mega">
               <div v-if="servicesDropdownOpen" class="mega-dropdown">
@@ -149,13 +137,8 @@ isHome.value = route.name === 'home'
                   </span>
                 </div>
                 <div class="mega-grid">
-                  <div
-                    v-for="s in store.t.services.items"
-                    :key="s.slug"
-                    class="mega-card"
-                    @click="goToService(s.slug)"
-                  >
-                    <span class="mega-card-icon">{{ s.icon }}</span>
+                  <div v-for="s in store.t.services.items" :key="s.slug" class="mega-card" @click="goToService(s.slug)">
+                    <!-- <span class="mega-card-icon">{{ s.icon }}</span> -->
                     <div class="mega-card-text">
                       <span class="mega-card-title">{{ s.title }}</span>
                       <span class="mega-card-desc">{{ s.desc }}</span>
@@ -173,35 +156,16 @@ isHome.value = route.name === 'home'
 
       <!-- Actions -->
       <div class="nav-actions">
-        <button
-          class="lang-btn"
-          @click="store.toggleLang"
-          :data-tooltip="store.isRtl ? 'English' : 'العربية'"
-        >
-          <img
-            :src="store.isRtl ? gbFlag : saFlag"
-            class="flag-icon"
-            alt=""
-            width="22"
-            height="16"
-          />
+        <button class="lang-btn" @click="store.toggleLang" :data-tooltip="store.isRtl ? 'English' : 'العربية'">
+          <img :src="store.isRtl ? gbFlag : saFlag" class="flag-icon" alt="" width="22" height="16" />
         </button>
 
-        <a
-          href="https://wa.me/201200077665"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-book"
-        >
+        <a href="https://wa.me/201200077665" target="_blank" rel="noopener noreferrer" class="btn-book">
           <WhatsAppIcon :size="16" />
           <span>{{ store.t.nav.book }}</span>
         </a>
-        <button
-          class="mobile-toggle"
-          @click="isMobileMenuOpen = !isMobileMenuOpen"
-          :data-tooltip="store.isRtl ? 'القائمة' : 'Menu'"
-          aria-label="Toggle menu"
-        >
+        <button class="mobile-toggle" @click="isMobileMenuOpen = !isMobileMenuOpen"
+          :data-tooltip="store.isRtl ? 'القائمة' : 'Menu'" aria-label="Toggle menu">
           <X v-if="isMobileMenuOpen" :size="22" />
           <Menu v-else :size="22" />
         </button>
@@ -217,32 +181,19 @@ isHome.value = route.name === 'home'
             <div v-if="item.key === 'services'">
               <a class="mobile-link mobile-link-dd" @click.prevent="toggleMobileServices">
                 <span>{{ store.t.nav.services }}</span>
-                <ChevronDown
-                  :size="16"
-                  class="dd-arrow"
-                  :class="{ 'dd-arrow-open': mobileServicesOpen }"
-                />
+                <ChevronDown :size="16" class="dd-arrow" :class="{ 'dd-arrow-open': mobileServicesOpen }" />
               </a>
               <Transition name="mega-sub">
                 <div v-if="mobileServicesOpen" class="mobile-services-sub">
-                  <a
-                    v-for="s in store.t.services.items"
-                    :key="s.slug"
-                    class="mobile-service-link"
-                    @click="goToService(s.slug)"
-                  >
-                    <span class="ms-icon">{{ s.icon }}</span>
+                  <a v-for="s in store.t.services.items" :key="s.slug" class="mobile-service-link"
+                    @click="goToService(s.slug)">
+                    <!-- <span class="ms-icon">{{ s.icon }}</span> -->
                     <span class="ms-title">{{ s.title }}</span>
                   </a>
                 </div>
               </Transition>
             </div>
-            <a
-              v-else
-              :href="item.href"
-              class="mobile-link"
-              @click.prevent="scrollToSection(item.href)"
-            >
+            <a v-else :href="item.href" class="mobile-link" @click.prevent="scrollToSection(item.href)">
               {{ store.t.nav[item.key as keyof typeof store.t.nav] }}
             </a>
           </template>
@@ -339,9 +290,11 @@ isHome.value = route.name === 'home'
   color: var(--text-muted);
   letter-spacing: 0.04em;
 }
+
 .navbar-transparent .logo-ar {
   color: var(--white);
 }
+
 .navbar-transparent .logo-en {
   color: var(--gray-200);
 }
@@ -370,9 +323,11 @@ body.ltr .logo-en {
   white-space: nowrap;
   position: relative;
 }
+
 .navbar-scrolled .nav-link {
   color: var(--text-secondary);
 }
+
 .nav-link::after {
   content: '';
   position: absolute;
@@ -484,15 +439,19 @@ body.ltr .logo-en {
   .navbar {
     padding: 0 1.25rem;
   }
+
   .nav-links {
     display: none;
   }
+
   .btn-book span {
     display: none;
   }
+
   .btn-wa-small {
     display: none;
   }
+
   .mobile-toggle {
     display: flex;
   }

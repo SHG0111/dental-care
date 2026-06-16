@@ -59,22 +59,33 @@ function prevCase() {
 }
 
 // Static gradient thumbnails for before/after states
+const beforeImages = [
+  'url("/before_3.jpg")',
+  'url("/before_2.jpg")',
+  'url("/before_1.jpg")',
+  'url("/before_5.jpg")'
+]
+
+const afterImages = [
+  'url("/after_3.jpg")',
+  'url("/after_2.jpg")',
+  'url("/after_1.jpg")',
+  'url("/after_5.jpg")'
+]
 const beforeColors = [
-  'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-  'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-  'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-  'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+  'linear-gradient(180deg, #667eea1A 0%, #764ba2 200%)',
+  'linear-gradient(180deg, #f093fb1A 0%, #f5576c 200%)',
+  'linear-gradient(180deg, #4facfe1A 0%, #00f2fe 200%)',
+  'linear-gradient(180deg, #fa709a1A 0%, #fee140 200%)',
 ]
 
 const afterColors = [
-  'linear-gradient(135deg, #27c8f7 0%, #31efc4 100%)',
-  'linear-gradient(135deg, #31efc4 0%, #2de8bf 100%)',
-  'linear-gradient(135deg, #25d7b8 0%, #31efc4 100%)',
-  'linear-gradient(135deg, #1A6FC4 0%, #96BEEB 100%)',
+  'linear-gradient(180deg, #27c8f71A 0%, #31efc4 200%)',
+  'linear-gradient(180deg, #31efc41A 0%, #2de8bf 200%)',
+  'linear-gradient(180deg, #25d7b81A 0%, #31efc4 200%)',
+  'linear-gradient(180deg, #1A6FC41A 0%, #96BEEB 200%)',
 ]
 
-// Icons for before/after cases
-const caseIcons = ['✨', '🦷', '⚡', '😁']
 </script>
 
 <template>
@@ -85,7 +96,6 @@ const caseIcons = ['✨', '🦷', '⚡', '😁']
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" class="section-header centered">
-
         <h2 class="section-title">
           {{ store.t.beforeAfter.title.split(' ').slice(0, 2).join(' ') }}
           <span class="accent"> {{ store.t.beforeAfter.title.split(' ').slice(2).join(' ') }}</span>
@@ -107,57 +117,19 @@ const caseIcons = ['✨', '🦷', '⚡', '😁']
           </button>
 
           <!-- The slider -->
-          <div
-            class="ba-slider-container"
-            @mousedown="startDrag"
-            @mousemove="updateSlider"
-            @mouseup="stopDrag"
-            @mouseleave="stopDrag"
-            @touchstart="startDrag"
-            @touchmove="updateSlider"
-            @touchend="stopDrag"
-          >
+          <div class="ba-slider-container" @mousedown="startDrag" @mousemove="updateSlider" @mouseup="stopDrag"
+            @mouseleave="stopDrag" @touchstart="startDrag" @touchmove="updateSlider" @touchend="stopDrag">
             <!-- Before (left) image -->
-            <div
-              class="ba-image ba-before"
-              :style="{ background: beforeColors[activeIndex] }"
-            >
-              <div class="ba-image-content">
-                <span class="ba-image-icon">{{ caseIcons[activeIndex] }}</span>
-                <div class="ba-image-text">
-                  <span class="ba-image-label">{{ currentCase.beforeLabel }}</span>
-                  <span class="ba-image-title">{{ currentCase.title }}</span>
-                </div>
-              </div>
-              <!-- Decorative tooth pattern -->
-              <div class="ba-before-pattern">
-                <svg width="120" height="120" viewBox="0 0 80 80" opacity="0.06">
-                  <path d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z" fill="white"/>
-                </svg>
-                <svg width="80" height="80" viewBox="0 0 80 80" opacity="0.04" style="margin-top: 1rem;">
-                  <path d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z" fill="white"/>
-                </svg>
-              </div>
+
+            <div class="ba-image ba-before"
+              :style="{ 'background-image': `${beforeColors[activeIndex]}, ${beforeImages[activeIndex]}` }">
+
             </div>
 
             <!-- After (right) image -->
-            <div
-              class="ba-image ba-after"
-              :style="{ background: afterColors[activeIndex] }"
-            >
-              <div class="ba-image-content ba-after-content">
-                <span class="ba-image-icon">{{ caseIcons[activeIndex] }}</span>
-                <div class="ba-image-text">
-                  <span class="ba-image-label ba-after-label">{{ currentCase.afterLabel }}</span>
-                  <span class="ba-image-title ba-after-title">{{ currentCase.title }}</span>
-                </div>
-              </div>
-              <!-- Success check pattern -->
-              <div class="ba-after-pattern">
-                <svg width="100" height="100" viewBox="0 0 24 24" opacity="0.06">
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="white"/>
-                </svg>
-              </div>
+            <div class="ba-image ba-after"
+              :style="{ 'background-image': `${afterColors[activeIndex]}, ${afterImages[activeIndex]}` }">
+
             </div>
 
             <!-- Slider handle -->
@@ -173,14 +145,10 @@ const caseIcons = ['✨', '🦷', '⚡', '😁']
           <!-- Case description -->
           <div class="ba-case-info">
             <div class="ba-case-dots">
-              <button
-                v-for="(c, i) in cases"
-                :key="i"
-                class="ba-dot"
-                :class="{ active: i === activeIndex }"
-                @click="activeIndex = i; sliderPos = 50"
-                :aria-label="`Case ${i + 1}`"
-              ></button>
+              <button v-for="(c, i) in cases" :key="i" class="ba-dot" :class="{ active: i === activeIndex }" @click="
+                activeIndex = i;
+              sliderPos = 50
+                " :aria-label="`Case ${i + 1}`"></button>
             </div>
             <p class="ba-case-desc">{{ currentCase.desc }}</p>
           </div>
@@ -189,30 +157,22 @@ const caseIcons = ['✨', '🦷', '⚡', '😁']
 
       <!-- Cases Grid -->
       <div ref="gridRef" class="ba-cases-grid">
-        <div
-          v-for="(c, i) in cases"
-          :key="i"
-          class="ba-case-card"
-          :class="{ active: i === activeIndex }"
-          @click="activeIndex = i; sliderPos = 50"
-        >
+        <div v-for="(c, i) in cases" :key="i" class="ba-case-card" :class="{ active: i === activeIndex }" @click="
+          activeIndex = i;
+        sliderPos = 50
+          ">
           <div class="ba-case-thumb">
-            <div
-              class="ba-thumb-before"
-              :style="{ background: beforeColors[i] }"
-            >
+            <div class="ba-thumb-before"
+              :style="{ 'background-image': `${beforeColors[i]}, ${beforeImages[i]}`, 'background-size': '140%', 'background-repeat': 'no-repeat', 'background-position': 'center' }">
               <span>{{ c.beforeLabel }}</span>
             </div>
-            <div
-              class="ba-thumb-after"
-              :style="{ background: afterColors[i] }"
-            >
+            <div class="ba-thumb-after"
+              :style="{ 'background-image': `${afterColors[i]}, ${afterImages[i]}`, 'background-size': '140%', 'background-repeat': 'no-repeat', 'background-position': 'center' }">
               <span>{{ c.afterLabel }}</span>
             </div>
             <div class="ba-thumb-divider"></div>
           </div>
           <div class="ba-case-meta">
-            <span class="ba-case-icon">{{ caseIcons[i] }}</span>
             <div>
               <h4>{{ c.title }}</h4>
               <p>{{ c.desc }}</p>
@@ -307,7 +267,7 @@ body.rtl .ba-nav-next :deep(svg) {
 .ba-slider-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 2;
   border-radius: var(--radius-lg);
   overflow: hidden;
   cursor: ew-resize;
@@ -324,6 +284,9 @@ body.rtl .ba-nav-next :deep(svg) {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 97vw;
+  background-position: center center;
 }
 
 .ba-before {
@@ -505,8 +468,10 @@ body.rtl .ba-handle-circle :deep(svg:last-child) {
 /* ==================== Cases Grid ==================== */
 .ba-cases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .ba-case-card {
@@ -526,14 +491,16 @@ body.rtl .ba-handle-circle :deep(svg:last-child) {
 
 .ba-case-card.active {
   border-color: var(--teal-500);
-  box-shadow: 0 0 0 2px rgba(37, 215, 184, 0.12), var(--shadow-md);
+  box-shadow:
+    0 0 0 2px rgba(37, 215, 184, 0.12),
+    var(--shadow-md);
 }
 
 .ba-case-thumb {
   display: flex;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  height: 120px;
+  height: 70px;
   margin-bottom: 1rem;
   position: relative;
 }
