@@ -20,11 +20,22 @@ import {
 import PediatricDecorations from '@/components/PediatricDecorations.vue'
 import WhatsAppIcon from '@/components/WhatsAppIcon.vue'
 import Doodle from '@/components/Doodle.vue'
-
+import {
+  useStructuredData,
+  SITE_URL,
+  getBreadcrumbSchema,
+  getServiceSchema,
+  getFaqSchema,
+  getAggregateRatingSchema,
+} from '@/composables/useStructuredData'
+import { usePageMeta } from '@/composables/usePageMeta'
 
 const route = useRoute()
 const router = useRouter()
 const store = useLanguageStore()
+
+// JSON-LD structured data for this service page
+const siteUrl = SITE_URL || (typeof window !== 'undefined' ? window.location.origin : '')
 
 const serviceSlug = computed(() => route.params.slug as string)
 const isPediatric = computed(() => serviceSlug.value === 'pediatric-dentistry')
@@ -36,6 +47,55 @@ const serviceIndex = computed(() => {
 
 const service = computed(() => store.t.services.items[serviceIndex.value])
 const detail = computed(() => store.t.servicesDetail[serviceIndex.value])
+
+const currentUrl = computed(() => `${siteUrl}/services/${serviceSlug.value}`)
+
+const serviceTitle = service.value?.title ?? ''
+
+usePageMeta({
+  title: store.isRtl
+    ? `${serviceTitle} - مركز بلازا لرعاية الاسنان`
+    : `${serviceTitle} | Plaza Dental Care Center`,
+  description: (() => {
+    const raw = detail.value?.extendedDesc ?? ''
+    if (raw) return raw.length > 200 ? raw.slice(0, 200) + '…' : raw
+    return store.isRtl
+      ? `تعرف على خدمة ${serviceTitle} في مركز بلازا لرعاية الاسنان - أفضل مركز أسنان في الإسكندرية`
+      : `Professional ${serviceTitle} at Plaza Dental Care Center — expert dental care in Alexandria, Egypt.`
+  })(),
+  keywords: store.isRtl
+    ? `${serviceTitle}, مركز بلازا, عيادة أسنان, إسكندرية, طب أسنان`
+    : `${serviceTitle}, Plaza Dental Care, dentist Alexandria, dental clinic Egypt`,
+})
+
+useStructuredData(() => {
+  const schemas: Record<string, unknown>[] = [
+    getBreadcrumbSchema([
+      { name: store.t.nav.home, url: siteUrl },
+      { name: store.t.nav.services, url: `${siteUrl}/#services` },
+      { name: service.value?.title ?? '', url: currentUrl.value },
+    ]),
+  ]
+
+  if (service.value) {
+    schemas.push(getServiceSchema(service.value))
+  }
+
+  if (detail.value?.faq?.length) {
+    schemas.push(getFaqSchema(detail.value.faq))
+  }
+
+  if (store.t.testimonials?.items?.length) {
+    const agg = getAggregateRatingSchema(
+      store.t.testimonials.items,
+      service.value?.title ?? store.t.services.title,
+      currentUrl.value,
+    )
+    if (agg) schemas.push(agg)
+  }
+
+  return schemas
+})
 
 const pageTitle = computed(() => service.value?.title ?? '')
 

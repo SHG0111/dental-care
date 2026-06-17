@@ -10,8 +10,23 @@ import MapSection from '@/components/MapSection.vue'
 import FooterSection from '@/components/FooterSection.vue'
 import WhatsAppButton from '@/components/WhatsAppButton.vue'
 import CustomCursor from '@/components/CustomCursor.vue'
+import {
+  useStructuredData,
+  useGoogleAnalytics,
+  getDentistSchema,
+  getWebSiteSchema,
+} from '@/composables/useStructuredData'
 
 const store = useLanguageStore()
+
+// Google Analytics 4
+useGoogleAnalytics('G-16RE50DBJK')
+
+// Site-wide JSON-LD structured data
+useStructuredData([
+  getDentistSchema(store.t),
+  getWebSiteSchema(),
+])
 const isLoaded = ref(false)
 const lenisRef = ref<InstanceType<typeof VueLenis> | null>(null)
 

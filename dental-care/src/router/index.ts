@@ -13,6 +13,11 @@ const router = createRouter({
       name: 'service-details',
       component: () => import('@/views/ServiceDetailsPage.vue'),
     },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('@/views/NotFound.vue'),
+    },
   ],
   scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) {
