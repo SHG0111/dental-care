@@ -203,7 +203,7 @@ const serviceImages = [
       </div>
     </section>
 
-    <Doodle  v-if="isPediatric"/>
+    <Doodle v-if="isPediatric"/>
 
     <!-- ==================== BENEFITS ==================== -->
     <section id="sd-benefits" ref="benefitsRef" :class="{ 'is-revealed': benefitsRevealed }"
@@ -269,10 +269,11 @@ const serviceImages = [
       </div>
     </section>
 
-  <Doodle v-if="isPediatric"/>
+    <Doodle v-if="isPediatric"/>
     <!-- ==================== FAQ ==================== -->
     <section id="sd-faq" ref="faqRef" :class="{ 'is-revealed': faqRevealed }" class="sd-section sd-faq reveal-clip">
-      <div class="sd-section-inner">
+      <div class="reveal-clip-inner">
+        <div class="sd-section-inner">
         <div class="sd-faq-header">
           
           <h2 class="sd-section-title">
@@ -293,6 +294,7 @@ const serviceImages = [
             <div class="sd-faq-answer-wrap" :class="{ 'sd-faq-answer-open': openFaq === i }">
               <p class="sd-faq-answer">{{ item.a }}</p>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -1560,11 +1562,15 @@ body.ltr .sd-overview-text {
 
 /* Clip in — curtain sweeps left to right */
 .reveal-clip {
+  overflow: hidden;
+}
+
+.reveal-clip-inner {
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.reveal-clip.is-revealed {
+.reveal-clip.is-revealed .reveal-clip-inner {
   clip-path: inset(0 0% 0 0);
 }
 
