@@ -61,7 +61,7 @@ function goToMap(e: MouseEvent) {
               </div>
               <div class="contact-item-text">
                 <strong>{{ store.t.contact[item.key] }}</strong>
-                <span>{{
+                <span dir="ltr">{{
                   item.key === 'whatsapp'
                     ? store.t.contact.waValue
                     : item.key === 'phone'
@@ -115,7 +115,7 @@ function goToMap(e: MouseEvent) {
                   <span>{{ store.t.contact.addressValue }}</span>
                 </div>
                 <h3>
-                  {{ store.isRtl ? 'مركز بلازا لتجميل الاسنان' : 'Plaza Dental Care Center' }}
+                  {{ store.isRtl ? 'مركز بلازا لرعاية الاسنان' : 'Plaza Dental Care Center' }}
                 </h3>
                 <div class="map-hours-line">
                   <span class="map-label">{{ store.isRtl ? 'ساعات العمل:' : 'Hours:' }}</span>
@@ -131,12 +131,6 @@ function goToMap(e: MouseEvent) {
                   </a>
                 </div>
               </div>
-            </div>
-
-            <!-- Decorative elements -->
-            <div class="map-dots">
-              <span></span><span></span><span></span><span></span> <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
             </div>
           </div>
         </div>
@@ -193,7 +187,7 @@ function goToMap(e: MouseEvent) {
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: var(--gray-50);
+  background: #f8fafa;
   border-radius: var(--radius-sm);
   transition: all var(--transition-base);
   text-decoration: none;

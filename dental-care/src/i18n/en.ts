@@ -212,7 +212,7 @@ export default {
     cta: 'Open in Google Maps',
     phone: 'Call Us',
     hours: 'Working Hours',
-    hoursValue: 'Sat - Thu: 10 AM - 8 PM\nFri: 2 PM - 8 PM',
+    hoursValue: 'Fri - Wed: 11 AM - 11:30 PM\nThu: 5 PM - 11:30 PM',
   },
   facebookReels: {
     label: 'Follow Us on Facebook',
@@ -246,9 +246,8 @@ export default {
     wed: 'Wed',
     thu: 'Thu',
     fri: 'Fri',
-    weekdays: '10 AM – 8 PM',
-    friHours: '2 PM – 8 PM',
-    satHours: '11 AM – 6 PM',
+    weekdays: '11 AM – 11:30 PM',
+    satHours: '5 PM – 11:30 PM',
     cta: 'Book Now',
   },
   footer: {

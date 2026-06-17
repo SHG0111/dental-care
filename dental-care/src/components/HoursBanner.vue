@@ -27,15 +27,11 @@ function scrollToContact() {
 
       <div class="hours-grid">
         <div class="hour-item">
-          <span class="hour-day">{{ store.t.hours.sun }} – {{ store.t.hours.thu }}</span>
+          <span class="hour-day">{{ store.t.hours.fri }} – {{ store.t.hours.wed }}</span>
           <span class="hour-time">{{ store.t.hours.weekdays }}</span>
         </div>
         <div class="hour-item">
-          <span class="hour-day">{{ store.t.hours.fri }}</span>
-          <span class="hour-time">{{ store.t.hours.friHours }}</span>
-        </div>
-        <div class="hour-item">
-          <span class="hour-day">{{ store.t.hours.sat }}</span>
+          <span class="hour-day">{{ store.t.hours.thu }}</span>
           <span class="hour-time">{{ store.t.hours.satHours }}</span>
         </div>
       </div>
@@ -142,6 +138,7 @@ function scrollToContact() {
     text-align: center;
     padding: 2.5rem 2rem;
   }
+
   .hours-grid {
     justify-content: center;
     gap: 1.5rem;
