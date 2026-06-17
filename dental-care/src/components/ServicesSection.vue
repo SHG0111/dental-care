@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useLanguageStore } from '@/stores/language'
 import {
-  useGsapScrubReveal,
-  useGsapScrubStagger,
-  useParallaxGroup,
-} from '@/composables/useGsapReveal'
+  useScrollReveal,
+  useScrollStagger,
+} from '@/composables/useScrollReveal'
+import { useParallaxGroup } from '@/composables/useGsapReveal'
 import { ArrowLeft, ArrowRight } from '@lucide/vue'
 
 const router = useRouter()
@@ -16,8 +16,8 @@ const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
 const gridRef = ref<HTMLElement | null>(null)
 
-useGsapScrubReveal(headerRef, { animation: 'fadeUp' })
-useGsapScrubStagger(gridRef, '> .service-card', { stagger: 0.08 })
+const { isRevealed: headerRevealed } = useScrollReveal(headerRef)
+const { isRevealed: gridRevealed } = useScrollStagger(gridRef)
 useParallaxGroup(sectionRef, { selector: '.services-bg-shape, .services-bg-dots', yRange: 40 })
 
 function goToService(slug: string) {
@@ -44,7 +44,7 @@ const images = [
 
     <div class="section-inner">
       <!-- Header -->
-      <div ref="headerRef" class="section-header">
+      <div ref="headerRef" :class="{ 'is-revealed': headerRevealed }" class="section-header reveal-slideUp">
         <h2 class="section-title">
           {{ store.t.services.title.split(' ').slice(0, 2).join(' ') }}
           <span class="accent"> {{ store.t.services.title.split(' ').slice(2).join(' ') }}</span>
@@ -55,8 +55,9 @@ const images = [
       </div>
 
       <!-- Grid -->
-      <div ref="gridRef" class="services-grid">
-        <div v-for="(service, i) in store.t.services.items" :key="i" class="service-card"
+      <div ref="gridRef" :class="{ 'is-revealed': gridRevealed }" class="services-grid">
+        <div v-for="(service, i) in store.t.services.items" :key="i" class="service-card reveal-stagger-item"
+          :style="{ transitionDelay: `${i * 0.08}s` }"
           @click="goToService(service.slug)">
           <!-- Card number badge -->
           <div class="service-num-wrap">
@@ -302,5 +303,24 @@ body.ltr .service-card:hover .service-arrow {
   .service-num-bg {
     font-size: 2.8rem;
   }
+}
+
+/* ==========================================
+   SCROLL REVEAL — CSS transitions (no opacity)
+   ========================================== */
+.reveal-slideUp {
+  transform: translateY(50px);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-slideUp.is-revealed {
+  transform: translateY(0);
+}
+
+.reveal-stagger-item {
+  transform: translateY(40px);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.is-revealed .reveal-stagger-item {
+  transform: translateY(0);
 }
 </style>

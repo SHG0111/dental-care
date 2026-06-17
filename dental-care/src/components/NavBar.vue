@@ -3,8 +3,6 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useLanguageStore } from '@/stores/language'
 import { Menu, X, ChevronDown } from '@lucide/vue'
-import { useLenis } from 'lenis/vue'
-import type Lenis from 'lenis'
 import WhatsAppIcon from '@/components/WhatsAppIcon.vue'
 import gbFlag from 'flag-icons/flags/4x3/gb.svg'
 import saFlag from 'flag-icons/flags/4x3/sa.svg'
@@ -12,37 +10,41 @@ import saFlag from 'flag-icons/flags/4x3/sa.svg'
 const router = useRouter()
 const route = useRoute()
 const store = useLanguageStore()
-const lenis = useLenis()
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 const servicesDropdownOpen = ref(false)
 const mobileServicesOpen = ref(false)
 let dropdownTimeout: ReturnType<typeof setTimeout> | null = null
-let unsubLenisScroll: (() => void) | null = null
+
+function getLenis() {
+  return (window as any).lenis ?? null
+}
 
 const isHome = ref(true)
 
 const navItems = [
-  { key: 'home', href: '#home' as const },
-  { key: 'about', href: '#about' as const },
-  { key: 'services', href: '#services' as const },
-  { key: 'beforeAfter', href: '#before-after' as const },
-  { key: 'team', href: '#team' as const },
-  { key: 'testimonials', href: '#testimonials' as const },
-  { key: 'contact', href: '#contact' as const },
+  { key: 'home', href: '/#home' as const },
+  { key: 'about', href: '/#about' as const },
+  { key: 'services', href: '/#services' as const },
+  { key: 'beforeAfter', href: '/#before-after' as const },
+  { key: 'team', href: '/#team' as const },
+  { key: 'testimonials', href: '/#testimonials' as const },
+  { key: 'contact', href: '/#contact' as const },
 ]
 
-function onLenisScroll(l: Lenis) {
-  isScrolled.value = l.scroll > 40
+function getHash(fullHref: string) {
+  const i = fullHref.indexOf('#')
+  return i >= 0 ? fullHref.slice(i) : fullHref
 }
 
 function scrollToSection(href: string) {
   isMobileMenuOpen.value = false
+  const hash = getHash(href)
   if (!isHome.value) {
-    router.push({ name: 'home', hash: href })
+    router.push({ name: 'home', hash })
     return
   }
-  lenis.value?.scrollTo(href)
+  getLenis()?.scrollTo(hash)
 }
 
 function toggleDropdown() {
@@ -78,16 +80,18 @@ function onDocumentClick(e: MouseEvent) {
   }
 }
 
+function onScroll() {
+  isScrolled.value = window.scrollY > 40
+}
+
 onMounted(() => {
   document.addEventListener('click', onDocumentClick)
   store.initLang()
-  if (lenis.value) {
-    unsubLenisScroll = lenis.value.on('scroll', onLenisScroll)
-  }
+  window.addEventListener('scroll', onScroll, { passive: true })
 })
 
 onUnmounted(() => {
-  unsubLenisScroll?.()
+  window.removeEventListener('scroll', onScroll)
 })
 
 // Track whether we are on the home page
@@ -105,7 +109,7 @@ isHome.value = route.name === 'home'
   }" :dir="store.isRtl ? 'rtl' : 'ltr'">
     <div class="navbar-inner">
       <!-- Logo -->
-      <a href="#home" class="logo" @click.prevent="scrollToSection('#home')">
+      <a href="/" class="logo" @click.prevent="scrollToSection('/#home')">
         <div class="logo-icon">
           <img src="/logo.png" alt="Plaza Dental Care" class="logo-img" />
         </div>

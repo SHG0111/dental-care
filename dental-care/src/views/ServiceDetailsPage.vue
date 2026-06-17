@@ -14,9 +14,9 @@ import {
   Star,
 } from '@lucide/vue'
 import {
-  useGsapScrubReveal,
-  useGsapScrubStagger,
-} from '@/composables/useGsapReveal'
+  useScrollReveal,
+  useScrollStagger,
+} from '@/composables/useScrollReveal'
 
 const route = useRoute()
 const router = useRouter()
@@ -62,14 +62,17 @@ const testimonialRef = ref<HTMLElement | null>(null)
 const testimonialGridRef = ref<HTMLElement | null>(null)
 const ctaRef = ref<HTMLElement | null>(null)
 
-// Init GSAP scroll animations — all linked to scroll progress
-useGsapScrubReveal(heroRef, { animation: 'fadeIn' })
-useGsapScrubReveal(overviewRef, { animation: 'fadeUp' })
-useGsapScrubStagger(benefitsGridRef, '> .sd-benefits-card', { stagger: 0.12 })
-useGsapScrubStagger(processGridRef, '> .sd-process-step', { stagger: 0.1 })
-useGsapScrubReveal(faqRef, { animation: 'fadeUp' })
-useGsapScrubStagger(testimonialGridRef, '> .sd-testimonial-card', { stagger: 0.12 })
-useGsapScrubReveal(ctaRef, { animation: 'scaleIn' })
+// Scroll reveal animations (CSS transitions, no opacity)
+const { isRevealed: heroRevealed } = useScrollReveal(heroRef, { threshold: 0.1 })
+const { isRevealed: overviewRevealed } = useScrollReveal(overviewRef)
+const { isRevealed: benefitsRevealed } = useScrollReveal(benefitsRef)
+const { isRevealed: _benefitsGridRevealed } = useScrollStagger(benefitsGridRef)
+const { isRevealed: processRevealed } = useScrollReveal(processRef)
+const { isRevealed: _processGridRevealed } = useScrollStagger(processGridRef)
+const { isRevealed: faqRevealed } = useScrollReveal(faqRef)
+const { isRevealed: testimonialRevealed } = useScrollReveal(testimonialRef)
+const { isRevealed: _testimonialGridRevealed } = useScrollStagger(testimonialGridRef)
+const { isRevealed: ctaRevealed } = useScrollReveal(ctaRef)
 
 const serviceImages = [
   '/smile.png',
@@ -93,7 +96,7 @@ const blockVariants = [
 <template>
   <div class="service-details-page" :class="{ 'is-pediatric': isPediatric }">
     <!-- ==================== HERO ==================== -->
-    <section id="sd-hero" ref="heroRef" class="sd-hero">
+    <section id="sd-hero" ref="heroRef" :class="{ 'is-revealed': heroRevealed }" class="sd-hero reveal-scale">
       <!-- Pediatric floating decorations -->
       <template v-if="isPediatric">
         <div class="pediatric-floaties">
@@ -257,7 +260,8 @@ const blockVariants = [
     <section
       id="sd-overview"
       ref="overviewRef"
-      class="sd-section sd-overview"
+      :class="{ 'is-revealed': overviewRevealed }"
+      class="sd-section sd-overview reveal-slideUp"
     >
       <div class="sd-section-inner">
         <div class="sd-overview-grid">
@@ -307,7 +311,8 @@ const blockVariants = [
     <section
       id="sd-benefits"
       ref="benefitsRef"
-      class="sd-section sd-benefits"
+      :class="{ 'is-revealed': benefitsRevealed }"
+      class="sd-section sd-benefits reveal-slideUp"
     >
       <div class="sd-section-inner">
         <div class="sd-section-header-text">
@@ -325,11 +330,11 @@ const blockVariants = [
           </p>
         </div>
 
-        <div ref="benefitsGridRef" class="sd-benefits-grid">
+        <div ref="benefitsGridRef" :class="{ 'is-revealed': _benefitsGridRevealed }" class="sd-benefits-grid">
           <div
             v-for="(benefit, i) in detail?.benefits ?? []"
             :key="i"
-            class="sd-benefit-card"
+            class="sd-benefit-card reveal-stagger-item"
             :style="{
               transitionDelay: `${0.1 + i * 0.08}s`,
             }"
@@ -358,7 +363,8 @@ const blockVariants = [
     <section
       id="sd-process"
       ref="processRef"
-      class="sd-section sd-process"
+      :class="{ 'is-revealed': processRevealed }"
+      class="sd-section sd-process reveal-slideUp"
     >
       <div class="sd-section-inner">
         <div class="sd-section-header-text">
@@ -376,11 +382,11 @@ const blockVariants = [
           </p>
         </div>
 
-        <div ref="processGridRef" class="sd-process-timeline">
+        <div ref="processGridRef" :class="{ 'is-revealed': _processGridRevealed }" class="sd-process-timeline">
           <div
             v-for="(step, i) in detail?.process ?? []"
             :key="i"
-            class="sd-process-step"
+            class="sd-process-step reveal-stagger-item"
             :style="{
               transitionDelay: `${0.1 + i * 0.15}s`,
             }"
@@ -410,7 +416,8 @@ const blockVariants = [
     <section
       id="sd-faq"
       ref="faqRef"
-      class="sd-section sd-faq"
+      :class="{ 'is-revealed': faqRevealed }"
+      class="sd-section sd-faq reveal-clip"
     >
       <div class="sd-section-inner">
         <div class="sd-faq-header">
@@ -459,7 +466,8 @@ const blockVariants = [
     <section
       id="sd-testimonials"
       ref="testimonialRef"
-      class="sd-section sd-testimonials"
+      :class="{ 'is-revealed': testimonialRevealed }"
+      class="sd-section sd-testimonials reveal-slideUp"
     >
       <div class="sd-section-inner">
         <div class="sd-testimonials-header">
@@ -477,11 +485,11 @@ const blockVariants = [
           </p>
         </div>
 
-        <div ref="testimonialGridRef" class="sd-testimonials-grid">
+        <div ref="testimonialGridRef" :class="{ 'is-revealed': _testimonialGridRevealed }" class="sd-testimonials-grid">
           <div
             v-for="(item, i) in store.t.testimonials.items"
             :key="i"
-            class="sd-testimonial-card"
+            class="sd-testimonial-card reveal-stagger-item"
             :style="{ transitionDelay: `${i * 0.12}s` }"
           >
             <div class="sd-testimonial-stars">
@@ -517,7 +525,8 @@ const blockVariants = [
     <section
       id="sd-cta"
       ref="ctaRef"
-      class="sd-section sd-cta"
+      :class="{ 'is-revealed': ctaRevealed }"
+      class="sd-section sd-cta reveal-scale"
     >
       <div class="sd-cta-bg">
         <div class="sd-cta-pattern"></div>
@@ -571,9 +580,6 @@ const blockVariants = [
 .sd-section {
   padding: 14rem 0;
   position: relative;
-  /* Initial hidden state – GSAP animates to visible */
-  opacity: 0;
-  transform: translateY(40px);
 }
 
 .sd-section-inner {
@@ -1138,16 +1144,8 @@ body.ltr .sd-overview-text {
   border-radius: var(--radius-lg);
   padding: 2rem 1.75rem;
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  opacity: 0;
-  transform: translateY(30px);
-  animation: sd-fade-in 0.7s ease forwards;
   display: flex;
   flex-direction: column;
-}
-
-.sd-testimonial-card:nth-child(3),
-.sd-testimonial-card:nth-child(4) {
-  animation-delay: 0.15s;
 }
 
 .sd-testimonial-card:hover {
@@ -1214,13 +1212,6 @@ body.ltr .sd-overview-text {
   font-size: 0.78rem;
   color: var(--text-tertiary);
   letter-spacing: 0.02em;
-}
-
-@keyframes sd-fade-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ==========================================
@@ -1940,5 +1931,45 @@ body.ltr .sd-overview-text {
   .is-pediatric .sd-hero-title {
     font-size: 1.5rem;
   }
+}
+
+/* ==========================================
+   SCROLL REVEAL — CSS transitions (no opacity)
+   ========================================== */
+
+/* Clip in — curtain sweeps left to right */
+.reveal-clip {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-clip.is-revealed {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* Slide up */
+.reveal-slideUp {
+  transform: translateY(50px);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-slideUp.is-revealed {
+  transform: translateY(0);
+}
+
+/* Scale in */
+.reveal-scale {
+  transform: scale(0.85);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-scale.is-revealed {
+  transform: scale(1);
+}
+
+/* Stagger children - initial hidden state */
+.reveal-stagger-item {
+  transform: translateY(40px);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.is-revealed .reveal-stagger-item {
+  transform: translateY(0);
 }
 </style>

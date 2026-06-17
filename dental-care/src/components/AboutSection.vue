@@ -2,22 +2,25 @@
 import { ref } from 'vue'
 import { useLanguageStore } from '@/stores/language'
 import {
-  useGsapScrubReveal,
-  useGsapScrubStagger,
-  useParallaxGroup,
-} from '@/composables/useGsapReveal'
+  useScrollReveal,
+  useScrollStagger,
+} from '@/composables/useScrollReveal'
+import { useParallaxGroup } from '@/composables/useGsapReveal'
 import { Users, Award, CheckCircle } from '@lucide/vue'
 
 const store = useLanguageStore()
+
+function scrollToContact() {
+  (window as any).lenis?.scrollTo('#contact')
+}
 
 const sectionRef = ref<HTMLElement | null>(null)
 const textRef = ref<HTMLElement | null>(null)
 const visualRef = ref<HTMLElement | null>(null)
 const statsRef = ref<HTMLElement | null>(null)
 
-useGsapScrubReveal(textRef, { animation: 'fadeUp' })
-useGsapScrubReveal(visualRef, { animation: 'fadeUp' })
-useGsapScrubStagger(statsRef, '> .about-stat-item', { stagger: 0.1 })
+const { isRevealed: textRevealed } = useScrollReveal(textRef)
+const { isRevealed: visualRevealed } = useScrollReveal(visualRef)
 useParallaxGroup(sectionRef, { selector: '.about-pattern', yRange: 30 })
 
 const highlights = [
@@ -37,7 +40,7 @@ const highlights = [
       <!-- Split layout: Text + Visual (like drnour1.com) -->
       <div class="about-split">
         <!-- Text Side -->
-        <div ref="textRef" class="about-text-side">
+        <div ref="textRef" :class="{ 'is-revealed': textRevealed }" class="about-text-side reveal-slideLeft">
           <h2 class="about-title">
             <span>{{ store.t.about.title.split(' ').slice(0, 1).join(' ') }}</span>
             &nbsp;
@@ -62,14 +65,14 @@ const highlights = [
 
           <!-- CTA -->
           <div>
-            <a href="#contact" class="btn btn-primary" style="margin-top: 1.5rem">
+            <a href="/#contact" class="btn btn-primary" style="margin-top: 1.5rem" @click.prevent="scrollToContact">
               {{ store.isRtl ? 'احجز موعدك الآن' : 'Book Your Appointment' }}
             </a>
           </div>
         </div>
 
         <!-- Visual Side - Doctor/Clinic showcase card -->
-        <div ref="visualRef" class="about-visual-side">
+        <div ref="visualRef" :class="{ 'is-revealed': visualRevealed }" class="about-visual-side reveal-slideRight">
           <div class="about-showcase-card">
             <!-- Card decorative top -->
             <div class="showcase-top">
@@ -544,5 +547,24 @@ body.rtl .badge-2 {
   .showcase-visual {
     height: 110px;
   }
+}
+
+/* ==========================================
+   SCROLL REVEAL — CSS transitions (no opacity)
+   ========================================== */
+.reveal-slideLeft {
+  transform: translateX(-60px);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-slideLeft.is-revealed {
+  transform: translateX(0);
+}
+
+.reveal-slideRight {
+  transform: translateX(60px);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-slideRight.is-revealed {
+  transform: translateX(0);
 }
 </style>

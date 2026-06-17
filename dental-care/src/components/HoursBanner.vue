@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { useLanguageStore } from '@/stores/language'
 import { Calendar, ArrowDown } from '@lucide/vue'
-import { useLenis } from 'lenis/vue'
 
 const store = useLanguageStore()
-const lenis = useLenis()
 
 function scrollToContact() {
-  lenis.value?.scrollTo('#contact')
+  // Use Lenis if available on root, otherwise native smooth scroll
+  const target = document.querySelector('#contact')
+  if (!target) return
+  if ((window as any).lenis) {
+    ;(window as any).lenis.scrollTo(target)
+  } else {
+    target.scrollIntoView({ behavior: 'smooth' })
+  }
 }
 </script>
 

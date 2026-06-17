@@ -3,16 +3,17 @@ import { ref, onMounted } from 'vue'
 import { useLanguageStore } from '@/stores/language'
 import { Calendar, Eye } from '@lucide/vue'
 import gsap from 'gsap'
-import { useLenis } from 'lenis/vue'
 
 const store = useLanguageStore()
-const lenis = useLenis()
+
+function getLenis() {
+  return (window as any).lenis ?? null
+}
 
 const heroRef = ref<HTMLElement | null>(null)
 const contentRef = ref<HTMLElement | null>(null)
 const imageWrapRef = ref<HTMLElement | null>(null)
 const imageRef = ref<HTMLElement | null>(null)
-const badgeRef = ref<HTMLElement | null>(null)
 const titleRef = ref<HTMLElement | null>(null)
 const subtitleRef = ref<HTMLElement | null>(null)
 const buttonsRef = ref<HTMLElement | null>(null)
@@ -21,12 +22,10 @@ const scrollRef = ref<HTMLElement | null>(null)
 onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-  // Content stagger — badge, title lines, subtitle, buttons
-  tl.from(badgeRef.value, { y: 40, opacity: 0, duration: 0.9, ease: 'power2.inOut' })
-    .from(
+  // Content stagger — title lines, subtitle, buttons
+  tl.from(
       titleRef.value,
       { y: 70, opacity: 0, duration: 1, stagger: 0.15, ease: 'power2.inOut' },
-      '-=0.5',
     )
     .from(subtitleRef.value, { y: 30, opacity: 0, duration: 0.8, ease: 'power2.inOut' }, '-=0.6')
     .from(buttonsRef.value, { y: 30, opacity: 0, duration: 0.8, ease: 'power2.inOut' }, '-=0.7')
@@ -60,11 +59,11 @@ onMounted(() => {
 })
 
 function scrollToContact() {
-  lenis.value?.scrollTo('#contact')
+  getLenis()?.scrollTo('#contact')
 }
 
 function scrollToServices() {
-  lenis.value?.scrollTo('#services')
+  getLenis()?.scrollTo('#services')
 }
 </script>
 

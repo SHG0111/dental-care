@@ -22,6 +22,10 @@ const footerServices = [
 function goToService(slug: string) {
   router.push({ name: 'service-details', params: { slug } })
 }
+
+function goHome() {
+  router.push({ name: 'home' })
+}
 </script>
 
 <template>
@@ -30,7 +34,7 @@ function goToService(slug: string) {
       <div class="footer-grid">
         <!-- Brand -->
         <div class="footer-brand">
-          <a href="#home" class="footer-logo">
+          <a href="/" class="footer-logo" @click.prevent="goHome">
             <div class="footer-logo-icon">
               <img src="/logo.png" alt="Plaza Dental Care" class="footer-logo-img" />
             </div>
@@ -70,7 +74,7 @@ function goToService(slug: string) {
           <h4>{{ store.t.footer.services }}</h4>
           <ul>
             <li v-for="s in footerServices" :key="s.en">
-              <a href="#" @click.prevent="goToService(s.slug)">{{ store.isRtl ? s.ar : s.en }}</a>
+              <a :href="`/services/${s.slug}`" @click.prevent="goToService(s.slug)">{{ store.isRtl ? s.ar : s.en }}</a>
             </li>
           </ul>
         </div>
