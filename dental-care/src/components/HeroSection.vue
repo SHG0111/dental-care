@@ -7,7 +7,8 @@ import gsap from 'gsap'
 const store = useLanguageStore()
 
 function getLenis() {
-  return (window as any).lenis ?? null
+  const l = (window as any).lenis
+  return (l && typeof l.scrollTo === 'function') ? l : null
 }
 
 const heroRef = ref<HTMLElement | null>(null)

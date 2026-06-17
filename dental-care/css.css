@@ -1,18 +1,177 @@
-.hero-ring[data-v-9caf22ae] {
+.services-section[data-v-d295e9cb] {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Background decorations */
+  .services-bg-shape[data-v-d295e9cb] {
     position: absolute;
-    top: 55%;
-    right: 17%;
-    transform: translateY(-125%);
-    width: 100%;
-    aspect-ratio: 1;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
     border-radius: 50%;
-    border: 1px solid rgba(37, 215, 184, 0.06);
+    background: radial-gradient(circle, rgba(37, 215, 184, 0.04), transparent 70%);
     pointer-events: none;
-    z-index: -1;
-    box-shadow: 0 0px 200px #25d7b812;
-}
-.hero-ring-2[data-v-9caf22ae] {
-    width: 85%;
-    border-color: rgba(39, 200, 247, 0.04);
-    right: 25%;
-}
+  }
+  .services-bg-dots[data-v-d295e9cb] {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(37, 215, 184, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .services-grid[data-v-d295e9cb] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.8rem;
+    position: relative;
+    z-index: 1;
+  }
+ 
+  
+  /* Number badge - large background number like drnour1.com */
+  .service-num-wrap[data-v-d295e9cb] {
+    position: absolute;
+    top: 0.5rem;
+    left: 1.25rem;
+    pointer-events: none;
+  }
+  body.ltr .service-num-wrap[data-v-d295e9cb] {
+    left: auto;
+    right: 1.25rem;
+  }
+  .service-num-bg[data-v-d295e9cb] {
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--teal-50);
+    line-height: 1;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.4s ease;
+    letter-spacing: -0.04em;
+  }
+  .service-card:hover .service-num-bg[data-v-d295e9cb] {
+    color: var(--teal-100);
+    transform: scale(1.05);
+  }
+  .service-card-inner[data-v-d295e9cb] {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+  .service-icon[data-v-d295e9cb] {
+    width: 64px;
+    height: 64px;
+    background: var(--teal-50);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.8rem;
+    transition: all var(--transition-base);
+    padding: 0.5rem;
+  }
+  .service-card:hover .service-icon[data-v-d295e9cb] {
+    background: var(--gradient-primary-subtle);
+    transform: scale(1.05) rotate(-3deg);
+  }
+  .service-card h3[data-v-d295e9cb] {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+  .service-card p[data-v-d295e9cb] {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  
+  /* Card footer with learn more */
+  .service-card-footer[data-v-d295e9cb] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(37, 215, 184, 0.06);
+    position: relative;
+    z-index: 1;
+  }
+  .service-read-more[data-v-d295e9cb] {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--teal-500);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+  }
+  body.ltr .service-read-more[data-v-d295e9cb] {
+    transform: translateX(8px);
+  }
+  .service-card:hover .service-read-more[data-v-d295e9cb] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .service-arrow[data-v-d295e9cb] {
+    color: var(--teal-300);
+    transition: all 0.3s ease;
+  }
+  .service-card:hover .service-arrow[data-v-d295e9cb] {
+    color: var(--teal-500);
+    transform: translateX(-4px);
+  }
+  body.ltr .service-card:hover .service-arrow[data-v-d295e9cb] {
+    transform: translateX(4px);
+  }
+  @media (max-width: 1024px) {
+  .services-grid[data-v-d295e9cb] {
+      grid-template-columns: repeat(2, 1fr);
+  }
+  }
+  @media (max-width: 700px) {
+  .services-grid[data-v-d295e9cb] {
+      grid-template-columns: 1fr;
+  }
+  .service-num-bg[data-v-d295e9cb] {
+      font-size: 3.5rem;
+  }
+  }
+  @media (max-width: 480px) {
+  .service-card[data-v-d295e9cb] {
+      padding: 1.75rem 1.25rem 1.4rem;
+  }
+  .service-card h3[data-v-d295e9cb] {
+      font-size: 1.05rem;
+  }
+  .service-card p[data-v-d295e9cb] {
+      font-size: 0.85rem;
+  }
+  .service-icon[data-v-d295e9cb] {
+      width: 50px;
+      height: 50px;
+      font-size: 1.4rem;
+  }
+  .service-num-bg[data-v-d295e9cb] {
+      font-size: 2.8rem;
+  }
+  }
+  
+  /* ==========================================
+     SCROLL REVEAL — CSS transitions (no opacity)
+     ========================================== */
+  .reveal-slideUp[data-v-d295e9cb] {
+    transform: translateY(50px);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-slideUp.is-revealed[data-v-d295e9cb] {
+    transform: translateY(0);
+  }
+  .reveal-stagger-item[data-v-d295e9cb] {
+    transform: translateY(40px);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .is-revealed .reveal-stagger-item[data-v-d295e9cb] {
+    transform: translateY(0);
+  }

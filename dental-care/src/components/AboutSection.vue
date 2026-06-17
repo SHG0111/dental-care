@@ -45,8 +45,7 @@ const highlights = [
             <span>{{ store.t.about.title.split(' ').slice(0, 1).join(' ') }}</span>
             &nbsp;
             <span class="text-gradient">
-              {{ store.t.about.title.split(' ').slice(1).join(' ') }}</span
-            >
+              {{ store.t.about.title.split(' ').slice(1).join(' ') }}</span>
           </h2>
 
           <p class="about-intro">
@@ -63,12 +62,7 @@ const highlights = [
             </div>
           </div>
 
-          <!-- CTA -->
-          <div>
-            <a href="/#contact" class="btn btn-primary" style="margin-top: 1.5rem" @click.prevent="scrollToContact">
-              {{ store.isRtl ? 'احجز موعدك الآن' : 'Book Your Appointment' }}
-            </a>
-          </div>
+
         </div>
 
         <!-- Visual Side - Doctor/Clinic showcase card -->
@@ -97,19 +91,9 @@ const highlights = [
                 <div class="clinic-circle clinic-circle-3"></div>
               </div>
               <div class="showcase-badge">
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
-                  />
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
                   <path d="m9 12 2 2 4-4" />
                 </svg>
                 <span>{{ store.isRtl ? 'معايير جودة عالية' : 'High-quality standards' }}</span>
@@ -119,10 +103,8 @@ const highlights = [
             <!-- Card footer with features -->
             <div class="showcase-features">
               <div class="showcase-feature" v-for="f in 4" :key="f">
-                <div
-                  class="feature-dot"
-                  :style="{ background: ['#27c8f7', '#0D4F8B', '#F5A623', '#31efc4'][f - 1] }"
-                ></div>
+                <div class="feature-dot" :style="{ background: ['#27c8f7', '#0D4F8B', '#F5A623', '#31efc4'][f - 1] }">
+                </div>
                 <span>{{
                   store.isRtl
                     ? ['تقنية متقدمة', 'فريق متخصص', 'جودة عالية', 'رعاية شاملة'][f - 1]
@@ -478,7 +460,7 @@ body.rtl .badge-2 {
 
   .about-visual-side {
     min-height: auto;
-    order: -1;
+    /* order: -1; */
   }
 
   .about-float-badge {
@@ -556,6 +538,7 @@ body.rtl .badge-2 {
   transform: translateX(-60px);
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal-slideLeft.is-revealed {
   transform: translateX(0);
 }
@@ -564,6 +547,7 @@ body.rtl .badge-2 {
   transform: translateX(60px);
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal-slideRight.is-revealed {
   transform: translateX(0);
 }

@@ -17,7 +17,8 @@ const mobileServicesOpen = ref(false)
 let dropdownTimeout: ReturnType<typeof setTimeout> | null = null
 
 function getLenis() {
-  return (window as any).lenis ?? null
+  const l = (window as any).lenis
+  return (l && typeof l.scrollTo === 'function') ? l : null
 }
 
 const isHome = ref(true)
@@ -44,7 +45,13 @@ function scrollToSection(href: string) {
     router.push({ name: 'home', hash })
     return
   }
-  getLenis()?.scrollTo(hash)
+  const lenis = getLenis()
+  if (lenis) {
+    lenis.scrollTo(hash)
+  } else {
+    const el = document.querySelector(hash)
+    el?.scrollIntoView({ behavior: 'smooth' })
+  }
 }
 
 function toggleDropdown() {
@@ -441,7 +448,23 @@ body.ltr .logo-en {
 /* Mobile */
 @media (max-width: 1024px) {
   .navbar {
-    padding: 0 2rem;
+    padding: 0 2.5rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.65rem;
+    font-size: 0.88rem;
+  }
+
+  .nav-links {
+    gap: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-link {
+    padding: 0.45rem 0.5rem;
+    font-size: 0.82rem;
   }
 }
 
@@ -465,6 +488,15 @@ body.ltr .logo-en {
   .mobile-toggle {
     display: flex;
   }
+
+  .navbar-scrolled .mobile-toggle {
+    background: var(--gray-100);
+  }
+
+  .navbar-transparent .mobile-toggle {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+  }
 }
 
 @media (max-width: 480px) {
@@ -474,7 +506,7 @@ body.ltr .logo-en {
 
   .navbar-inner {
     height: 68px;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
 
   .logo-icon {
@@ -496,6 +528,34 @@ body.ltr .logo-en {
 
   .btn-book {
     padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .mobile-toggle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .mobile-overlay {
+    top: 68px;
+  }
+
+  .mobile-link {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .mobile-service-link {
+    padding: 0.6rem 1.25rem 0.6rem 2rem;
+  }
+
+  .mobile-divider {
+    margin: 0.4rem 1.25rem;
+  }
+
+  .mobile-lang-btn {
+    width: calc(100% - 2.5rem);
+    margin: 0.4rem 1.25rem;
   }
 }
 
@@ -506,7 +566,7 @@ body.ltr .logo-en {
 
   .navbar-inner {
     height: 60px;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .logo-icon {
@@ -519,14 +579,53 @@ body.ltr .logo-en {
   }
 
   .btn-book {
-    padding: 0.45rem 0.75rem;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .btn-book span {
+    display: none;
+  }
+
+  .mobile-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mobile-overlay {
+    top: 60px;
+  }
+
+  .mobile-menu {
+    padding: 0.5rem 0;
+  }
+
+  .mobile-link {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.82rem;
+  }
+
+  .mobile-service-link {
+    padding: 0.5rem 0.85rem 0.5rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .mobile-divider {
+    margin: 0.3rem 0.85rem;
+  }
+
+  .mobile-lang-btn {
+    width: calc(100% - 1.7rem);
+    margin: 0.3rem 0.85rem;
+    padding: 0.55rem;
+    font-size: 0.78rem;
   }
 }
 
 /* Mobile Overlay */
 .mobile-overlay {
   position: fixed;
-  top: 72px;
+  top: 80px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -633,7 +732,6 @@ body.ltr .logo-en {
     0 0 0 1px rgba(37, 215, 184, 0.08);
   padding: 1.5rem 1.5rem 1.75rem;
   z-index: 1001;
-  /* Decorative arrow */
 }
 
 .mega-dropdown::before {
@@ -743,13 +841,56 @@ body.ltr .logo-en {
   transform: translateX(-50%) translateY(8px);
 }
 
-.mega-enter-from::before {
-  opacity: 0;
-}
-
 .mega-leave-to {
   opacity: 0;
   transform: translateX(-50%) translateY(4px);
+}
+
+/* ==========================================
+   RESPONSIVE: MEGA DROPDOWN
+   ========================================== */
+@media (max-width: 1100px) {
+  .mega-dropdown {
+    width: calc(100vw - 3rem);
+    max-width: 640px;
+  }
+}
+
+@media (max-width: 900px) {
+  .mega-dropdown {
+    width: calc(100vw - 2.5rem);
+    max-width: none;
+  }
+
+  .mega-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+  }
+
+  .mega-card {
+    padding: 0.7rem 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .mega-dropdown {
+    display: none; /* never show inline mega on small screens */
+  }
+}
+
+/* RTL mega dropdown */
+body.rtl .mega-dropdown {
+  left: auto;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+body.rtl .mega-enter-from {
+  transform: translateX(50%) translateY(8px);
+}
+
+body.rtl .mega-leave-to {
+  transform: translateX(50%) translateY(4px);
 }
 
 /* ==========================================

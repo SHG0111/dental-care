@@ -45,7 +45,7 @@ const images = [
     <div class="section-inner">
       <!-- Header -->
       <div ref="headerRef" :class="{ 'is-revealed': headerRevealed }" class="section-header reveal-slideUp">
-        <h2 class="section-title">
+        <h2 class="section-title text-white">
           {{ store.t.services.title.split(' ').slice(0, 2).join(' ') }}
           <span class="accent"> {{ store.t.services.title.split(' ').slice(2).join(' ') }}</span>
         </h2>
@@ -57,8 +57,7 @@ const images = [
       <!-- Grid -->
       <div ref="gridRef" :class="{ 'is-revealed': gridRevealed }" class="services-grid">
         <div v-for="(service, i) in store.t.services.items" :key="i" class="service-card reveal-stagger-item"
-          :style="{ transitionDelay: `${i * 0.08}s` }"
-          @click="goToService(service.slug)">
+          :style="{ transitionDelay: `${i * 0.08}s` }" @click="goToService(service.slug)">
           <!-- Card number badge -->
           <div class="service-num-wrap">
             <span class="service-num-bg">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
@@ -90,24 +89,30 @@ const images = [
 .services-section {
   position: relative;
   overflow: hidden;
+  background: var(--text-primary);
+  padding: 40px 0;
+}
+
+.services-section .section-title {
+  color: white;
 }
 
 /* Background decorations */
 .services-bg-shape {
   position: absolute;
-  top: -200px;
-  right: -200px;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 215, 184, 0.04), transparent 70%);
+  /* top: -200px; */
+  /* right: -200px; */
+  width: 100%;
+  height: 100%;
+  border-radius: 5000%;
+  background: radial-gradient(circle, rgba(37, 215, 185, 0.412), transparent 70%);
   pointer-events: none;
 }
 
 .services-bg-dots {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(37, 215, 184, 0.03) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(37, 215, 185, 0.316) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
 }
@@ -312,6 +317,7 @@ body.ltr .service-card:hover .service-arrow {
   transform: translateY(50px);
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal-slideUp.is-revealed {
   transform: translateY(0);
 }
@@ -320,6 +326,7 @@ body.ltr .service-card:hover .service-arrow {
   transform: translateY(40px);
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .is-revealed .reveal-stagger-item {
   transform: translateY(0);
 }

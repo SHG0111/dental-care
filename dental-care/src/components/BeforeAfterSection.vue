@@ -43,7 +43,9 @@ function updateSlider(e: MouseEvent | TouchEvent) {
   if (!sliderEl) return
   const rect = sliderEl.getBoundingClientRect()
   const clientX = 'touches' in e ? e.touches[0]!.clientX : e.clientX
-  let pos = ((clientX - rect.left) / rect.width) * 100
+  let pos = store.isRtl
+    ? ((rect.right - clientX) / rect.width) * 100
+    : ((clientX - rect.left) / rect.width) * 100
   pos = Math.max(5, Math.min(95, pos))
   sliderPos.value = pos
 }
@@ -60,17 +62,19 @@ function prevCase() {
 
 // Static gradient thumbnails for before/after states
 const beforeImages = [
-  'url("/before_3.jpg")',
-  'url("/before_2.jpg")',
-  'url("/before_1.jpg")',
-  'url("/before_5.jpg")'
+  '/before_3.jpg',
+  '/before_2.jpg',
+  '/before_1.jpg',
+  '/before_5.jpg'
 ]
 
 const afterImages = [
-  'url("/after_3.jpg")',
-  'url("/after_2.jpg")',
-  'url("/after_1.jpg")',
-  'url("/after_5.jpg")'
+
+
+  '/after_3.jpg',
+  '/after_2.jpg',
+  '/after_1.jpg',
+  '/after_5.jpg'
 ]
 const beforeColors = [
   'linear-gradient(180deg, #667eea1A 0%, #764ba2 200%)',
@@ -121,19 +125,18 @@ const afterColors = [
             @mouseleave="stopDrag" @touchstart="startDrag" @touchmove="updateSlider" @touchend="stopDrag">
             <!-- Before (left) image -->
 
-            <div class="ba-image ba-before"
-              :style="{ 'background-image': `${beforeColors[activeIndex]}, ${beforeImages[activeIndex]}` }">
-
+            <div class="ba-image ba-before" :style="{ 'background': `${beforeColors[activeIndex]}` }">
+              <img :src=beforeImages[activeIndex] class="  opacity-50" />
             </div>
 
             <!-- After (right) image -->
-            <div class="ba-image ba-after"
-              :style="{ 'background-image': `${afterColors[activeIndex]}, ${afterImages[activeIndex]}` }">
+            <div class="ba-image ba-after" :style="{ 'background': `${afterColors[activeIndex]}` }">
+              <img :src=afterImages[activeIndex] class="  opacity-50" />
 
             </div>
 
             <!-- Slider handle -->
-            <div class="ba-handle" :style="{ left: sliderPos + '%' }">
+            <div class="ba-handle" :style="store.isRtl ? { right: sliderPos + '%' } : { left: sliderPos + '%' }">
               <div class="ba-handle-line"></div>
               <div class="ba-handle-circle">
                 <ChevronLeft :size="16" />
@@ -163,12 +166,15 @@ const afterColors = [
           ">
           <div class="ba-case-thumb">
             <div class="ba-thumb-before"
-              :style="{ 'background-image': `${beforeColors[i]}, ${beforeImages[i]}`, 'background-size': '140%', 'background-repeat': 'no-repeat', 'background-position': 'center' }">
-              <span>{{ c.beforeLabel }}</span>
+              :style="{ 'background': `${beforeColors[i]}` }">
+              <span class="absolute left-0 right-0 top-3 text-center z-10">{{ c.beforeLabel }}</span>
+              <img :src=beforeImages[i] class="  opacity-50 -z-10" />
+
             </div>
-            <div class="ba-thumb-after"
-              :style="{ 'background-image': `${afterColors[i]}, ${afterImages[i]}`, 'background-size': '140%', 'background-repeat': 'no-repeat', 'background-position': 'center' }">
-              <span>{{ c.afterLabel }}</span>
+            <div class="ba-thumb-after relative" :style="{ 'background': `${afterColors[i]}` }">
+              <span class="absolute left-0 right-0 top-3 text-center z-10">{{ c.afterLabel }}</span>
+              <img :src=afterImages[i] class="  opacity-50 -z-10" />
+
             </div>
             <div class="ba-thumb-divider"></div>
           </div>
@@ -186,8 +192,10 @@ const afterColors = [
 
 <style scoped>
 .ba-section {
-  background: var(--bg-secondary);
+  background: var(--white);
   position: relative;
+  /* padding: 40px 0; */
+  min-height: 150vh;
 }
 
 .ba-pattern {
@@ -263,6 +271,21 @@ body.rtl .ba-nav-next :deep(svg) {
   transform: scaleX(-1);
 }
 
+/* ==================== RTL: Slider image flip ==================== */
+body.rtl .ba-before {
+  left: auto;
+  right: 0;
+}
+
+body.rtl .ba-after {
+  right: auto;
+  left: 0;
+}
+
+body.rtl .ba-handle {
+  transform: translateX(50%);
+}
+
 /* Slider Container */
 .ba-slider-container {
   position: relative;
@@ -285,8 +308,12 @@ body.rtl .ba-nav-next :deep(svg) {
   justify-content: center;
   overflow: hidden;
   background-repeat: no-repeat;
-  background-size: 97vw;
+  background-size: 30vw;
   background-position: center center;
+}
+
+.ba-image img {
+  max-width: 500px;
 }
 
 .ba-before {

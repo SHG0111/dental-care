@@ -8,8 +8,9 @@ function scrollToContact() {
   // Use Lenis if available on root, otherwise native smooth scroll
   const target = document.querySelector('#contact')
   if (!target) return
-  if ((window as any).lenis) {
-    ;(window as any).lenis.scrollTo(target)
+  const lenis = (window as any).lenis
+  if (lenis && typeof lenis.scrollTo === 'function') {
+    lenis.scrollTo(target)
   } else {
     target.scrollIntoView({ behavior: 'smooth' })
   }

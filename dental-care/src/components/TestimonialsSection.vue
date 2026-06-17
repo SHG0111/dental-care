@@ -247,7 +247,7 @@ onUnmounted(() => {
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  opacity: 0.15;
+  /* opacity: 0.15; */
 }
 
 .testi-blob-1 {

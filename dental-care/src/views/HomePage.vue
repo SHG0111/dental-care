@@ -14,7 +14,8 @@ import ContactSection from '@/components/ContactSection.vue'
 const route = useRoute()
 
 function getLenis() {
-  return (window as any).lenis ?? null
+  const l = (window as any).lenis
+  return (l && typeof l.scrollTo === 'function') ? l : null
 }
 
 onMounted(() => {
@@ -22,7 +23,10 @@ onMounted(() => {
   if (route.hash) {
     nextTick(() => {
       setTimeout(() => {
-        getLenis()?.scrollTo(route.hash, { immediate: false })
+        const lenis = getLenis()
+        if (lenis) {
+          lenis.scrollTo(route.hash, { immediate: false })
+        }
       }, 400)
     })
   }
@@ -31,10 +35,10 @@ onMounted(() => {
 
 <template>
   <HeroSection />
-  <AboutSection />
-  <ServicesSection />
   <BeforeAfterSection />
+  <ServicesSection />
   <TeamSection />
+  <AboutSection />
   <TestimonialsSection />
   <FacebookReelsSection />
   <HoursBanner />
