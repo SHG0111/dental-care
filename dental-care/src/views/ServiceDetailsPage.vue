@@ -17,6 +17,10 @@ import {
   useScrollReveal,
   useScrollStagger,
 } from '@/composables/useScrollReveal'
+import PediatricDecorations from '@/components/PediatricDecorations.vue'
+import WhatsAppIcon from '@/components/WhatsAppIcon.vue'
+import Doodle from '@/components/Doodle.vue'
+
 
 const route = useRoute()
 const router = useRouter()
@@ -41,9 +45,25 @@ const openFaq = ref<number | null>(null)
 function toggleFaq(i: number) {
   openFaq.value = openFaq.value === i ? null : i
 }
+const doctors = [
+  '/Dr_AbdelRahman.png',
+  '/Dr_Hesham.png',
+  '/Dr_Mohammed.png'
+]
+function getDoctor() {
+  switch (serviceIndex.value) {
+    case 0: return doctors[0];
+    case 1: return doctors[0];
+    case 2: return doctors[0];
+    case 3: return doctors[2];
+    case 4: return doctors[1];
+    case 5: return doctors[1];
+    case 6: return doctors[0];
+    case 7: return doctors[0];
+    case 8: return doctors[2];
 
-function goBack() {
-  router.push({ name: 'home' })
+  }
+
 }
 
 function scrollToContact() {
@@ -86,138 +106,38 @@ const serviceImages = [
   '/filling.png'
 ]
 
-const blockVariants = [
-  { accent: 'teal', bg: 'bg-teal-glow' },
-  { accent: 'blue', bg: 'bg-blue-glow' },
-  { accent: 'gold', bg: 'bg-gold-glow' },
-]
+
+
 </script>
 
 <template>
   <div class="service-details-page" :class="{ 'is-pediatric': isPediatric }">
     <!-- ==================== HERO ==================== -->
-    <section id="sd-hero" ref="heroRef" :class="{ 'is-revealed': heroRevealed }" class="sd-hero reveal-scale">
+    <section id="sd-hero" ref="heroRef" :class="{ 'is-revealed': heroRevealed }" class="sd-hero reveal-scale relative">
       <!-- Pediatric floating decorations -->
       <template v-if="isPediatric">
-        <div class="pediatric-floaties">
-          <!-- Smiling tooth characters -->
-          <svg class="pf pf-tooth pf-tooth-1" viewBox="0 0 60 60" width="50" height="50">
-            <ellipse cx="30" cy="32" rx="18" ry="22" fill="#FFE5EC" stroke="#FF9EB5" stroke-width="1.5"/>
-            <ellipse cx="30" cy="28" rx="14" ry="16" fill="#FFF0F5"/>
-            <circle cx="23" cy="26" r="2.5" fill="#FF7B89"/>
-            <circle cx="37" cy="26" r="2.5" fill="#FF7B89"/>
-            <circle cx="23" cy="26" r="1" fill="#fff"/>
-            <circle cx="37" cy="26" r="1" fill="#fff"/>
-            <path d="M22 35 Q30 42 38 35" fill="none" stroke="#FF7B89" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="30" cy="20" r="3" fill="#FFE5EC" stroke="#FF9EB5" stroke-width="1"/>
-          </svg>
-          <svg class="pf pf-tooth pf-tooth-2" viewBox="0 0 60 60" width="36" height="36">
-            <ellipse cx="30" cy="32" rx="18" ry="22" fill="#E8F8FF" stroke="#87CEEB" stroke-width="1.5"/>
-            <ellipse cx="30" cy="28" rx="14" ry="16" fill="#F0F9FF"/>
-            <circle cx="23" cy="26" r="2.5" fill="#5BA3D9"/>
-            <circle cx="37" cy="26" r="2.5" fill="#5BA3D9"/>
-            <circle cx="23" cy="26" r="1" fill="#fff"/>
-            <circle cx="37" cy="26" r="1" fill="#fff"/>
-            <path d="M22 35 Q30 42 38 35" fill="none" stroke="#5BA3D9" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="30" cy="20" r="3" fill="#E8F8FF" stroke="#87CEEB" stroke-width="1"/>
-          </svg>
-          <!-- Stars -->
-          <svg class="pf pf-star pf-star-1" viewBox="0 0 30 30" width="22" height="22">
-            <path d="M15 2l4 8.5 9.5 1.5-7 6.5 1.5 9L15 21l-8 4.5 1.5-9-7-6.5 9.5-1.5z" fill="#FFE5A3" stroke="#FFD700" stroke-width="0.5"/>
-          </svg>
-          <svg class="pf pf-star pf-star-2" viewBox="0 0 30 30" width="16" height="16">
-            <path d="M15 2l4 8.5 9.5 1.5-7 6.5 1.5 9L15 21l-8 4.5 1.5-9-7-6.5 9.5-1.5z" fill="#FFE5A3" stroke="#FFD700" stroke-width="0.5"/>
-          </svg>
-          <!-- Hearts -->
-          <svg class="pf pf-heart pf-heart-1" viewBox="0 0 32 32" width="18" height="18">
-            <path d="M16 28S4 20 4 12a8 8 0 0 1 12-6 8 8 0 0 1 12 6c0 8-12 16-12 16z" fill="#FF9EB5" stroke="#FF7B89" stroke-width="0.8"/>
-          </svg>
-          <svg class="pf pf-heart pf-heart-2" viewBox="0 0 32 32" width="14" height="14">
-            <path d="M16 28S4 20 4 12a8 8 0 0 1 12-6 8 8 0 0 1 12 6c0 8-12 16-12 16z" fill="#C3B1E1" stroke="#B39DDB" stroke-width="0.8"/>
-          </svg>
-          <!-- Clouds -->
-          <svg class="pf pf-cloud pf-cloud-1" viewBox="0 0 80 40" width="80" height="40">
-            <ellipse cx="30" cy="28" rx="20" ry="12" fill="#fff" opacity="0.6"/>
-            <ellipse cx="50" cy="26" rx="18" ry="14" fill="#fff" opacity="0.6"/>
-            <ellipse cx="40" cy="20" rx="22" ry="14" fill="#fff" opacity="0.7"/>
-          </svg>
-          <svg class="pf pf-cloud pf-cloud-2" viewBox="0 0 60 30" width="60" height="30">
-            <ellipse cx="22" cy="20" rx="16" ry="10" fill="#fff" opacity="0.4"/>
-            <ellipse cx="38" cy="18" rx="14" ry="11" fill="#fff" opacity="0.4"/>
-            <ellipse cx="30" cy="14" rx="18" ry="11" fill="#fff" opacity="0.5"/>
-          </svg>
-          <!-- Rainbow -->
-          <svg class="pf pf-rainbow" viewBox="0 0 120 60" width="120" height="60">
-            <path d="M10,55 Q60,0 110,55" fill="none" stroke="#FF9EB5" stroke-width="3.5"/>
-            <path d="M17,55 Q60,5 103,55" fill="none" stroke="#FFE5A3" stroke-width="3.5"/>
-            <path d="M24,55 Q60,10 96,55" fill="none" stroke="#98D8C8" stroke-width="3.5"/>
-            <path d="M31,55 Q60,15 89,55" fill="none" stroke="#87CEEB" stroke-width="3.5"/>
-            <path d="M38,55 Q60,20 82,55" fill="none" stroke="#C3B1E1" stroke-width="3.5"/>
-          </svg>
-          <!-- Balloons -->
-          <svg class="pf pf-balloon pf-balloon-1" viewBox="0 0 30 42" width="28" height="40">
-            <ellipse cx="15" cy="18" rx="13" ry="16" fill="#FF9EB5"/>
-            <path d="M15,34 Q14,38 12,42" fill="none" stroke="#FF7B89" stroke-width="1.2"/>
-            <path d="M15,34 Q16,38 18,42" fill="none" stroke="#FF7B89" stroke-width="1.2"/>
-            <ellipse cx="11" cy="14" rx="3" ry="4" fill="rgba(255,255,255,0.35)"/>
-            <polygon points="15,33 13,31 17,31" fill="#FF7B89"/>
-          </svg>
-          <svg class="pf pf-balloon pf-balloon-2" viewBox="0 0 30 42" width="22" height="34">
-            <ellipse cx="15" cy="18" rx="13" ry="16" fill="#87CEEB"/>
-            <path d="M15,34 Q14,38 12,42" fill="none" stroke="#5BA3D9" stroke-width="1.2"/>
-            <path d="M15,34 Q16,38 18,42" fill="none" stroke="#5BA3D9" stroke-width="1.2"/>
-            <ellipse cx="11" cy="14" rx="3" ry="4" fill="rgba(255,255,255,0.35)"/>
-            <polygon points="15,33 13,31 17,31" fill="#5BA3D9"/>
-          </svg>
-          <!-- Butterflies -->
-          <svg class="pf pf-butterfly pf-butterfly-1" viewBox="0 0 36 28" width="30" height="24">
-            <ellipse cx="18" cy="14" rx="2" ry="7" fill="#C3B1E1"/>
-            <ellipse cx="8" cy="10" rx="7" ry="5" fill="#FF9EB5" transform="rotate(-20,8,10)"/>
-            <ellipse cx="28" cy="10" rx="7" ry="5" fill="#FF9EB5" transform="rotate(20,28,10)"/>
-            <ellipse cx="9" cy="21" rx="5" ry="4" fill="#C3B1E1" transform="rotate(20,9,21)"/>
-            <ellipse cx="27" cy="21" rx="5" ry="4" fill="#C3B1E1" transform="rotate(-20,27,21)"/>
-          </svg>
-          <svg class="pf pf-butterfly pf-butterfly-2" viewBox="0 0 36 28" width="20" height="16">
-            <ellipse cx="18" cy="14" rx="2" ry="7" fill="#98D8C8"/>
-            <ellipse cx="8" cy="10" rx="7" ry="5" fill="#FFE5A3" transform="rotate(-20,8,10)"/>
-            <ellipse cx="28" cy="10" rx="7" ry="5" fill="#FFE5A3" transform="rotate(20,28,10)"/>
-            <ellipse cx="9" cy="21" rx="5" ry="4" fill="#98D8C8" transform="rotate(20,9,21)"/>
-            <ellipse cx="27" cy="21" rx="5" ry="4" fill="#98D8C8" transform="rotate(-20,27,21)"/>
-          </svg>
-          <!-- Sparkle burst -->
-          <svg class="pf pf-sparkle pf-sparkle-1" viewBox="0 0 24 24" width="18" height="18">
-            <path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#FFE5A3"/>
-          </svg>
-          <svg class="pf pf-sparkle pf-sparkle-2" viewBox="0 0 24 24" width="14" height="14">
-            <path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#FFD700" opacity="0.7"/>
-          </svg>
-        </div>
+        <PediatricDecorations />
       </template>
 
-      <div class="sd-hero-bg">
+      <!-- <div class="sd-hero-bg">
         <div class="sd-hero-blob blob-1"></div>
         <div class="sd-hero-blob blob-2"></div>
-      </div>
+      </div> -->
       <div class="sd-hero-pattern"></div>
+      <!-- Base gradient background -->
+      <div class="hero-bg"></div>
 
+      <!-- Subtle grain/noise overlay -->
+      <div class="hero-grain"></div>
+      <!-- Accent light ray -->
+      <div class="hero-light-ray"></div>
       <div class="sd-hero-inner">
-        <!-- Back button -->
-        <button class="sd-back-btn" @click="goBack">
-          <component :is="store.isRtl ? ArrowRight : ArrowLeft" :size="18" />
-          <span>{{ store.isRtl ? 'العودة للرئيسية' : 'Back to Home' }}</span>
-        </button>
+
 
         <div class="sd-hero-content">
-          <!-- Number badge -->
-          <div class="sd-hero-num">
-            <span class="sd-hero-num-text">{{ serviceIndex + 1 < 10 ? '0' + (serviceIndex + 1) : serviceIndex + 1 }}</span>
-          </div>
-
+          
           <div class="sd-hero-text-col">
-            <div class="sd-hero-label">
-              <span class="sd-label-dot"></span>
-              <span>{{ store.t.services.label }}</span>
-            </div>
+
 
             <h1 class="sd-hero-title">
               <!-- {{ service?.icon ?? '' }} -->
@@ -228,50 +148,34 @@ const blockVariants = [
               {{ detail?.extendedDesc ?? '' }}
             </p>
 
-            <div class="sd-hero-actions">
-              <button class="btn btn-primary" @click="scrollToContact">
-                <Calendar :size="18" />
+            <div class="sd-hero-actions relative">
+              <a href="https://wa.me/201200077665" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <WhatsAppIcon :size="18" />
                 {{ store.isRtl ? 'احجز موعدك الآن' : 'Book Appointment' }}
-              </button>
-              <a
-                href="https://wa.me/201200077665"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-outline"
-              >
-                <Phone :size="18" />
-                {{ store.isRtl ? 'تواصل عبر واتساب' : 'Contact via WhatsApp' }}
               </a>
             </div>
           </div>
         </div>
+        <div class="relative flex items-center justify-center">
+
+          <!-- Decorative accent ring -->
+          <div class="hero-ring"></div>
+          <div class="hero-ring hero-ring-2"></div>
+
+          <img :src=getDoctor() class="w-[700px] mask-b-from-10% mask-b-to-90%"/>
+        </div>
       </div>
     </section>
 
-    <!-- ── Pediatric doodle divider ── -->
-    <div v-if="isPediatric" class="pd-divider">
-      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
-        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#FF9EB5" stroke-width="2.5" opacity="0.5"/>
-        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#87CEEB" stroke-width="1.5" opacity="0.4"/>
-      </svg>
-    </div>
+    <Doodle v-if="isPediatric" />
 
     <!-- ==================== OVERVIEW ==================== -->
-    <section
-      id="sd-overview"
-      ref="overviewRef"
-      :class="{ 'is-revealed': overviewRevealed }"
-      class="sd-section sd-overview reveal-slideUp"
-    >
+    <section id="sd-overview" ref="overviewRef" :class="{ 'is-revealed': overviewRevealed }"
+      class="sd-section sd-overview reveal-slideUp">
       <div class="sd-section-inner">
         <div class="sd-overview-grid">
           <div class="sd-overview-text">
-            <div class="sd-section-label-wrap">
-              <div class="sd-section-label">
-                <span class="sd-label-dot"></span>
-                <span>{{ store.isRtl ? 'نظرة عامة' : 'Overview' }}</span>
-              </div>
-            </div>
+            
             <h2 class="sd-section-title">
               {{ store.isRtl ? 'عن هذه الخدمة' : 'About This Service' }}
             </h2>
@@ -299,29 +203,14 @@ const blockVariants = [
       </div>
     </section>
 
-    <!-- ── Pediatric doodle divider ── -->
-    <div v-if="isPediatric" class="pd-divider">
-      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
-        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#98D8C8" stroke-width="2.5" opacity="0.5"/>
-        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#C3B1E1" stroke-width="1.5" opacity="0.4"/>
-      </svg>
-    </div>
+    <Doodle  v-if="isPediatric"/>
 
     <!-- ==================== BENEFITS ==================== -->
-    <section
-      id="sd-benefits"
-      ref="benefitsRef"
-      :class="{ 'is-revealed': benefitsRevealed }"
-      class="sd-section sd-benefits reveal-slideUp"
-    >
+    <section id="sd-benefits" ref="benefitsRef" :class="{ 'is-revealed': benefitsRevealed }"
+      class="sd-section sd-benefits reveal-slideUp">
       <div class="sd-section-inner">
         <div class="sd-section-header-text">
-          <div class="sd-section-label-wrap">
-            <div class="sd-section-label">
-              <span class="sd-label-dot"></span>
-              <span>{{ store.isRtl ? 'الفوائد' : 'Benefits' }}</span>
-            </div>
-          </div>
+          
           <h2 class="sd-section-title">
             {{ store.isRtl ? 'لماذا تختار هذه الخدمة؟' : 'Why Choose This Service?' }}
           </h2>
@@ -331,14 +220,10 @@ const blockVariants = [
         </div>
 
         <div ref="benefitsGridRef" :class="{ 'is-revealed': _benefitsGridRevealed }" class="sd-benefits-grid">
-          <div
-            v-for="(benefit, i) in detail?.benefits ?? []"
-            :key="i"
-            class="sd-benefit-card reveal-stagger-item"
+          <div v-for="(benefit, i) in detail?.benefits ?? []" :key="i" class="sd-benefit-card reveal-stagger-item"
             :style="{
               transitionDelay: `${0.1 + i * 0.08}s`,
-            }"
-          >
+            }">
             <div class="sd-benefit-icon">
               <CheckCircle :size="22" />
             </div>
@@ -351,29 +236,14 @@ const blockVariants = [
       </div>
     </section>
 
-    <!-- ── Pediatric doodle divider ── -->
-    <div v-if="isPediatric" class="pd-divider">
-      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
-        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#87CEEB" stroke-width="2.5" opacity="0.5"/>
-        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#FF9EB5" stroke-width="1.5" opacity="0.4"/>
-      </svg>
-    </div>
+    <Doodle v-if="isPediatric" />
 
     <!-- ==================== PROCESS ==================== -->
-    <section
-      id="sd-process"
-      ref="processRef"
-      :class="{ 'is-revealed': processRevealed }"
-      class="sd-section sd-process reveal-slideUp"
-    >
+    <section id="sd-process" ref="processRef" :class="{ 'is-revealed': processRevealed }"
+      class="sd-section sd-process reveal-slideUp">
       <div class="sd-section-inner">
         <div class="sd-section-header-text">
-          <div class="sd-section-label-wrap">
-            <div class="sd-section-label">
-              <span class="sd-label-dot"></span>
-              <span>{{ store.isRtl ? 'الخطوات' : 'Process' }}</span>
-            </div>
-          </div>
+          
           <h2 class="sd-section-title">
             {{ store.isRtl ? 'كيف تتم الخدمة؟' : 'How It Works' }}
           </h2>
@@ -383,14 +253,9 @@ const blockVariants = [
         </div>
 
         <div ref="processGridRef" :class="{ 'is-revealed': _processGridRevealed }" class="sd-process-timeline">
-          <div
-            v-for="(step, i) in detail?.process ?? []"
-            :key="i"
-            class="sd-process-step reveal-stagger-item"
-            :style="{
-              transitionDelay: `${0.1 + i * 0.15}s`,
-            }"
-          >
+          <div v-for="(step, i) in detail?.process ?? []" :key="i" class="sd-process-step reveal-stagger-item" :style="{
+            transitionDelay: `${0.1 + i * 0.15}s`,
+          }">
             <div class="sd-step-num-wrap">
               <div class="sd-step-num">{{ i + 1 }}</div>
               <div v-if="i < (detail?.process.length ?? 1) - 1" class="sd-step-line"></div>
@@ -404,29 +269,12 @@ const blockVariants = [
       </div>
     </section>
 
-    <!-- ── Pediatric doodle divider ── -->
-    <div v-if="isPediatric" class="pd-divider">
-      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
-        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#C3B1E1" stroke-width="2.5" opacity="0.5"/>
-        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#98D8C8" stroke-width="1.5" opacity="0.4"/>
-      </svg>
-    </div>
-
+  <Doodle v-if="isPediatric"/>
     <!-- ==================== FAQ ==================== -->
-    <section
-      id="sd-faq"
-      ref="faqRef"
-      :class="{ 'is-revealed': faqRevealed }"
-      class="sd-section sd-faq reveal-clip"
-    >
+    <section id="sd-faq" ref="faqRef" :class="{ 'is-revealed': faqRevealed }" class="sd-section sd-faq reveal-clip">
       <div class="sd-section-inner">
         <div class="sd-faq-header">
-          <div class="sd-section-label-wrap">
-            <div class="sd-section-label">
-              <span class="sd-label-dot"></span>
-              <span>{{ store.isRtl ? 'الأسئلة الشائعة' : 'FAQ' }}</span>
-            </div>
-          </div>
+          
           <h2 class="sd-section-title">
             {{ store.isRtl ? 'أسئلة شائعة' : 'Frequently Asked Questions' }}
           </h2>
@@ -436,12 +284,8 @@ const blockVariants = [
         </div>
 
         <div class="sd-faq-list">
-          <div
-            v-for="(item, i) in detail?.faq ?? []"
-            :key="i"
-            class="sd-faq-item"
-            :class="{ 'sd-faq-open': openFaq === i }"
-          >
+          <div v-for="(item, i) in detail?.faq ?? []" :key="i" class="sd-faq-item"
+            :class="{ 'sd-faq-open': openFaq === i }">
             <button class="sd-faq-question" @click="toggleFaq(i)">
               <span>{{ item.q }}</span>
               <component :is="openFaq === i ? ChevronUp : ChevronDown" :size="18" class="sd-faq-chevron" />
@@ -454,29 +298,14 @@ const blockVariants = [
       </div>
     </section>
 
-    <!-- ── Pediatric doodle divider ── -->
-    <div v-if="isPediatric" class="pd-divider">
-      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
-        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#FFE5A3" stroke-width="2.5" opacity="0.5"/>
-        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#FF9EB5" stroke-width="1.5" opacity="0.4"/>
-      </svg>
-    </div>
+    <Doodle v-if="isPediatric"/>
 
     <!-- ==================== TESTIMONIALS ==================== -->
-    <section
-      id="sd-testimonials"
-      ref="testimonialRef"
-      :class="{ 'is-revealed': testimonialRevealed }"
-      class="sd-section sd-testimonials reveal-slideUp"
-    >
+    <section id="sd-testimonials" ref="testimonialRef" :class="{ 'is-revealed': testimonialRevealed }"
+      class="sd-section sd-testimonials reveal-slideUp">
       <div class="sd-section-inner">
         <div class="sd-testimonials-header">
-          <div class="sd-section-label-wrap">
-            <div class="sd-section-label">
-              <span class="sd-label-dot"></span>
-              <span>{{ store.t.testimonials.label }}</span>
-            </div>
-          </div>
+          
           <h2 class="sd-section-title">
             {{ store.t.testimonials.title }}
           </h2>
@@ -486,19 +315,10 @@ const blockVariants = [
         </div>
 
         <div ref="testimonialGridRef" :class="{ 'is-revealed': _testimonialGridRevealed }" class="sd-testimonials-grid">
-          <div
-            v-for="(item, i) in store.t.testimonials.items"
-            :key="i"
-            class="sd-testimonial-card reveal-stagger-item"
-            :style="{ transitionDelay: `${i * 0.12}s` }"
-          >
+          <div v-for="(item, i) in store.t.testimonials.items" :key="i" class="sd-testimonial-card reveal-stagger-item"
+            :style="{ transitionDelay: `${i * 0.12}s` }">
             <div class="sd-testimonial-stars">
-              <Star
-                v-for="s in item.stars"
-                :key="s"
-                :size="14"
-                class="sd-star-icon"
-              />
+              <Star v-for="s in item.stars" :key="s" :size="14" class="sd-star-icon" />
             </div>
             <p class="sd-testimonial-text">"{{ item.text }}"</p>
             <div class="sd-testimonial-author">
@@ -513,21 +333,10 @@ const blockVariants = [
       </div>
     </section>
 
-    <!-- ── Pediatric doodle divider ── -->
-    <div v-if="isPediatric" class="pd-divider">
-      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
-        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#FF9EB5" stroke-width="2.5" opacity="0.5"/>
-        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#87CEEB" stroke-width="1.5" opacity="0.4"/>
-      </svg>
-    </div>
+    <Doodle v-if="isPediatric" />
 
     <!-- ==================== CTA ==================== -->
-    <section
-      id="sd-cta"
-      ref="ctaRef"
-      :class="{ 'is-revealed': ctaRevealed }"
-      class="sd-section sd-cta reveal-scale"
-    >
+    <section id="sd-cta" ref="ctaRef" :class="{ 'is-revealed': ctaRevealed }" class="sd-section sd-cta reveal-scale">
       <div class="sd-cta-bg">
         <div class="sd-cta-pattern"></div>
         <div class="sd-cta-glow"></div>
@@ -547,18 +356,11 @@ const blockVariants = [
             }}
           </p>
           <div class="sd-cta-actions">
-            <button class="btn btn-primary" @click="scrollToContact">
-              <Calendar :size="18" />
-              {{ store.isRtl ? 'احجز موعد' : 'Book Appointment' }}
-            </button>
-            <a
-              href="https://wa.me/201200077665"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-outline-light"
-            >
-              <Phone :size="18" />
-              {{ store.isRtl ? 'واتساب' : 'WhatsApp' }}
+            
+            <a href="https://wa.me/201200077665" target="_blank" rel="noopener noreferrer"
+            class="btn btn-primary">
+            <WhatsAppIcon :size="18" />
+            {{ store.isRtl ? 'احجز موعد' : 'Book Appointment' }}
             </a>
           </div>
         </div>
@@ -588,32 +390,10 @@ const blockVariants = [
   padding: 0 2rem;
 }
 
-.sd-section-label-wrap {
-  margin-bottom: 0.75rem;
-}
 
-.sd-section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--teal-600);
-  background: var(--teal-50);
-  padding: 0.35rem 1rem;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(37, 215, 184, 0.15);
-}
 
-.sd-label-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--teal-500);
-  border-radius: 50%;
-  animation: pulse-dot 2s ease-in-out infinite;
-}
+
+
 
 .sd-section-title {
   font-size: clamp(1.8rem, 3vw, 2.5rem);
@@ -648,7 +428,7 @@ const blockVariants = [
   position: relative;
   overflow: hidden;
   padding-top: 100px;
-  background: var(--gradient-hero);
+  background: #0a1628;
 }
 
 .sd-hero-bg {
@@ -686,7 +466,7 @@ const blockVariants = [
 .sd-hero-pattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(37, 215, 184, 0.05) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(37, 215, 185, 0.453) 1px, transparent 1px);
   background-size: 30px 30px;
   pointer-events: none;
 }
@@ -694,40 +474,15 @@ const blockVariants = [
 .sd-hero-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem 6rem;
+  padding: 0rem 6rem;
   position: relative;
   z-index: 1;
   flex: 1;
+  width: 100%;
 }
 
-/* Back button */
-.sd-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--teal-600);
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(37, 215, 184, 0.12);
-  cursor: pointer;
-  font-family: inherit;
-  transition: all 0.3s ease;
-  margin-bottom: 3rem;
-}
 
-.sd-back-btn:hover {
-  background: var(--white);
-  border-color: var(--teal-300);
-  transform: translateX(-3px);
-}
 
-body.ltr .sd-back-btn:hover {
-  transform: translateX(3px);
-}
 
 /* Hero content */
 .sd-hero-content {
@@ -737,8 +492,7 @@ body.ltr .sd-back-btn:hover {
   align-items: start;
 }
 
-.sd-hero-num {
-}
+
 
 .sd-hero-num-text {
   display: block;
@@ -751,6 +505,7 @@ body.ltr .sd-back-btn:hover {
   background-clip: text;
   letter-spacing: -0.06em;
   font-family: var(--font-english-heading);
+  padding: 0 10px;
 }
 
 .sd-hero-text-col {
@@ -775,17 +530,18 @@ body.ltr .sd-back-btn:hover {
 
 .sd-hero-title {
   font-size: clamp(2.2rem, 4vw, 3.4rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.1;
-  color: var(--text-primary);
+  color: var(--white);
   margin-bottom: 1.5rem;
 }
 
 .sd-hero-desc {
   font-size: 1.05rem;
   line-height: 1.9;
-  color: var(--text-secondary);
+  color: var(--white);
   max-width: 620px;
+  opacity: 0.8;
   margin-bottom: 2.5rem;
 }
 
@@ -877,7 +633,7 @@ body.ltr .sd-overview-text {
   padding: 0.8rem 0;
 }
 
-.sd-ov-card-stat + .sd-ov-card-stat {
+.sd-ov-card-stat+.sd-ov-card-stat {
   border-top: 1px solid rgba(37, 215, 184, 0.08);
 }
 
@@ -1140,18 +896,18 @@ body.ltr .sd-overview-text {
 
 .sd-testimonial-card {
   background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--teal-200);
   border-radius: var(--radius-lg);
   padding: 2rem 1.75rem;
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
 .sd-testimonial-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-  border-color: var(--teal-200);
+  box-shadow: 0 12px 40px rgba(8, 221, 182, 0.211);
 }
 
 .sd-testimonial-stars {
@@ -1447,128 +1203,6 @@ body.ltr .sd-overview-text {
   display: none;
 }
 
-/* Floating decorations */
-.is-pediatric .pediatric-floaties {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.is-pediatric .pf {
-  position: absolute;
-  animation: pf-float 8s ease-in-out infinite;
-}
-
-.is-pediatric .pf-tooth-1 {
-  top: 12%;
-  right: 8%;
-  animation-delay: 0s;
-  animation-duration: 7s;
-}
-
-.is-pediatric .pf-tooth-2 {
-  bottom: 18%;
-  left: 6%;
-  animation-delay: 2s;
-  animation-duration: 9s;
-}
-
-.is-pediatric .pf-star-1 {
-  top: 25%;
-  left: 12%;
-  animation-delay: 1s;
-  animation-duration: 5s;
-}
-
-.is-pediatric .pf-star-2 {
-  bottom: 35%;
-  right: 15%;
-  animation-delay: 3s;
-  animation-duration: 6s;
-}
-
-.is-pediatric .pf-heart-1 {
-  top: 40%;
-  left: 5%;
-  animation-delay: 0.5s;
-  animation-duration: 6s;
-}
-
-.is-pediatric .pf-heart-2 {
-  bottom: 25%;
-  right: 20%;
-  animation-delay: 1.5s;
-  animation-duration: 5s;
-}
-
-.is-pediatric .pf-cloud-1 {
-  top: 5%;
-  left: 15%;
-  animation-delay: 0s;
-  animation-duration: 12s;
-}
-
-.is-pediatric .pf-cloud-2 {
-  top: 55%;
-  right: 5%;
-  animation-delay: 4s;
-  animation-duration: 14s;
-}
-
-/* --- New doodle floaties --- */
-.is-pediatric .pf-rainbow {
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: pf-float 12s ease-in-out infinite;
-  animation-delay: 0s;
-  opacity: 0.6;
-}
-
-.is-pediatric .pf-balloon-1 {
-  top: 8%;
-  left: 18%;
-  animation: pf-balloon-drift 6s ease-in-out infinite;
-  animation-delay: 0s;
-}
-
-.is-pediatric .pf-balloon-2 {
-  top: 20%;
-  right: 12%;
-  animation: pf-balloon-drift 7s ease-in-out infinite;
-  animation-delay: 1.5s;
-}
-
-.is-pediatric .pf-butterfly-1 {
-  top: 45%;
-  left: 3%;
-  animation: pf-butterfly 5s ease-in-out infinite;
-  animation-delay: 0.8s;
-}
-
-.is-pediatric .pf-butterfly-2 {
-  bottom: 30%;
-  right: 8%;
-  animation: pf-butterfly 6s ease-in-out infinite;
-  animation-delay: 2.2s;
-}
-
-.is-pediatric .pf-sparkle-1 {
-  top: 15%;
-  left: 28%;
-  animation: pf-twinkle 3s ease-in-out infinite;
-  animation-delay: 0.3s;
-}
-
-.is-pediatric .pf-sparkle-2 {
-  bottom: 40%;
-  left: 45%;
-  animation: pf-twinkle 2.5s ease-in-out infinite;
-  animation-delay: 1.8s;
-}
-
 /* ── Doodle section dividers ── */
 .pd-divider {
   display: flex;
@@ -1605,43 +1239,30 @@ body.ltr .sd-overview-text {
   background: linear-gradient(180deg, #FFF0F5 0%, #ffffff 100%);
 }
 
-@keyframes pf-float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-12px) rotate(3deg);
-  }
-  50% {
-    transform: translateY(-6px) rotate(-2deg);
-  }
-  75% {
-    transform: translateY(-15px) rotate(4deg);
-  }
-}
-
 @keyframes pf-twinkle {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
 
-@keyframes pf-balloon-drift {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  30% { transform: translateY(-18px) rotate(2deg); }
-  60% { transform: translateY(-8px) rotate(-1deg); }
-  80% { transform: translateY(-22px) rotate(3deg); }
-}
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
 
-@keyframes pf-butterfly {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25% { transform: translate(8px, -12px) rotate(5deg); }
-  50% { transform: translate(-4px, -6px) rotate(-3deg); }
-  75% { transform: translate(10px, -18px) rotate(6deg); }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 @keyframes pf-bounce {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-6px) scale(1.05); }
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-6px) scale(1.05);
+  }
 }
 
 /* --- Pediatric hero content --- */
@@ -1737,11 +1358,25 @@ body.ltr .sd-overview-text {
   transition: all 0.3s ease;
 }
 
-.is-pediatric .sd-benefit-card:nth-child(1) { border-top-color: #FF9EB5; }
-.is-pediatric .sd-benefit-card:nth-child(2) { border-top-color: #87CEEB; }
-.is-pediatric .sd-benefit-card:nth-child(3) { border-top-color: #98D8C8; }
-.is-pediatric .sd-benefit-card:nth-child(4) { border-top-color: #C3B1E1; }
-.is-pediatric .sd-benefit-card:nth-child(5) { border-top-color: #FFE5A3; }
+.is-pediatric .sd-benefit-card:nth-child(1) {
+  border-top-color: #FF9EB5;
+}
+
+.is-pediatric .sd-benefit-card:nth-child(2) {
+  border-top-color: #87CEEB;
+}
+
+.is-pediatric .sd-benefit-card:nth-child(3) {
+  border-top-color: #98D8C8;
+}
+
+.is-pediatric .sd-benefit-card:nth-child(4) {
+  border-top-color: #C3B1E1;
+}
+
+.is-pediatric .sd-benefit-card:nth-child(5) {
+  border-top-color: #FFE5A3;
+}
 
 .is-pediatric .sd-benefit-card:hover {
   transform: translateY(-4px) scale(1.01);
@@ -1846,10 +1481,10 @@ body.ltr .sd-overview-text {
   content: '';
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(255,155,181,0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(135,206,235,0.12) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(152,216,200,0.08) 0%, transparent 50%);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 155, 181, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(135, 206, 235, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(152, 216, 200, 0.08) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -1900,30 +1535,16 @@ body.ltr .sd-overview-text {
   .pd-divider {
     padding: 0.25rem 0;
   }
+
   .pd-divider-svg {
     width: 200px;
     height: 14px;
   }
 }
 
-@media (max-width: 768px) {
-  .is-pediatric .pf-tooth-1,
-  .is-pediatric .pf-tooth-2 {
-    width: 30px;
-    height: 30px;
-  }
-  .is-pediatric .pf-cloud-1,
-  .is-pediatric .pf-cloud-2 {
-    width: 50px;
-    height: 25px;
-  }
-}
+@media (max-width: 768px) {}
 
 @media (max-width: 480px) {
-  .is-pediatric .pf {
-    display: none;
-  }
-
   .pd-divider {
     display: none;
   }
@@ -1942,6 +1563,7 @@ body.ltr .sd-overview-text {
   clip-path: inset(0 100% 0 0);
   transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal-clip.is-revealed {
   clip-path: inset(0 0% 0 0);
 }
@@ -1951,6 +1573,7 @@ body.ltr .sd-overview-text {
   transform: translateY(50px);
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal-slideUp.is-revealed {
   transform: translateY(0);
 }
@@ -1960,6 +1583,7 @@ body.ltr .sd-overview-text {
   transform: scale(0.85);
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .reveal-scale.is-revealed {
   transform: scale(1);
 }
@@ -1969,6 +1593,7 @@ body.ltr .sd-overview-text {
   transform: translateY(40px);
   transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .is-revealed .reveal-stagger-item {
   transform: translateY(0);
 }

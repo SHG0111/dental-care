@@ -25,9 +25,9 @@ onMounted(() => {
 
   // Content stagger — title lines, subtitle, buttons
   tl.from(
-      titleRef.value,
-      { y: 70, opacity: 0, duration: 1, stagger: 0.15, ease: 'power2.inOut' },
-    )
+    titleRef.value,
+    { y: 70, opacity: 0, duration: 1, stagger: 0.15, ease: 'power2.inOut' },
+  )
     .from(subtitleRef.value, { y: 30, opacity: 0, duration: 0.8, ease: 'power2.inOut' }, '-=0.6')
     .from(buttonsRef.value, { y: 30, opacity: 0, duration: 0.8, ease: 'power2.inOut' }, '-=0.7')
 
@@ -140,32 +140,6 @@ function scrollToServices() {
   position: relative;
   overflow: hidden;
   background: #0a1628;
-}
-
-/* Background gradient layer */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 90% 70% at 70% 40%, rgba(37, 215, 184, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 20% 60%, rgba(39, 200, 247, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(10, 22, 40, 0.9) 0%, transparent 50%),
-    linear-gradient(165deg, #0a1628 0%, #0d2b3e 35%, #0e1f3a 65%, #0a1628 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Grain texture overlay */
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.5;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 180px 180px;
-  pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: overlay;
 }
 
 /* Accent light ray from top-right */
@@ -375,36 +349,6 @@ function scrollToServices() {
   object-fit: contain;
   display: block;
   min-width: 700px;
-}
-
-/* Decorative concentric rings behind the image */
-html[dir='ltr'] .hero-ring {
-  right: 17%;
-  left: unset;
-}
-
-html[dir='ltr'] .hero-ring-2 {
-  right: 25%;
-}
-
-.hero-ring {
-  position: absolute;
-  top: 55%;
-  left: 17%;
-  transform: translateY(-125%);
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px solid rgba(37, 215, 184, 0.06);
-  pointer-events: none;
-  z-index: -1;
-  box-shadow: 0 0px 200px #25d7b812;
-}
-
-.hero-ring-2 {
-  width: 85%;
-  border-color: rgba(39, 200, 247, 0.04);
-  left: 25%;
 }
 
 /* ==========================================
