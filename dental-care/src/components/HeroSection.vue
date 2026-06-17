@@ -382,9 +382,11 @@ html[dir='ltr'] .hero-ring {
   right: 17%;
   left: unset;
 }
+
 html[dir='ltr'] .hero-ring-2 {
   right: 25%;
 }
+
 .hero-ring {
   position: absolute;
   top: 55%;
@@ -449,6 +451,7 @@ html[dir='ltr'] .hero-ring-2 {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(300%);
   }
@@ -462,6 +465,7 @@ html[dir='ltr'] .hero-ring-2 {
     padding: 3rem 2.5rem;
     gap: 3rem;
   }
+
   .hero-content {
     padding: 0 2rem;
   }
@@ -474,40 +478,49 @@ html[dir='ltr'] .hero-ring-2 {
     text-align: center;
     margin-top: 90px;
   }
+
   .hero-content {
     order: 1;
     padding-right: 0;
     padding-left: 0;
     align-items: center;
   }
+
   .hero-badge {
     margin-left: auto;
     margin-right: auto;
   }
+
   .hero-subtitle {
     margin-left: auto;
     margin-right: auto;
   }
+
   .hero-ctas {
     justify-content: center;
   }
+
   .hero-visual {
     order: 0;
     margin: 0 auto;
     min-height: auto;
     width: 100%;
   }
+
   .hero-image-frame {
     -webkit-mask-image: none;
     mask-image: none;
   }
+
   .hero-image {
     min-width: unset;
     width: 100%;
   }
+
   .hero-ring {
     display: none;
   }
+
   .scroll-indicator {
     left: 50%;
     transform: translateX(-50%);
@@ -518,6 +531,7 @@ html[dir='ltr'] .hero-ring-2 {
   .hero-content {
     padding: 0 1.25rem;
   }
+
   .scroll-indicator {
     bottom: 1.5rem;
   }
@@ -527,16 +541,20 @@ html[dir='ltr'] .hero-ring-2 {
   .hero-inner {
     margin-top: 70px;
   }
+
   .hero-title {
     font-size: 1.8rem;
   }
+
   .hero-subtitle {
     font-size: 0.85rem;
   }
+
   .hero-ctas {
     flex-direction: column;
     width: 100%;
   }
+
   .hero-btn {
     width: 100%;
     justify-content: center;
@@ -549,12 +567,15 @@ html[dir='ltr'] .hero-ring-2 {
   .hero-content {
     padding: 0 0.75rem;
   }
+
   .hero-title {
     font-size: 1.5rem;
   }
+
   .hero-subtitle {
     font-size: 0.8rem;
   }
+
   .hero-ctas {
     gap: 0.65rem;
   }

@@ -87,7 +87,7 @@ function goToService(slug: string) {
             </li>
             <li>
               <span class="footer-contact-item">
-                <MapPin :size="20" class="self-start" />
+                <!-- <MapPin :size="20" class="self-start" /> -->
                 <span>{{ store.t.contact.addressValue }}</span>
               </span>
             </li>

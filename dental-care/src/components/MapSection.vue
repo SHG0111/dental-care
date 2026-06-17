@@ -280,8 +280,8 @@ body.rtl .map-card-tooth {
 }
 
 .btn-expand {
-  width: 46px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
   border-radius: var(--radius-sm);
   background: var(--gray-50);
   color: var(--text-secondary);

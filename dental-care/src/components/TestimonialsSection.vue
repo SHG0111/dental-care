@@ -32,7 +32,7 @@ function getInitials(name: string): string {
     .split(' ')
     .map((w) => w[0])
     .join('')
-    .substring(0, 2)
+    .substring(0, 1)
 }
 
 // ── Slide navigation ──
@@ -173,46 +173,24 @@ onUnmounted(() => {
       <!-- ── Carousel ── -->
       <div class="testi-carousel" @mouseenter="isHovered = true" @mouseleave="isHovered = false">
         <!-- Track -->
-        <div
-          ref="trackRef"
-          class="testi-track"
-          @pointerdown="onPointerDown"
-          @pointermove="onPointerMove"
-          @pointerup="onPointerUp"
-          @pointerleave="onPointerUp"
-          :style="{ cursor: isDragging ? 'grabbing' : 'grab' }"
-        >
+        <div ref="trackRef" class="testi-track" @pointerdown="onPointerDown" @pointermove="onPointerMove"
+          @pointerup="onPointerUp" @pointerleave="onPointerUp" :style="{ cursor: isDragging ? 'grabbing' : 'grab' }">
           <div v-for="(testimonial, i) in items" :key="i" class="testi-slide">
             <div class="testi-card">
               <!-- Decorative quote mark -->
               <div class="testi-quote-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  width="32"
-                  height="32"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                >
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round">
                   <path
-                    d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"
-                  />
+                    d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z" />
                   <path
-                    d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"
-                  />
+                    d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z" />
                 </svg>
               </div>
 
               <!-- Stars -->
               <div class="testi-stars">
-                <Star
-                  v-for="s in testimonial.stars"
-                  :key="s"
-                  :size="14"
-                  fill="#F5A623"
-                  color="#F5A623"
-                />
+                <Star v-for="s in testimonial.stars" :key="s" :size="14" fill="#F5A623" color="#F5A623" />
               </div>
 
               <!-- Text -->
@@ -220,12 +198,9 @@ onUnmounted(() => {
 
               <!-- Author -->
               <div class="testi-author">
-                <div
-                  class="testi-avatar"
-                  :style="{
-                    background: `linear-gradient(135deg, var(--teal-${[200, 300, 400, 500][i % 4]}), var(--teal-${[600, 700, 700, 800][i % 4]}))`,
-                  }"
-                >
+                <div class="testi-avatar" :style="{
+                  background: `linear-gradient(135deg, var(--teal-${[200, 300, 400, 500][i % 4]}), var(--teal-${[600, 700, 700, 800][i % 4]}))`,
+                }">
                   {{ getInitials(testimonial.name) }}
                 </div>
                 <div class="testi-author-info">
@@ -233,10 +208,8 @@ onUnmounted(() => {
                   <div class="testi-author-label">{{ testimonial.label }}</div>
                 </div>
                 <!-- Floating gradient dot -->
-                <div
-                  class="testi-author-dot"
-                  :style="{ background: `var(--teal-${[200, 300, 400, 500][i % 4]})` }"
-                ></div>
+                <div class="testi-author-dot" :style="{ background: `var(--teal-${[200, 300, 400, 500][i % 4]})` }">
+                </div>
               </div>
             </div>
           </div>
@@ -253,14 +226,8 @@ onUnmounted(() => {
 
       <!-- ── Dots ── -->
       <div class="testi-dots">
-        <button
-          v-for="(_, i) in items"
-          :key="i"
-          class="testi-dot"
-          :class="{ active: i === currentIndex }"
-          @click="goTo(i)"
-          :aria-label="`Testimonial ${i + 1}`"
-        >
+        <button v-for="(_, i) in items" :key="i" class="testi-dot" :class="{ active: i === currentIndex }"
+          @click="goTo(i)" :aria-label="`Testimonial ${i + 1}`">
           <span class="testi-dot-inner"></span>
         </button>
       </div>
@@ -307,7 +274,7 @@ onUnmounted(() => {
   overflow: hidden;
   margin: 0 auto;
   max-width: 820px;
-  padding: 0 1rem;
+  padding: 0 0rem;
 }
 
 .testi-track {
@@ -315,6 +282,7 @@ onUnmounted(() => {
   transition: none;
   user-select: none;
   touch-action: pan-y;
+  direction: ltr;
 }
 
 .testi-slide {
@@ -334,6 +302,11 @@ onUnmounted(() => {
   box-shadow:
     0 4px 24px rgba(37, 215, 184, 0.06),
     0 0 0 1px rgba(37, 215, 184, 0.04);
+  max-width: 800px;
+}
+
+html[dir=rtl] .testi-card {
+  direction: rtl;
 }
 
 .testi-card::before {
@@ -478,24 +451,27 @@ body.rtl .testi-author-dot {
 }
 
 .testi-nav-prev {
-  left: 0;
+  left: 5px;
 }
+
 .testi-nav-next {
-  right: 0;
+  right: 5px;
 }
 
 body.rtl .testi-nav-prev {
   left: auto;
-  right: 0;
+  right: 5px;
 }
+
 body.rtl .testi-nav-next {
   right: auto;
-  left: 0;
+  left: 5px;
 }
 
 body.rtl .testi-nav-prev :deep(svg) {
   transform: scaleX(-1);
 }
+
 body.rtl .testi-nav-next :deep(svg) {
   transform: scaleX(-1);
 }

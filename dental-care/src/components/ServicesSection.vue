@@ -23,6 +23,17 @@ useParallaxGroup(sectionRef, { selector: '.services-bg-shape, .services-bg-dots'
 function goToService(slug: string) {
   router.push({ name: 'service-details', params: { slug } })
 }
+const images = [
+  '/smile.png',
+  '/implant.png',
+  '/braces.png',
+  '/root.png',
+  '/child.png',
+  '/denture.png',
+  '/crown.png',
+  '/whitening.png',
+  '/filling.png'
+]
 </script>
 
 <template>
@@ -45,19 +56,17 @@ function goToService(slug: string) {
 
       <!-- Grid -->
       <div ref="gridRef" class="services-grid">
-        <div
-          v-for="(service, i) in store.t.services.items"
-          :key="i"
-          class="service-card"
-          @click="goToService(service.slug)"
-        >
+        <div v-for="(service, i) in store.t.services.items" :key="i" class="service-card"
+          @click="goToService(service.slug)">
           <!-- Card number badge -->
           <div class="service-num-wrap">
             <span class="service-num-bg">{{ i + 1 < 10 ? '0' + (i + 1) : i + 1 }}</span>
           </div>
 
           <div class="service-card-inner">
-            <div class="service-icon">{{ service.icon }}</div>
+            <div class="service-icon">
+              <img :src="images[i]" />
+            </div>
             <h3>{{ service.title }}</h3>
             <p>{{ service.desc }}</p>
           </div>
@@ -190,6 +199,7 @@ body.ltr .service-num-wrap {
   margin-bottom: 1.25rem;
   font-size: 1.8rem;
   transition: all var(--transition-base);
+  padding: 0.5rem;
 }
 
 .service-card:hover .service-icon {
@@ -264,6 +274,7 @@ body.ltr .service-card:hover .service-arrow {
   .services-grid {
     grid-template-columns: 1fr;
   }
+
   .service-num-bg {
     font-size: 3.5rem;
   }

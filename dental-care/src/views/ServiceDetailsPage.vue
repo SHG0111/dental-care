@@ -71,6 +71,18 @@ useGsapScrubReveal(faqRef, { animation: 'fadeUp' })
 useGsapScrubStagger(testimonialGridRef, '> .sd-testimonial-card', { stagger: 0.12 })
 useGsapScrubReveal(ctaRef, { animation: 'scaleIn' })
 
+const serviceImages = [
+  '/smile.png',
+  '/implant.png',
+  '/braces.png',
+  '/root.png',
+  '/child.png',
+  '/denture.png',
+  '/crown.png',
+  '/whitening.png',
+  '/filling.png'
+]
+
 const blockVariants = [
   { accent: 'teal', bg: 'bg-teal-glow' },
   { accent: 'blue', bg: 'bg-blue-glow' },
@@ -131,6 +143,51 @@ const blockVariants = [
             <ellipse cx="38" cy="18" rx="14" ry="11" fill="#fff" opacity="0.4"/>
             <ellipse cx="30" cy="14" rx="18" ry="11" fill="#fff" opacity="0.5"/>
           </svg>
+          <!-- Rainbow -->
+          <svg class="pf pf-rainbow" viewBox="0 0 120 60" width="120" height="60">
+            <path d="M10,55 Q60,0 110,55" fill="none" stroke="#FF9EB5" stroke-width="3.5"/>
+            <path d="M17,55 Q60,5 103,55" fill="none" stroke="#FFE5A3" stroke-width="3.5"/>
+            <path d="M24,55 Q60,10 96,55" fill="none" stroke="#98D8C8" stroke-width="3.5"/>
+            <path d="M31,55 Q60,15 89,55" fill="none" stroke="#87CEEB" stroke-width="3.5"/>
+            <path d="M38,55 Q60,20 82,55" fill="none" stroke="#C3B1E1" stroke-width="3.5"/>
+          </svg>
+          <!-- Balloons -->
+          <svg class="pf pf-balloon pf-balloon-1" viewBox="0 0 30 42" width="28" height="40">
+            <ellipse cx="15" cy="18" rx="13" ry="16" fill="#FF9EB5"/>
+            <path d="M15,34 Q14,38 12,42" fill="none" stroke="#FF7B89" stroke-width="1.2"/>
+            <path d="M15,34 Q16,38 18,42" fill="none" stroke="#FF7B89" stroke-width="1.2"/>
+            <ellipse cx="11" cy="14" rx="3" ry="4" fill="rgba(255,255,255,0.35)"/>
+            <polygon points="15,33 13,31 17,31" fill="#FF7B89"/>
+          </svg>
+          <svg class="pf pf-balloon pf-balloon-2" viewBox="0 0 30 42" width="22" height="34">
+            <ellipse cx="15" cy="18" rx="13" ry="16" fill="#87CEEB"/>
+            <path d="M15,34 Q14,38 12,42" fill="none" stroke="#5BA3D9" stroke-width="1.2"/>
+            <path d="M15,34 Q16,38 18,42" fill="none" stroke="#5BA3D9" stroke-width="1.2"/>
+            <ellipse cx="11" cy="14" rx="3" ry="4" fill="rgba(255,255,255,0.35)"/>
+            <polygon points="15,33 13,31 17,31" fill="#5BA3D9"/>
+          </svg>
+          <!-- Butterflies -->
+          <svg class="pf pf-butterfly pf-butterfly-1" viewBox="0 0 36 28" width="30" height="24">
+            <ellipse cx="18" cy="14" rx="2" ry="7" fill="#C3B1E1"/>
+            <ellipse cx="8" cy="10" rx="7" ry="5" fill="#FF9EB5" transform="rotate(-20,8,10)"/>
+            <ellipse cx="28" cy="10" rx="7" ry="5" fill="#FF9EB5" transform="rotate(20,28,10)"/>
+            <ellipse cx="9" cy="21" rx="5" ry="4" fill="#C3B1E1" transform="rotate(20,9,21)"/>
+            <ellipse cx="27" cy="21" rx="5" ry="4" fill="#C3B1E1" transform="rotate(-20,27,21)"/>
+          </svg>
+          <svg class="pf pf-butterfly pf-butterfly-2" viewBox="0 0 36 28" width="20" height="16">
+            <ellipse cx="18" cy="14" rx="2" ry="7" fill="#98D8C8"/>
+            <ellipse cx="8" cy="10" rx="7" ry="5" fill="#FFE5A3" transform="rotate(-20,8,10)"/>
+            <ellipse cx="28" cy="10" rx="7" ry="5" fill="#FFE5A3" transform="rotate(20,28,10)"/>
+            <ellipse cx="9" cy="21" rx="5" ry="4" fill="#98D8C8" transform="rotate(20,9,21)"/>
+            <ellipse cx="27" cy="21" rx="5" ry="4" fill="#98D8C8" transform="rotate(-20,27,21)"/>
+          </svg>
+          <!-- Sparkle burst -->
+          <svg class="pf pf-sparkle pf-sparkle-1" viewBox="0 0 24 24" width="18" height="18">
+            <path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#FFE5A3"/>
+          </svg>
+          <svg class="pf pf-sparkle pf-sparkle-2" viewBox="0 0 24 24" width="14" height="14">
+            <path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#FFD700" opacity="0.7"/>
+          </svg>
         </div>
       </template>
 
@@ -160,7 +217,7 @@ const blockVariants = [
             </div>
 
             <h1 class="sd-hero-title">
-              {{ service?.icon ?? '' }}
+              <!-- {{ service?.icon ?? '' }} -->
               {{ pageTitle }}
             </h1>
 
@@ -188,6 +245,14 @@ const blockVariants = [
       </div>
     </section>
 
+    <!-- ── Pediatric doodle divider ── -->
+    <div v-if="isPediatric" class="pd-divider">
+      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
+        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#FF9EB5" stroke-width="2.5" opacity="0.5"/>
+        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#87CEEB" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
+
     <!-- ==================== OVERVIEW ==================== -->
     <section
       id="sd-overview"
@@ -212,7 +277,7 @@ const blockVariants = [
           <div class="sd-overview-visual">
             <div class="sd-ov-card">
               <div class="sd-ov-card-icon">
-                {{ service?.icon ?? '🦷' }}
+                <img :src="serviceImages[serviceIndex]" alt="" class="sd-ov-card-img" />
               </div>
               <div class="sd-ov-card-title">{{ pageTitle }}</div>
               <div class="sd-ov-card-divider"></div>
@@ -229,6 +294,14 @@ const blockVariants = [
         </div>
       </div>
     </section>
+
+    <!-- ── Pediatric doodle divider ── -->
+    <div v-if="isPediatric" class="pd-divider">
+      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
+        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#98D8C8" stroke-width="2.5" opacity="0.5"/>
+        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#C3B1E1" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
 
     <!-- ==================== BENEFITS ==================== -->
     <section
@@ -272,6 +345,14 @@ const blockVariants = [
         </div>
       </div>
     </section>
+
+    <!-- ── Pediatric doodle divider ── -->
+    <div v-if="isPediatric" class="pd-divider">
+      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
+        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#87CEEB" stroke-width="2.5" opacity="0.5"/>
+        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#FF9EB5" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
 
     <!-- ==================== PROCESS ==================== -->
     <section
@@ -317,6 +398,14 @@ const blockVariants = [
       </div>
     </section>
 
+    <!-- ── Pediatric doodle divider ── -->
+    <div v-if="isPediatric" class="pd-divider">
+      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
+        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#C3B1E1" stroke-width="2.5" opacity="0.5"/>
+        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#98D8C8" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
+
     <!-- ==================== FAQ ==================== -->
     <section
       id="sd-faq"
@@ -357,6 +446,14 @@ const blockVariants = [
         </div>
       </div>
     </section>
+
+    <!-- ── Pediatric doodle divider ── -->
+    <div v-if="isPediatric" class="pd-divider">
+      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
+        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#FFE5A3" stroke-width="2.5" opacity="0.5"/>
+        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#FF9EB5" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
 
     <!-- ==================== TESTIMONIALS ==================== -->
     <section
@@ -407,6 +504,14 @@ const blockVariants = [
         </div>
       </div>
     </section>
+
+    <!-- ── Pediatric doodle divider ── -->
+    <div v-if="isPediatric" class="pd-divider">
+      <svg class="pd-divider-svg" viewBox="0 0 280 20" width="280" height="20">
+        <path d="M0,10 Q35,0 70,10 T140,10 T210,10 T280,10" fill="none" stroke="#FF9EB5" stroke-width="2.5" opacity="0.5"/>
+        <path d="M0,14 Q35,4 70,14 T140,14 T210,14 T280,14" fill="none" stroke="#87CEEB" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
 
     <!-- ==================== CTA ==================== -->
     <section
@@ -729,8 +834,18 @@ body.ltr .sd-overview-text {
 }
 
 .sd-ov-card-icon {
-  font-size: 3rem;
   margin-bottom: 1rem;
+}
+
+.sd-ov-card-img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
+  margin: 0 auto;
 }
 
 .sd-ov-card-title {
@@ -1411,6 +1526,94 @@ body.ltr .sd-overview-text {
   animation-duration: 14s;
 }
 
+/* --- New doodle floaties --- */
+.is-pediatric .pf-rainbow {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: pf-float 12s ease-in-out infinite;
+  animation-delay: 0s;
+  opacity: 0.6;
+}
+
+.is-pediatric .pf-balloon-1 {
+  top: 8%;
+  left: 18%;
+  animation: pf-balloon-drift 6s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.is-pediatric .pf-balloon-2 {
+  top: 20%;
+  right: 12%;
+  animation: pf-balloon-drift 7s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.is-pediatric .pf-butterfly-1 {
+  top: 45%;
+  left: 3%;
+  animation: pf-butterfly 5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.is-pediatric .pf-butterfly-2 {
+  bottom: 30%;
+  right: 8%;
+  animation: pf-butterfly 6s ease-in-out infinite;
+  animation-delay: 2.2s;
+}
+
+.is-pediatric .pf-sparkle-1 {
+  top: 15%;
+  left: 28%;
+  animation: pf-twinkle 3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.is-pediatric .pf-sparkle-2 {
+  bottom: 40%;
+  left: 45%;
+  animation: pf-twinkle 2.5s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+/* ── Doodle section dividers ── */
+.pd-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pd-divider-svg {
+  display: block;
+}
+
+/* ── Pediatric background embellishments ── */
+.is-pediatric .sd-overview {
+  background: linear-gradient(180deg, #FFF0F5 0%, #ffffff 100%);
+}
+
+.is-pediatric .sd-benefits {
+  background: linear-gradient(180deg, #F0F9FF 0%, #ffffff 100%);
+}
+
+.is-pediatric .sd-process {
+  background: linear-gradient(180deg, #F0FFF4 0%, #ffffff 100%);
+}
+
+.is-pediatric .sd-faq {
+  background: linear-gradient(180deg, #FFFFF0 0%, #ffffff 100%);
+}
+
+.is-pediatric .sd-testimonials {
+  background: linear-gradient(180deg, #FFF0F5 0%, #ffffff 100%);
+}
+
 @keyframes pf-float {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
@@ -1429,6 +1632,25 @@ body.ltr .sd-overview-text {
 @keyframes pf-twinkle {
   0%, 100% { opacity: 0.4; transform: scale(0.9); }
   50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes pf-balloon-drift {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  30% { transform: translateY(-18px) rotate(2deg); }
+  60% { transform: translateY(-8px) rotate(-1deg); }
+  80% { transform: translateY(-22px) rotate(3deg); }
+}
+
+@keyframes pf-butterfly {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(8px, -12px) rotate(5deg); }
+  50% { transform: translate(-4px, -6px) rotate(-3deg); }
+  75% { transform: translate(10px, -18px) rotate(6deg); }
+}
+
+@keyframes pf-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.05); }
 }
 
 /* --- Pediatric hero content --- */
@@ -1473,11 +1695,21 @@ body.ltr .sd-overview-text {
   display: none;
 }
 
+/* --- Pediatric back button --- */
+.is-pediatric .sd-back-btn {
+  background: #FFE5EC;
+  border-color: #FF9EB5;
+  color: #FF7B89;
+  border-radius: 50px;
+  font-weight: 700;
+}
+
 /* --- Pediatric section overrides --- */
 .is-pediatric .sd-section-label {
   background: #FFE5EC;
   color: #FF7B89;
   border-color: rgba(255, 155, 181, 0.2);
+  border-radius: 50px;
 }
 
 .is-pediatric .sd-section-title {
@@ -1499,44 +1731,44 @@ body.ltr .sd-overview-text {
   color: #FF7B89;
 }
 
-.is-pediatric .sd-ov-card-desc {
-  color: #6B7B8D;
-}
-
-.is-pediatric .sd-ov-feature-item {
-  color: #5BA3D9;
-}
-
-.is-pediatric .sd-ov-feature-icon {
-  background: #FFE5EC;
-  color: #FF7B89;
+/* --- Overview card image doodle frame --- */
+.is-pediatric .sd-ov-card-img {
+  border: 3px dashed #FF9EB5;
+  border-radius: 50%;
+  padding: 4px;
+  animation: pf-twinkle 3s ease-in-out infinite;
 }
 
 /* --- Benefits --- */
-.is-pediatric .sd-benefits-card {
+.is-pediatric .sd-benefit-card {
   border-top: 3px solid;
   border-radius: var(--radius-md);
   transition: all 0.3s ease;
 }
 
-.is-pediatric .sd-benefits-card:nth-child(1) { border-top-color: #FF9EB5; }
-.is-pediatric .sd-benefits-card:nth-child(2) { border-top-color: #87CEEB; }
-.is-pediatric .sd-benefits-card:nth-child(3) { border-top-color: #98D8C8; }
-.is-pediatric .sd-benefits-card:nth-child(4) { border-top-color: #C3B1E1; }
-.is-pediatric .sd-benefits-card:nth-child(5) { border-top-color: #FFE5A3; }
+.is-pediatric .sd-benefit-card:nth-child(1) { border-top-color: #FF9EB5; }
+.is-pediatric .sd-benefit-card:nth-child(2) { border-top-color: #87CEEB; }
+.is-pediatric .sd-benefit-card:nth-child(3) { border-top-color: #98D8C8; }
+.is-pediatric .sd-benefit-card:nth-child(4) { border-top-color: #C3B1E1; }
+.is-pediatric .sd-benefit-card:nth-child(5) { border-top-color: #FFE5A3; }
 
-.is-pediatric .sd-benefits-card:hover {
+.is-pediatric .sd-benefit-card:hover {
   transform: translateY(-4px) scale(1.01);
   box-shadow: 0 12px 32px rgba(255, 155, 181, 0.15) !important;
 }
 
-.is-pediatric .sd-benefits-icon {
+.is-pediatric .sd-benefit-icon {
   background: #FFF0F5;
-  font-size: 1.5rem;
+  border-radius: 50%;
+  color: #FF7B89;
 }
 
-.is-pediatric .sd-benefits-card-title {
-  color: #4A5568;
+.is-pediatric .sd-benefit-text h3 {
+  color: #5BA3D9;
+}
+
+.is-pediatric .sd-benefit-text p {
+  color: #6B7B8D;
 }
 
 /* --- Process --- */
@@ -1545,10 +1777,17 @@ body.ltr .sd-overview-text {
   color: #fff;
   box-shadow: 0 4px 12px rgba(255, 123, 137, 0.3);
   font-size: 1.1rem;
+  animation: pf-bounce 2s ease-in-out infinite;
+}
+
+.is-pediatric .sd-step-num-wrap {
+  animation-delay: calc(var(--step-index, 0) * 0.3s);
 }
 
 .is-pediatric .sd-step-line {
   background: linear-gradient(to bottom, #FFE5EC, #87CEEB, #98D8C8);
+  width: 3px;
+  border-radius: 3px;
 }
 
 .is-pediatric .sd-step-content h3 {
@@ -1560,9 +1799,15 @@ body.ltr .sd-overview-text {
 }
 
 /* --- FAQ --- */
-.is-pediatric .sd-faq-question {
+.is-pediatric .sd-faq-item {
+  border-radius: 50px;
+  border: 2px dashed #FF9EB5;
   background: #FFF0F5;
-  border-radius: var(--radius-md);
+}
+
+.is-pediatric .sd-faq-question {
+  background: transparent;
+  border-radius: 50px;
 }
 
 .is-pediatric .sd-faq-open .sd-faq-question {
@@ -1581,15 +1826,40 @@ body.ltr .sd-overview-text {
 /* --- Testimonials --- */
 .is-pediatric .sd-testimonial-card {
   border-color: rgba(255, 155, 181, 0.15);
+  border-radius: 24px;
+  border-width: 2px;
 }
 
 .is-pediatric .sd-testimonial-card:hover {
   border-color: #FF9EB5;
+  border-style: dashed;
   box-shadow: 0 12px 40px rgba(255, 155, 181, 0.12) !important;
 }
 
 .is-pediatric .sd-testimonial-avatar {
   background: linear-gradient(135deg, #FF9EB5, #FF7B89);
+}
+
+.is-pediatric .sd-star-icon {
+  color: #FF7B89;
+  fill: #FF7B89;
+}
+
+/* --- CTA --- */
+.is-pediatric .sd-cta {
+  background: linear-gradient(135deg, #FFF0F5, #F0F9FF, #FFFFF0) !important;
+  position: relative;
+}
+
+.is-pediatric .sd-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255,155,181,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(135,206,235,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(152,216,200,0.08) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 /* --- CTA --- */
@@ -1635,6 +1905,16 @@ body.ltr .sd-overview-text {
 }
 
 /* --- Responsive pediatric --- */
+@media (max-width: 900px) {
+  .pd-divider {
+    padding: 0.25rem 0;
+  }
+  .pd-divider-svg {
+    width: 200px;
+    height: 14px;
+  }
+}
+
 @media (max-width: 768px) {
   .is-pediatric .pf-tooth-1,
   .is-pediatric .pf-tooth-2 {
@@ -1650,6 +1930,10 @@ body.ltr .sd-overview-text {
 
 @media (max-width: 480px) {
   .is-pediatric .pf {
+    display: none;
+  }
+
+  .pd-divider {
     display: none;
   }
 
