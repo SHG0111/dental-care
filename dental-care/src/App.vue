@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watchEffect, onMounted } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useLanguageStore } from '@/stores/language'
 import { VueLenis } from 'lenis/vue'
 import gsap from 'gsap'
@@ -33,10 +33,6 @@ const lenisRef = ref<InstanceType<typeof VueLenis> | null>(null)
 function onLoaded() {
   isLoaded.value = true
 }
-
-onMounted(() => {
-  store.initLang()
-})
 
 // Sync Lenis with GSAP ScrollTrigger
 watchEffect((onInvalidate) => {

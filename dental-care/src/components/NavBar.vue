@@ -93,7 +93,6 @@ function onScroll() {
 
 onMounted(() => {
   document.addEventListener('click', onDocumentClick)
-  store.initLang()
   window.addEventListener('scroll', onScroll, { passive: true })
 })
 

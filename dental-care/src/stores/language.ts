@@ -5,8 +5,16 @@ import ar from '@/i18n/ar'
 
 export type Lang = 'ar' | 'en'
 
+function getInitialLang(): Lang {
+  try {
+    return (localStorage.getItem('plaza-lang') as Lang) || 'ar'
+  } catch {
+    return 'ar'
+  }
+}
+
 export const useLanguageStore = defineStore('language', () => {
-  const lang = ref<Lang>('ar')
+  const lang = ref<Lang>(getInitialLang())
 
   const t = computed(() => (lang.value === 'ar' ? ar : en))
 
@@ -25,10 +33,5 @@ export const useLanguageStore = defineStore('language', () => {
     setLang(lang.value === 'ar' ? 'en' : 'ar')
   }
 
-  function initLang() {
-    const saved = localStorage.getItem('plaza-lang') as Lang | null
-    setLang(saved || 'ar')
-  }
-
-  return { lang, t, isRtl, setLang, toggleLang, initLang }
+  return { lang, t, isRtl, setLang, toggleLang }
 })
