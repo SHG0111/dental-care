@@ -254,12 +254,42 @@ body.ltr .service-card:hover .service-arrow {
   transform: translateX(4px);
 }
 
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 700px) {
   .services-grid {
     grid-template-columns: 1fr;
   }
   .service-num-bg {
     font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 1.75rem 1.25rem 1.4rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .service-card p {
+    font-size: 0.85rem;
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .service-num-bg {
+    font-size: 2.8rem;
   }
 }
 </style>

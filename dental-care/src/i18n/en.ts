@@ -205,8 +205,10 @@ export default {
   map: {
     label: 'Our Location',
     title: 'Visit Our center',
-    subtitle: 'Address: Al Agamy Al Bahri, Dekhela, Alexandria Governorate',
-    address: 'Al Agamy Al Bahri, Dekhela, Alexandria 5312024',
+    subtitle:
+      'Address: Al-Agamy, Abu Yusuf, Alexandria-Matrouh Road, opposite to Fathalla Market, Alexandria, Egypt',
+    address:
+      'Al-Agamy, Abu Yusuf, Alexandria-Matrouh Road, opposite to Fathalla Market, Alexandria, Egypt',
     cta: 'Open in Google Maps',
     phone: 'Call Us',
     hours: 'Working Hours',
@@ -228,7 +230,8 @@ export default {
     address: 'Address',
     whatsapp: 'WhatsApp',
     email: 'Email',
-    addressValue: 'Alexandria, Egypt',
+    addressValue:
+      'Al-Agamy, Abu Yusuf, Alexandria-Matrouh Road, opposite to Fathalla Market, Alexandria, Egypt',
     phoneValue: '+20 120 007 7665',
     waValue: '+20 120 007 7665',
     emailValue: 'info@plazadentalcare.com',

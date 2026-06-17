@@ -83,4 +83,11 @@ onMounted(() => {
   align-items: center;
   gap: 0.5rem;
 }
+
+@media (max-width: 480px) {
+  .reels-widget {
+    padding: 1rem;
+    min-height: 250px;
+  }
+}
 </style>

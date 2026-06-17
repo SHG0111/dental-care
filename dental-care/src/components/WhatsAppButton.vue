@@ -6,14 +6,8 @@ const waLink = `https://wa.me/201200077665`
 </script>
 
 <template>
-  <a
-    :href="waLink"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp-float"
-    :title="`WhatsApp: ${waNumber}`"
-    :dir="($attrs.dir as string) || 'ltr'"
-  >
+  <a :href="waLink" target="_blank" rel="noopener noreferrer" class="whatsapp-float" :title="`WhatsApp: ${waNumber}`"
+    :dir="($attrs.dir as string) || 'ltr'">
     <div class="wa-icon">
       <WhatsAppIcon :size="28" />
     </div>
@@ -28,7 +22,7 @@ const waLink = `https://wa.me/201200077665`
 <style scoped>
 .whatsapp-float {
   position: fixed;
-  bottom: 2rem;
+  bottom: 4rem;
   right: 2rem;
   width: 60px;
   height: 60px;
@@ -82,6 +76,7 @@ body.rtl .whatsapp-float {
     transform: scale(1);
     opacity: 1;
   }
+
   100% {
     transform: scale(1.6);
     opacity: 0;
@@ -117,9 +112,11 @@ body.rtl .wa-badge {
   0% {
     transform: scale(0);
   }
+
   70% {
     transform: scale(1.2);
   }
+
   100% {
     transform: scale(1);
   }
@@ -177,10 +174,12 @@ body.rtl .wa-tooltip-text::after {
     bottom: 1.25rem;
     right: 1.25rem;
   }
+
   body.rtl .whatsapp-float {
     left: 1.25rem;
     right: auto;
   }
+
   .wa-tooltip {
     display: none;
   }

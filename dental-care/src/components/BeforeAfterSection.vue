@@ -582,6 +582,12 @@ body.rtl .ba-handle-circle :deep(svg:last-child) {
   }
 }
 
+@media (max-width: 640px) {
+  .ba-cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 480px) {
   .ba-slider-container {
     aspect-ratio: 3 / 4;
@@ -589,6 +595,33 @@ body.rtl .ba-handle-circle :deep(svg:last-child) {
 
   .ba-cases-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ba-case-card {
+    padding: 1rem;
+  }
+
+  .ba-case-meta h4 {
+    font-size: 0.85rem;
+  }
+
+  .ba-case-meta p {
+    font-size: 0.75rem;
+  }
+
+  .ba-case-thumb {
+    height: 60px;
+  }
+}
+
+@media (max-width: 360px) {
+  .ba-slider-container {
+    aspect-ratio: 1 / 1.2;
+  }
+
+  .ba-handle-circle {
+    width: 36px;
+    height: 36px;
   }
 }
 </style>

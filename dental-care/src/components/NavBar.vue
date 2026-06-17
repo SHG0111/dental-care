@@ -111,7 +111,7 @@ isHome.value = route.name === 'home'
         </div>
         <div class="logo-text">
           <span class="logo-ar capitalize">{{
-            store.t.nav.home === 'Home' ? 'Plaza Dental care Center' : 'مركز بلازا لتجميل الاسنان'
+            store.t.nav.home === 'Home' ? 'Plaza Dental care Center' : 'مركز بلازا لرعاية الاسنان'
           }}</span>
           <span class="logo-en capitalize">{{
             store.t.nav.home === 'Home' ? 'Premium Dental center' : 'Plaza Dental care Center'
@@ -435,6 +435,12 @@ body.ltr .logo-en {
 }
 
 /* Mobile */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 0 1.25rem;
@@ -454,6 +460,62 @@ body.ltr .logo-en {
 
   .mobile-toggle {
     display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .navbar-inner {
+    height: 68px;
+    gap: 0.75rem;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-ar {
+    font-size: 0.85rem;
+  }
+
+  body.ltr .logo-ar {
+    font-size: 0.8rem;
+  }
+
+  .logo-en {
+    display: none;
+  }
+
+  .btn-book {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar {
+    padding: 0 0.65rem;
+  }
+
+  .navbar-inner {
+    height: 60px;
+    gap: 0.5rem;
+  }
+
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .btn-book {
+    padding: 0.45rem 0.75rem;
   }
 }
 

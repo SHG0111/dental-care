@@ -29,14 +29,9 @@ function openFullMap() {
   <section id="map" ref="sectionRef" class="map-section">
     <!-- ==================== REAL INTERACTIVE MAP ==================== -->
     <div class="map-container">
-      <iframe
-        :src="mapEmbedUrl"
-        class="map-frame"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
+      <iframe :src="mapEmbedUrl" class="map-frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
         :title="store.isRtl ? 'موقع العيادة على خرائط جوجل' : 'Clinic location on Google Maps'"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen></iframe>
 
       <!-- Floating badge — "click to interact" hint -->
       <div class="map-hint">
@@ -71,16 +66,12 @@ function openFullMap() {
         </div>
 
         <div class="map-card-actions">
-          <a
-            :href="mapDirectionUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary"
-          >
+          <a :href="mapDirectionUrl" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             <Navigation :size="16" />
             <span>{{ store.t.map.cta }}</span>
           </a>
-          <button class=" btn-expand" @click="openFullMap" :data-tooltip="store.isRtl ? 'فتح الخريطة كاملة' : 'Open full map'">
+          <button class=" btn-expand" @click="openFullMap"
+            :data-tooltip="store.isRtl ? 'فتح الخريطة كاملة' : 'Open full map'">
             <Maximize2 :size="16" />
           </button>
         </div>
@@ -88,7 +79,9 @@ function openFullMap() {
         <!-- Decorative tooth watermark -->
         <div class="map-card-tooth">
           <svg viewBox="0 0 80 80" width="60" height="60">
-            <path d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z" fill="currentColor" opacity="0.04"/>
+            <path
+              d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z"
+              fill="currentColor" opacity="0.04" />
           </svg>
         </div>
       </div>
@@ -224,6 +217,7 @@ body.rtl .map-card-tooth {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.6;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(2.2);
     opacity: 0;
@@ -341,6 +335,33 @@ body.rtl .map-card-tooth {
 
   .map-card {
     padding: 1.5rem 1.25rem;
+  }
+
+  .map-card-title {
+    font-size: 1.1rem;
+  }
+
+  .map-card-address {
+    font-size: 0.85rem;
+  }
+
+  .map-detail-item {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .map-container {
+    height: 40vh;
+  }
+
+  .map-card-wrap {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .map-card-details {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 </style>

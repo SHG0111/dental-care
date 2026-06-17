@@ -42,23 +42,24 @@ function goToService(slug: string) {
           </a>
           <p class="footer-desc">{{ store.t.footer.description }}</p>
           <div class="footer-socials">
-            <a
-              href="https://www.facebook.com/Plazadentalcareclinic/"
-              target="_blank"
-              class="footer-social-link"
-              aria-label="Facebook"
-            >
+            <a href="https://www.facebook.com/Plazadentalcareclinic/" target="_blank" class="footer-social-link"
+              aria-label="Facebook">
               <!-- Facebook SVG -->
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </a>
-            <a
-              href="https://wa.me/201200077665"
-              target="_blank"
-              class="footer-social-link"
-              aria-label="WhatsApp"
-            >
+            <a href="https://www.instagram.com/plaza_dentalcare" target="_blank" class="footer-social-link"
+              aria-label="Instagram">
+              <!-- Instagram SVG -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="https://wa.me/201200077665" target="_blank" class="footer-social-link" aria-label="WhatsApp">
               <WhatsAppIcon :size="18" />
             </a>
           </div>
@@ -81,19 +82,19 @@ function goToService(slug: string) {
             <li>
               <a href="tel:+201200077665" class="footer-contact-item">
                 <Phone :size="14" />
-                <span>{{ store.t.contact.phoneValue }}</span>
+                <span dir="ltr">{{ store.t.contact.phoneValue }}</span>
               </a>
             </li>
             <li>
               <span class="footer-contact-item">
-                <MapPin :size="14" />
+                <MapPin :size="20" class="self-start" />
                 <span>{{ store.t.contact.addressValue }}</span>
               </span>
             </li>
             <li>
               <a href="https://wa.me/201200077665" target="_blank" class="footer-contact-item">
                 <WhatsAppIcon :size="14" />
-                <span>{{ store.t.contact.waValue }}</span>
+                <span dir="ltr">{{ store.t.contact.waValue }}</span>
               </a>
             </li>
           </ul>
@@ -103,11 +104,8 @@ function goToService(slug: string) {
       <!-- Bottom -->
       <div class="footer-bottom">
         <span>{{ store.t.footer.rights }} &copy; {{ new Date().getFullYear() }}</span>
-        <span class="footer-made"
-          >{{ store.t.footer.made }} &mdash;
-          <a href="https://shahenda-creative-developer.vercel.app/" class="capitalize"
-            >shahenda galal</a
-          >
+        <span class="footer-made">{{ store.t.footer.made }} &mdash;
+          <a href="https://shahenda-creative-developer.vercel.app/" class="capitalize">shahenda galal</a>
         </span>
       </div>
     </div>
@@ -240,9 +238,10 @@ function goToService(slug: string) {
   gap: 0.5rem;
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   transition: color var(--transition-fast);
 }
+
 
 .footer-contact-item:hover {
   color: var(--teal-300);
@@ -265,14 +264,43 @@ function goToService(slug: string) {
   opacity: 0.6;
 }
 
+@media (max-width: 1024px) {
+  .footer-inner {
+    padding: 0 2rem;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-inner {
+    padding: 0 1.25rem;
+  }
+
+  .footer-desc {
+    font-size: 0.8rem;
+  }
+
+  .footer-col h4 {
+    font-size: 0.82rem;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.8rem;
   }
 }
 </style>

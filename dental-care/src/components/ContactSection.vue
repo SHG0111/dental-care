@@ -46,22 +46,16 @@ function goToMap(e: MouseEvent) {
 
           <!-- Contact Items -->
           <div class="contact-items">
-            <a
-              v-for="(item, i) in items"
-              :key="item.key"
-              :href="
-                item.key === 'whatsapp'
-                  ? 'https://wa.me/201200077665'
-                  : item.key === 'phone'
-                    ? 'tel:+201200077665'
-                    : item.key === 'email'
-                      ? 'mailto:info@plazadentalcare.com'
-                      : '#map'
-              "
-              :target="item.key === 'whatsapp' ? '_blank' : undefined"
+            <a v-for="(item, i) in items" :key="item.key" :href="item.key === 'whatsapp'
+              ? 'https://wa.me/201200077665'
+              : item.key === 'phone'
+                ? 'tel:+201200077665'
+                : item.key === 'email'
+                  ? 'mailto:info@plazadentalcare.com'
+                  : '#map'
+              " :target="item.key === 'whatsapp' ? '_blank' : undefined"
               :class="['contact-item', { 'contact-item-address': item.key === 'address' }]"
-              @click="item.key === 'address' ? goToMap($event) : undefined"
-            >
+              @click="item.key === 'address' ? goToMap($event) : undefined">
               <div :class="['contact-item-icon', `icon-${item.color}`]">
                 <component :is="item.icon" :size="20" />
               </div>
@@ -82,97 +76,56 @@ function goToMap(e: MouseEvent) {
 
           <!-- Social Links -->
           <div class="contact-socials">
-            <a
-              href="https://www.facebook.com/Plazadentalcareclinic/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-btn facebook"
-              :data-tooltip="store.isRtl ? 'فيسبوك' : 'Facebook'"
-            >
+            <a href="https://www.facebook.com/Plazadentalcareclinic/" target="_blank" rel="noopener noreferrer"
+              class="social-btn facebook" :data-tooltip="store.isRtl ? 'فيسبوك' : 'Facebook'">
               <!-- Facebook SVG -->
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
               </svg>
             </a>
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-btn instagram"
-              :data-tooltip="store.isRtl ? 'انستغرام' : 'Instagram'"
-            >
+            <a href="https://www.instagram.com/plaza_dentalcare" target="_blank" rel="noopener noreferrer"
+              class="social-btn instagram" :data-tooltip="store.isRtl ? 'انستغرام' : 'Instagram'">
               <!-- Instagram SVG -->
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
               </svg>
             </a>
-            <a
-              href="https://wa.me/201200077665"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="social-btn whatsapp"
-              :data-tooltip="store.isRtl ? 'واتساب' : 'WhatsApp'"
-            >
+            <a href="https://wa.me/201200077665" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp"
+              :data-tooltip="store.isRtl ? 'واتساب' : 'WhatsApp'">
               <WhatsAppIcon :size="20" />
             </a>
           </div>
         </div>
 
         <!-- Map / Info Card -->
-        <div class="contact-map-card">
+        <div class="contact-map-card h-full flex items-center ">
           <div class="map-card-inner">
             <div class="map-placeholder">
               <!-- Decorative tooth illustration -->
               <div class="map-tooth">
-                <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" class="map-tooth-svg">
-                  <defs>
-                    <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#27c8f7" />
-                      <stop offset="100%" stop-color="#31efc4" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M40 5C28 5 16 14 16 28c0 8 3 14 7 18l4 24c0.5 3 2 5 4 5s3-2 4-5l2-10 2 10c1 3 2 5 4 5s3.5-2 4-5l4-24c4-4 7-10 7-18 0-14-12-23-24-23z"
-                    fill="url(#mapGrad)"
-                    opacity="0.15"
-                  />
-                </svg>
+                <img src="/logo.png" alt="Plaza Dental Care" class="w-18 h-18" />
               </div>
 
               <div class="map-info">
                 <div class="map-badge">
-                  <MapPin :size="16" />
+                  <MapPin :size="16" class="self-start" />
                   <span>{{ store.t.contact.addressValue }}</span>
                 </div>
                 <h3>
-                  {{ store.isRtl ? 'مركز بلازا لتجميل الاسنان' : 'Plaza Dental Cosmetic Center' }}
+                  {{ store.isRtl ? 'مركز بلازا لتجميل الاسنان' : 'Plaza Dental Care Center' }}
                 </h3>
                 <div class="map-hours-line">
                   <span class="map-label">{{ store.isRtl ? 'ساعات العمل:' : 'Hours:' }}</span>
-                  <span
-                    >{{ store.t.hours.weekdays }} ({{ store.t.hours.sun }}-{{
-                      store.t.hours.thu
-                    }})</span
-                  >
+                  <span>{{ store.t.hours.weekdays }} ({{ store.t.hours.sun }}-{{
+                    store.t.hours.thu
+                  }})</span>
                 </div>
                 <div class="map-cta-row">
-                  <a
-                    :href="`https://wa.me/201200077665`"
-                    target="_blank"
-                    class="btn btn-primary"
-                    style="flex: 1; justify-content: center"
-                  >
+                  <a :href="`https://wa.me/201200077665`" target="_blank" class="btn btn-primary"
+                    style="flex: 1; justify-content: center">
                     <WhatsAppIcon :size="18" />
                     {{ store.isRtl ? 'راسلنا واتساب' : 'WhatsApp Us' }}
                   </a>
@@ -182,8 +135,8 @@ function goToMap(e: MouseEvent) {
 
             <!-- Decorative elements -->
             <div class="map-dots">
-              <span></span><span></span><span></span><span></span> <span></span><span></span
-              ><span></span><span></span> <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span> <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
             </div>
           </div>
         </div>
@@ -435,10 +388,66 @@ function goToMap(e: MouseEvent) {
   justify-self: center;
 }
 
+@media (max-width: 1024px) {
+  .contact-grid {
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .contact-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 1.35rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .contact-item {
+    padding: 0.85rem 1rem;
+  }
+
+  .contact-item-text strong {
+    font-size: 0.82rem;
+  }
+
+  .contact-item-text span {
+    font-size: 0.78rem;
+  }
+
+  .contact-item-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .map-placeholder {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .map-info h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact-socials {
+    gap: 0.5rem;
+  }
+
+  .social-btn {
+    width: 42px;
+    height: 42px;
   }
 }
 </style>

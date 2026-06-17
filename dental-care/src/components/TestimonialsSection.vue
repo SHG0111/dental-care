@@ -551,6 +551,16 @@ body.rtl .testi-nav-next :deep(svg) {
 /* ============================================
    RESPONSIVE
    ============================================ */
+@media (max-width: 768px) {
+  .testi-nav {
+    display: none;
+  }
+
+  .testi-carousel {
+    padding: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .testi-card {
     padding: 1.75rem 1.5rem 1.5rem;
@@ -559,13 +569,29 @@ body.rtl .testi-nav-next :deep(svg) {
   .testi-text {
     font-size: 0.95rem;
   }
+}
 
-  .testi-nav {
-    display: none;
+@media (max-width: 480px) {
+  .testi-card {
+    padding: 1.5rem 1.25rem 1.35rem;
   }
 
-  .testi-carousel {
-    padding: 0;
+  .testi-text {
+    font-size: 0.88rem;
+  }
+
+  .testi-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 0.82rem;
+  }
+
+  .testi-author-name {
+    font-size: 0.88rem;
+  }
+
+  .testi-author-label {
+    font-size: 0.75rem;
   }
 }
 </style>

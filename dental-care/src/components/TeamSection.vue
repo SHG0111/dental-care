@@ -450,4 +450,63 @@ function avatarColor(index: number) {
     padding: 0.25rem 0.75rem;
   }
 }
+
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .team-card {
+    padding: 1.25rem 0.85rem 1.25rem;
+  }
+
+  .team-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1rem;
+  }
+
+  .team-avatar-ring {
+    width: 72px;
+    height: 72px;
+  }
+
+  .team-card h3 {
+    font-size: 0.82rem;
+  }
+
+  .team-spec {
+    font-size: 0.7rem;
+  }
+
+  .team-tag {
+    font-size: 0.62rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .team-card-dots {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .team-avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .team-avatar-ring {
+    width: 58px;
+    height: 58px;
+  }
+
+  .team-card {
+    padding: 1rem 0.65rem 1rem;
+  }
+
+  .team-card h3 {
+    font-size: 0.75rem;
+  }
+}
 </style>

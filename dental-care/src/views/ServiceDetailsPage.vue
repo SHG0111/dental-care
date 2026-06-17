@@ -1186,6 +1186,16 @@ body.ltr .sd-overview-text {
 /* ==========================================
    RESPONSIVE
    ========================================== */
+@media (max-width: 1024px) {
+  .sd-section-inner {
+    padding: 0 2rem;
+  }
+
+  .sd-hero-inner {
+    padding: 3rem 2rem 6rem;
+  }
+}
+
 @media (max-width: 900px) {
   .sd-hero-content {
     grid-template-columns: 1fr;
@@ -1254,17 +1264,65 @@ body.ltr .sd-overview-text {
 
 @media (max-width: 480px) {
   .sd-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
   }
 
   .sd-hero-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .sd-step-num {
-    width: 40px;
-    height: 40px;
-    font-size: 0.95rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .sd-testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-hero-desc {
+    font-size: 0.92rem;
+  }
+
+  .sd-cta-title {
+    font-size: 1.4rem;
+  }
+
+  .sd-ov-card {
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .sd-section {
+    padding: 3.5rem 0;
+  }
+
+  .sd-hero-title {
+    font-size: 1.35rem;
+  }
+
+  .sd-hero-inner {
+    padding: 1.5rem 0.75rem 3rem;
+  }
+
+  .sd-section-inner {
+    padding: 0 0.75rem;
+  }
+
+  .sd-hero-num-text {
+    font-size: clamp(3rem, 12vw, 4rem);
+  }
+
+  .sd-back-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .sd-faq-question {
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
   }
 }
 
@@ -1587,6 +1645,16 @@ body.ltr .sd-overview-text {
   .is-pediatric .pf-cloud-2 {
     width: 50px;
     height: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .is-pediatric .pf {
+    display: none;
+  }
+
+  .is-pediatric .sd-hero-title {
+    font-size: 1.5rem;
   }
 }
 </style>

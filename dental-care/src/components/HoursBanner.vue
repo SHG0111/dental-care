@@ -140,5 +140,34 @@ function scrollToContact() {
     justify-content: center;
     gap: 1.5rem;
   }
+
+  .hours-left h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hours-inner {
+    padding: 2rem 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .hours-grid {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .btn-banner {
+    padding: 0.65rem 1.4rem;
+    font-size: 0.82rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .hours-left h3 {
+    font-size: 1rem;
+  }
 }
 </style>
