@@ -52,47 +52,56 @@ useStructuredData(() => ({
   justify-content: center;
   min-height: 70vh;
   padding: 4rem 2rem;
+  background: var(--gradient-dark);
 }
+
 .nf-inner {
   text-align: center;
   max-width: 480px;
 }
+
 .nf-code {
   font-size: clamp(5rem, 12vw, 8rem);
   font-weight: 900;
   line-height: 1;
-  background: linear-gradient(135deg, var(--teal-400), var(--teal-600));
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .nf-title {
+  color: #fff;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
-  color: var(--text-primary);
+
   margin: 1rem 0 0.5rem;
 }
+
 .nf-desc {
-  color: var(--text-secondary);
+  color: white;
+  opacity: 0.7;
   line-height: 1.7;
   margin-bottom: 2rem;
 }
+
 .nf-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  background: var(--gradient-primary);
   padding: 0.85rem 2rem;
   border-radius: 999px;
   border: none;
-  background: var(--teal-500);
+
   color: #fff;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
+  transition: transform 0.2s;
 }
+
 .nf-btn:hover {
-  background: var(--teal-600);
   transform: translateY(-1px);
 }
 </style>
