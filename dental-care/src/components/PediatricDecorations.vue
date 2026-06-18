@@ -10,7 +10,7 @@
   <div class="ped-floaties">
     <!-- Smiling tooth characters -->
     <svg class="ped ped-tooth ped-tooth-1" viewBox="0 0 60 60" width="50" height="50" aria-hidden="true">
-      <ellipse cx="30" cy="32" rx="18" ry="22" fill="#FFE5EC" stroke="#FF9EB5" stroke-width="1.5" />
+      <ellipse cx="30" cy="32" rx="20" ry="22" fill="#FFE5EC" stroke="#FF9EB5" stroke-width="1.5" />
       <ellipse cx="30" cy="28" rx="14" ry="16" fill="#FFF0F5" />
       <circle cx="23" cy="26" r="2.5" fill="#FF7B89" />
       <circle cx="37" cy="26" r="2.5" fill="#FF7B89" />
@@ -19,14 +19,13 @@
       <path d="M22 35 Q30 42 38 35" fill="none" stroke="#FF7B89" stroke-width="1.8" stroke-linecap="round" />
     </svg>
     <svg class="ped ped-tooth ped-tooth-2" viewBox="0 0 60 60" width="36" height="36" aria-hidden="true">
-      <ellipse cx="30" cy="32" rx="18" ry="22" fill="#E8F8FF" stroke="#87CEEB" stroke-width="1.5" />
+      <ellipse cx="30" cy="32" rx="20" ry="22" fill="#E8F8FF" stroke="#87CEEB" stroke-width="1.5" />
       <ellipse cx="30" cy="28" rx="14" ry="16" fill="#F0F9FF" />
       <circle cx="23" cy="26" r="2.5" fill="#5BA3D9" />
       <circle cx="37" cy="26" r="2.5" fill="#5BA3D9" />
       <circle cx="23" cy="26" r="1" fill="#fff" />
       <circle cx="37" cy="26" r="1" fill="#fff" />
       <path d="M22 35 Q30 42 38 35" fill="none" stroke="#5BA3D9" stroke-width="1.8" stroke-linecap="round" />
-      <circle cx="30" cy="20" r="3" fill="#E8F8FF" stroke="#87CEEB" stroke-width="1" />
     </svg>
 
     <!-- Stars -->
