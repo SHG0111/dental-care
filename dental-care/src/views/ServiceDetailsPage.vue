@@ -1336,11 +1336,11 @@ body.ltr .sd-overview-text {
 
 .is-pediatric .sd-hero-title {
   font-size: clamp(2rem, 4vw, 3rem);
-  color: #5BA3D9;
+  color: #5bd9d1;
 }
 
 .is-pediatric .sd-hero-desc {
-  color: #6B7B8D;
+  color: #d9e1ea;
   font-size: 1.05rem;
   line-height: 1.9;
 }
