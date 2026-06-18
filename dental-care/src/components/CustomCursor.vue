@@ -80,7 +80,7 @@ function tick() {
   posX += (mouseX - posX) * 0.12
   posY += (mouseY - posY) * 0.12
   if (followerRef.value) {
-    gsap.set(followerRef.value, { x: posX - 20, y: posY - 20 })
+    gsap.set(followerRef.value, { x: posX + 20, y: posY - 10 })
   }
   rafId = requestAnimationFrame(tick)
 }
@@ -156,8 +156,8 @@ onUnmounted(() => {
 
 .cursor-tooth {
   position: fixed;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   transform: translate(-50%, -50%);
   will-change: transform;
   z-index: 99999;
@@ -172,8 +172,8 @@ onUnmounted(() => {
 
 .cursor-ring {
   position: fixed;
-  width: 50px;
-  height: 50px;
+  width: 20px;
+  height: 20px;
   border: 3px solid white;
   border-radius: 50%;
   will-change: transform;
