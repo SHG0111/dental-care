@@ -124,6 +124,7 @@
   z-index: 1;
 }
 
+
 .ped {
   position: absolute;
   animation: ped-float 8s ease-in-out infinite;

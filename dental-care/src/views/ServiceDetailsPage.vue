@@ -1300,6 +1300,9 @@ body.ltr .sd-overview-text {
 .is-pediatric .sd-testimonials {
   background: linear-gradient(180deg, #FFF0F5 0%, #ffffff 100%);
 }
+.is-pediatric .hero-bg {
+  background: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%) !important;
+}
 
 @keyframes pf-twinkle {
 

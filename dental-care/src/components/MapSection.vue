@@ -74,8 +74,8 @@ watch(
   <section id="map" ref="sectionRef" class="map-section">
     <!-- ==================== FREE INTERACTIVE MAP (Leaflet + OSM) ==================== -->
     <div class="map-container">
-      <LMap :zoom="17" :max-zoom="19" :center="mapCenter" :options="{
-        scrollWheelZoom: true,
+      <LMap :zoom="18" :max-zoom="18" :center="mapCenter" :options="{
+        scrollWheelZoom: false,
         zoomControl: true,
         attributionControl: true,
         detectRetina: true,
