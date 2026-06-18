@@ -35,7 +35,7 @@ onMounted(async () => {
     if (!svgEl) throw new Error('No SVG root')
 
     svgEl.querySelectorAll('path').forEach(p => {
-      if (!p.getAttribute('fill'))   p.setAttribute('fill', 'url(#v-grad)')
+      if (!p.getAttribute('fill')) p.setAttribute('fill', 'url(#v-grad)')
       if (!p.getAttribute('stroke')) p.setAttribute('stroke', 'url(#v-grad)')
       if (!p.getAttribute('stroke-width')) p.setAttribute('stroke-width', '6')
     })
@@ -62,7 +62,7 @@ onMounted(async () => {
     // ── 7. Start drawing animation ──
     new Vivus(injectedSvg, {
       type: 'delayed',
-      duration: 250,
+      duration: 100,
       animTimingFunction: Vivus.EASE_IN_OUT,
       selfDestroy: true,
       start: 'autostart',
@@ -71,9 +71,9 @@ onMounted(async () => {
       setTimeout(() => {
         if (loaderRef.value) {
           loaderRef.value.classList.add('fade-out')
-          setTimeout(() => emit('loaded'), 300)
+          setTimeout(() => emit('loaded'), 100)
         }
-      }, 300)
+      }, 100)
     })
 
   } catch (_e) {
@@ -165,12 +165,22 @@ function loadScript(src: string): Promise<void> {
 }
 
 @keyframes progress {
-  0%   { width: 0%; }
-  60%  { width: 78%; }
-  100% { width: 100%; }
+  0% {
+    width: 0%;
+  }
+
+  60% {
+    width: 78%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 @keyframes fade-in {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
 </style>
